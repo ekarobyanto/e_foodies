@@ -73,10 +73,10 @@ class _Input {
 
 class _Decor {
   BoxShadow get underShadow => const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.25),
-        blurRadius: 4,
+        color: Color.fromRGBO(0, 0, 0, 0.2),
+        blurRadius: 3,
         spreadRadius: 0,
-        offset: Offset(0, 4),
+        offset: Offset(0, 2),
       );
 
   BoxShadow get spreadShadow => const BoxShadow(

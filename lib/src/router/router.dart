@@ -1,10 +1,12 @@
+import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart';
+import 'package:e_foodies/src/features/auth/presentation/register/register.dart';
 import 'package:e_foodies/src/features/auth/presentation/splash_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/welcome',
+  initialLocation: '/',
   debugLogDiagnostics: true,
   routes: [
     GoRoute(
@@ -15,10 +17,22 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/welcome',
-      pageBuilder: (context, state) => const NoTransitionPage(
-        child: WelcomeScreen(),
+      pageBuilder: (context, state) => slideTransitionRL(
+        const WelcomeScreen(),
       ),
-    )
+    ),
+    GoRoute(
+      path: '/login',
+      pageBuilder: (context, state) => slideTransitionRL(
+        const LoginScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/register',
+      pageBuilder: (context, state) => slideTransitionRL(
+        const RegisterScreen(),
+      ),
+    ),
   ],
 );
 

@@ -12,7 +12,6 @@ class GradientLayer extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            // Colors.black.withOpacity(0.2),
             Colors.black.withOpacity(0.3),
             Colors.black.withOpacity(0.5),
             Colors.black.withOpacity(0.7),
