@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/content.dart';
+import 'widgets/welcome_content.dart';
 import 'widgets/gradient_layer.dart';
 import 'widgets/image_background.dart';
 

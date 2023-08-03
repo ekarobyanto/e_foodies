@@ -51,7 +51,7 @@ class Content extends StatelessWidget {
                 ),
                 Text(
                   'Temukan dan pesan makanan favoritmu lewat sentuhan jari.',
-                  style: Styles.font.xl.copyWith(color: Colors.grey[300]),
+                  style: Styles.font.xl2.copyWith(color: Colors.grey[300]),
                 ),
               ],
             ),

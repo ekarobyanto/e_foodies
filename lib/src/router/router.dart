@@ -1,5 +1,5 @@
 import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart';
-import 'package:e_foodies/src/features/auth/presentation/register/register.dart';
+import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/splash_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
