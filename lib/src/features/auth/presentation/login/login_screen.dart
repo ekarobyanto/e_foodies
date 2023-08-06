@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../constants/styles.dart';
 import '../../../../utills/email_validator.dart';
 import '../../../shared/shrink_property.dart';
 import '../../../shared/text_input.dart';
-import '../widgets/auth_background.dart';
+import '../../../shared/background.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -31,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
           backgroundColor: Styles.color.darkGreen,
         ),
         body: SingleChildScrollView(
-          child: AuthBackground(
+          child: Background(
             child: LoginContent(
               emailCtrl: _emailCtrl,
               passwordCtrl: _passwordCtrl,
@@ -88,14 +89,12 @@ class LoginContent extends StatelessWidget {
                 ),
                 TextInput(
                   label: 'Password',
-                  hint: 'Masukan 8 karakter atau lebih',
+                  hint: 'Masukan password anda',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Password tidak boleh kosong';
                     }
-                    if (value.length < 8) {
-                      return 'Password harus 8 karakter atau lebih';
-                    }
+
                     return null;
                   },
                   textController: passwordCtrl,
@@ -105,7 +104,9 @@ class LoginContent extends StatelessWidget {
             Column(
               children: [
                 ShrinkProperty(
-                  onTap: () {},
+                  onTap: () {
+                    context.push('/dashboard');
+                  },
                   child: Container(
                     width: double.infinity,
                     height: 50.h,

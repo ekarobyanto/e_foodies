@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constants/styles.dart';
+import '../../constants/styles.dart';
 
-class AuthBackground extends StatelessWidget {
-  const AuthBackground({
+class Background extends StatelessWidget {
+  const Background({
     super.key,
     required this.child,
   });

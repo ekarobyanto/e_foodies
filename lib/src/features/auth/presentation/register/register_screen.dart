@@ -1,7 +1,7 @@
 import 'package:e_foodies/src/constants/styles.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/auth_background.dart';
+import '../../../shared/background.dart';
 import 'widgets/register_content.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           backgroundColor: Styles.color.darkGreen,
         ),
         body: SingleChildScrollView(
-          child: AuthBackground(
+          child: Background(
             child: RegisterContent(
                 nameCtrl: _nameCtrl,
                 emailCtrl: _emailCtrl,

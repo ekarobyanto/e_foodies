@@ -1,0 +1,108 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../constants/styles.dart';
+import '../../../shared/rounded_container.dart';
+import '../../../shared/shrink_property.dart';
+import '../../domain/menu/menu.dart';
+
+class MenuCard extends StatelessWidget {
+  MenuCard({super.key, required this.menu});
+
+  Menu menu;
+
+  @override
+  Widget build(BuildContext context) {
+    return ShrinkProperty(
+      onTap: () {},
+      child: RoundedContainer(
+        radius: 20,
+        border: Border.all(
+          width: 2,
+          color: Colors.grey[350]!,
+        ),
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RoundedContainer(
+              heightWidth: Size(100.h, 100.h),
+              radius: 20,
+              color: Styles.color.accent,
+              child: Image.network(
+                menu.img ?? '',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.error,
+                    size: 30,
+                    color: Styles.color.danger,
+                  );
+                },
+              ),
+            ),
+            const SizedBox(width: 10),
+            SizedBox(
+              height: 100.h,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        menu.name,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 1.sw * 0.55,
+                        child: Text(
+                          menu.desc,
+                          style: Styles.font.xsm,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.store,
+                              size: 15, color: Styles.color.darkGreen),
+                          Text(
+                            ' Warung :',
+                            overflow: TextOverflow.ellipsis,
+                            style: Styles.font.xsm,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 1.sw * 0.5,
+                        child: Text(
+                          '${menu.store}, ${menu.storeAddress}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: Styles.font.xsm,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

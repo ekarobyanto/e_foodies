@@ -1,7 +1,10 @@
+import 'package:e_foodies/src/features/account/presentation/dashboard/dashboard_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/splash_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.dart';
+import 'package:e_foodies/src/features/menu/presentation/menu_list.dart';
+import 'package:e_foodies/src/features/store/presentation/store_list.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -31,6 +34,24 @@ final GoRouter router = GoRouter(
       path: '/register',
       pageBuilder: (context, state) => slideTransitionRL(
         const RegisterScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/dashboard',
+      pageBuilder: (context, state) => slideTransitionRL(
+        const DashboardScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/store-list',
+      pageBuilder: (context, state) => slideTransitionRL(
+        const StoreList(),
+      ),
+    ),
+    GoRoute(
+      path: '/menu-list',
+      pageBuilder: (context, state) => slideTransitionRL(
+        const MenuList(),
       ),
     ),
   ],
