@@ -55,7 +55,7 @@ class MenuList extends StatelessWidget {
                               id: 'asd',
                               name: 'Ayam Goyeng',
                               user: 'Warung Ayam',
-                          storeAddress: 'Jl.Anjing',
+                              storeAddress: 'Jl.Ayam',
                               store: 'Warung Ayam',
                               desc: 'Ayam Goyeng adalah ayam yang digoyeng',
                               ingredients: [

@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../../constants/styles.dart';
-import '../../../../shared/rounded_container.dart';
-import '../../../../shared/shrink_property.dart';
+import '../../../../constants/styles.dart';
+import '../../../shared/rounded_container.dart';
+import '../../../shared/shrink_property.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -60,7 +61,10 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      _advancedDrawerController.hideDrawer();
+                      context.push('/account');
+                    },
                     leading: const Icon(
                       CupertinoIcons.person_crop_circle_fill,
                       size: 30,
@@ -71,13 +75,15 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      _advancedDrawerController.hideDrawer();
+                    },
                     leading: const Icon(
                       Icons.store,
                       size: 30,
                     ),
                     title: Text(
-                      'Warung',
+                      'Warungku',
                       style: Styles.font.lg.copyWith(color: Colors.white),
                     ),
                   ),

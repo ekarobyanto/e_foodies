@@ -21,7 +21,7 @@ class MenuCard extends StatelessWidget {
         radius: 20,
         border: Border.all(
           width: 2,
-          color: Colors.grey[350]!,
+          color: Styles.color.primary,
         ),
         padding: const EdgeInsets.all(10),
         child: Row(
@@ -30,7 +30,14 @@ class MenuCard extends StatelessWidget {
             RoundedContainer(
               heightWidth: Size(100.h, 100.h),
               radius: 20,
-              color: Styles.color.accent,
+              gradient: LinearGradient(
+                colors: [
+                  Styles.color.primary,
+                  Styles.color.darkGreen.withOpacity(0.5),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
               child: Image.network(
                 menu.img ?? '',
                 fit: BoxFit.cover,

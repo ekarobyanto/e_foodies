@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../constants/styles.dart';
 import '../menu/presentation/widgets/menu_card.dart';
-import '../store/presentation/widgets/warung_card.dart';
+import '../store/presentation/widgets/store_card.dart';
 
 class ItemShowcase extends StatelessWidget {
   ItemShowcase({

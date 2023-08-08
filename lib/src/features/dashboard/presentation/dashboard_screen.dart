@@ -1,4 +1,3 @@
-import 'package:e_foodies/src/features/account/presentation/dashboard/widgets/drawer.dart';
 import 'package:e_foodies/src/features/menu/domain/ingredient/ingredient.dart';
 import 'package:e_foodies/src/features/store/domain/store.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
@@ -7,9 +6,10 @@ import 'package:e_foodies/src/constants/styles.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:flutter/material.dart';
 
-import '../../../menu/domain/menu/menu.dart';
-import '../../../shared/circle_net_pic.dart';
-import '../../../shared/item_showcase.dart';
+import '../../menu/domain/menu/menu.dart';
+import '../../shared/circle_net_pic.dart';
+import '../../shared/item_showcase.dart';
+import 'widgets/drawer.dart';
 import 'widgets/promotion_card.dart';
 import 'widgets/search_bar.dart' as search;
 
@@ -75,7 +75,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const PromotionCard(),
+                PromotionCard(
+                  title: 'Warung',
+                  onTap: () {},
+                  desc:
+                      'Warung adalah usaha kecil milik keluarga yang berbentuk kedai, kios, toko kecil, atau restoran sederhana — istilah "warung" dapat ditemukan di Indonesia dan Malaysia. Warung adalah salah satu bagian penting dalam kehidupan keseharian rakyat Indonesia.',
+                ),
                 SizedBox(height: 20.h),
                 ItemShowcase(
                   title: 'Warung',
@@ -83,36 +88,36 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   items: [
                     Store(
                       id: 'id',
-                      name: 'Warung Anjing',
-                      desc: 'Warung Anjing adalah warung yang menjual anjing',
-                      user: 'Anjing',
-                      address: 'Jl.Anjing',
+                      name: 'Warung Kucing',
+                      desc: 'Warung Kucing adalah warung yang menjual Kucing',
+                      user: 'Kucing',
+                      address: 'Jl.Kucing',
                       phone: 'asd',
                       menus: [
                         Menu(
                           id: 'id',
                           desc: 'asdasddasd',
-                          name: 'Anjing Bakar',
-                          user: 'Anjing',
+                          name: 'Kucing Bakar',
+                          user: 'Kucing',
                           store: 'asd',
-                          storeAddress: 'Jl.Anjing',
+                          storeAddress: 'Jl.Kucing',
                           ingredients: [
-                            Ingredient(id: 'asdasd', name: 'Anjing'),
-                            Ingredient(id: 'asdasd', name: 'Anjing'),
-                            Ingredient(id: 'asdasd', name: 'Anjing'),
+                            Ingredient(id: 'asdasd', name: 'Kucing'),
+                            Ingredient(id: 'asdasd', name: 'Kucing'),
+                            Ingredient(id: 'asdasd', name: 'Kucing'),
                           ],
                         ),
                         Menu(
                           id: 'id',
                           desc: 'asdasddasd',
-                          name: 'Anjing Goreng',
-                          user: 'Anjing',
-                          storeAddress: 'Jl.Anjing',
+                          name: 'Kucing Goreng',
+                          user: 'Kucing',
+                          storeAddress: 'Jl.Kucing',
                           store: 'asd',
                           ingredients: [
-                            Ingredient(id: 'asdasd', name: 'Anjing'),
-                            Ingredient(id: 'asdasd', name: 'Anjing'),
-                            Ingredient(id: 'asdasd', name: 'Anjing'),
+                            Ingredient(id: 'asdasd', name: 'Kucing'),
+                            Ingredient(id: 'asdasd', name: 'Kucing'),
+                            Ingredient(id: 'asdasd', name: 'Kucing'),
                           ],
                         ),
                       ],
@@ -127,14 +132,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Menu(
                       id: 'asdasd',
                       desc: 'asdasddasd',
-                      name: 'Anjing Bakar',
+                      name: 'Kucing Bakar',
                       store: 'asd',
-                      storeAddress: 'Jl.Anjing',
+                      storeAddress: 'Jl.Kucing',
                       user: 'user 1',
                       ingredients: [
-                        Ingredient(id: 'asdasd', name: 'Anjing'),
-                        Ingredient(id: 'asdasd', name: 'Anjing'),
-                        Ingredient(id: 'asdasd', name: 'Anjing'),
+                        Ingredient(id: 'asdasd', name: 'Kucing'),
+                        Ingredient(id: 'asdasd', name: 'Kucing'),
+                        Ingredient(id: 'asdasd', name: 'Kucing'),
                       ],
                     )
                   ],

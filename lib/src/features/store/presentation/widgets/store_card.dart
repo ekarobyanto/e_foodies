@@ -3,6 +3,7 @@ import 'package:e_foodies/src/features/shared/shrink_property.dart';
 import 'package:e_foodies/src/features/store/domain/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../constants/styles.dart';
 
@@ -17,12 +18,14 @@ class WarungCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShrinkProperty(
-      onTap: () {},
+      onTap: () {
+        context.push('/store');
+      },
       child: RoundedContainer(
         radius: 20,
         border: Border.all(
           width: 2,
-          color: Colors.grey[350]!,
+          color: Styles.color.primary,
         ),
         padding: const EdgeInsets.all(10),
         child: Row(
@@ -31,7 +34,14 @@ class WarungCard extends StatelessWidget {
             RoundedContainer(
               heightWidth: Size(100.h, 100.h),
               radius: 20,
-              color: Styles.color.accent,
+              gradient: LinearGradient(
+                colors: [
+                  Styles.color.primary,
+                  Styles.color.darkGreen.withOpacity(0.5),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
               child: Image.network(
                 warung.img ?? '',
                 fit: BoxFit.cover,

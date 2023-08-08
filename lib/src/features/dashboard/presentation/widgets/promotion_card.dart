@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/styles.dart';
-import '../../../../shared/rounded_container.dart';
-import '../../../../shared/shrink_property.dart';
+import '../../../../constants/styles.dart';
+import '../../../shared/rounded_container.dart';
+import '../../../shared/shrink_property.dart';
 
 class PromotionCard extends StatelessWidget {
   const PromotionCard({
     super.key,
+    required this.title,
+    required this.onTap,
+    required this.desc,
   });
+
+  final String title;
+  final String desc;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -36,18 +43,18 @@ class PromotionCard extends StatelessWidget {
               ),
               const SizedBox(width: 5),
               Text(
-                'Warung',
+                title,
                 style: Styles.font.bold.copyWith(color: Colors.white),
               ),
             ],
           ),
           Text(
-            'Warung adalah usaha kecil milik keluarga yang berbentuk kedai, kios, toko kecil, atau restoran sederhana — istilah "warung" dapat ditemukan di Indonesia dan Malaysia. Warung adalah salah satu bagian penting dalam kehidupan keseharian rakyat Indonesia.',
+            desc,
             style: Styles.font.bxsm.copyWith(color: Colors.white),
           ),
           const SizedBox(height: 10),
           ShrinkProperty(
-            onTap: () {},
+            onTap: onTap,
             child: RoundedContainer(
               radius: 20,
               alignment: Alignment.center,

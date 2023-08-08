@@ -1,12 +1,18 @@
-import 'package:e_foodies/src/features/account/presentation/dashboard/dashboard_screen.dart';
+import 'package:e_foodies/src/features/account/presentation/account.dart';
+import 'package:e_foodies/src/features/account/presentation/edit-profile/edit_account.dart';
 import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/splash_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.dart';
 import 'package:e_foodies/src/features/menu/presentation/menu_list.dart';
+import 'package:e_foodies/src/features/search/presentation/search_screen.dart';
+import 'package:e_foodies/src/features/store/domain/store.dart';
+import 'package:e_foodies/src/features/store/presentation/store.dart';
 import 'package:e_foodies/src/features/store/presentation/store_list.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../features/dashboard/presentation/dashboard_screen.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -54,6 +60,26 @@ final GoRouter router = GoRouter(
         const MenuList(),
       ),
     ),
+    GoRoute(
+      path: '/search',
+      pageBuilder: (context, state) => fadeTransition(const SearchScreen()),
+    ),
+    GoRoute(
+      path: '/account',
+      pageBuilder: (context, state) => slideTransitionRL(const Account()),
+      routes: [
+        GoRoute(
+          path: 'edit-account',
+          name: 'edit-account',
+          pageBuilder: (context, state) =>
+              slideTransitionRL(const EditAccount()),
+        ),
+      ],
+    ),
+    GoRoute(
+      path: '/store',
+      pageBuilder: (context, state) => fadeTransition(const StoreScreen()),
+    ),
   ],
 );
 
@@ -86,6 +112,19 @@ CustomTransitionPage<dynamic> slideTransitionBT(page) {
       ).chain(CurveTween(curve: curve));
       return SlideTransition(
         position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+CustomTransitionPage<dynamic> fadeTransition(page) {
+  return CustomTransitionPage(
+    child: page,
+    transitionDuration: const Duration(milliseconds: 200),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(
+        opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
         child: child,
       );
     },

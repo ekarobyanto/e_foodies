@@ -1,6 +1,6 @@
 import 'package:e_foodies/src/constants/styles.dart';
 import 'package:e_foodies/src/features/shared/background.dart';
-import 'package:e_foodies/src/features/store/presentation/widgets/warung_card.dart';
+import 'package:e_foodies/src/features/store/presentation/widgets/store_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -54,36 +54,36 @@ class StoreList extends StatelessWidget {
                     itemBuilder: (context, index) => WarungCard(
                       warung: Store(
                         id: 'id',
-                        name: 'Warung Anjing',
-                        desc: 'Warung Anjing adalah warung yang menjual anjing',
-                        user: 'Anjing',
-                        address: 'Jl.Anjing',
+                        name: 'Warung kucing',
+                        desc: 'Warung kucing adalah warung yang menjual kucing',
+                        user: 'kucing',
+                        address: 'Jl.kucing',
                         phone: 'asd',
                         menus: [
                           Menu(
                             id: 'id',
-                            storeAddress: 'Jl.Anjing',
+                            storeAddress: 'Jl.kucing',
                             desc: 'asdasddasd',
-                            name: 'Anjing Bakar',
-                            user: 'Anjing',
+                            name: 'kucing Bakar',
+                            user: 'kucing',
                             store: 'asd',
                             ingredients: [
-                              Ingredient(id: 'asdasd', name: 'Anjing'),
-                              Ingredient(id: 'asdasd', name: 'Anjing'),
-                              Ingredient(id: 'asdasd', name: 'Anjing'),
+                              Ingredient(id: 'asdasd', name: 'kucing'),
+                              Ingredient(id: 'asdasd', name: 'kucing'),
+                              Ingredient(id: 'asdasd', name: 'kucing'),
                             ],
                           ),
                           Menu(
                             id: 'id',
                             desc: 'asdasddasd',
-                            storeAddress: 'Jl.Anjing',
-                            name: 'Anjing Goreng',
-                            user: 'Anjing',
+                            storeAddress: 'Jl.kucing',
+                            name: 'kucing Goreng',
+                            user: 'kucing',
                             store: 'asd',
                             ingredients: [
-                              Ingredient(id: 'asdasd', name: 'Anjing'),
-                              Ingredient(id: 'asdasd', name: 'Anjing'),
-                              Ingredient(id: 'asdasd', name: 'Anjing'),
+                              Ingredient(id: 'asdasd', name: 'kucing'),
+                              Ingredient(id: 'asdasd', name: 'kucing'),
+                              Ingredient(id: 'asdasd', name: 'kucing'),
                             ],
                           ),
                         ],
