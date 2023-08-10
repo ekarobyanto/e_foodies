@@ -1,6 +1,6 @@
 import 'package:e_foodies/src/features/menu/domain/ingredient/ingredient.dart';
 import 'package:e_foodies/src/features/menu/domain/menu/menu.dart';
-import 'package:e_foodies/src/features/menu/presentation/widgets/menu_card.dart';
+import 'package:e_foodies/src/features/menu/presentation/widgets/menu_dashboard_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -41,8 +41,9 @@ class MenuList extends StatelessWidget {
                     'Lihat menu yang tersedia pada warung mitra',
                     style: Styles.font.sm,
                   ),
-                  SizedBox(
-                    height: 15.h,
+                  Divider(
+                    color: Styles.color.darkGreen,
+                    thickness: 2,
                   ),
                   ListView.separated(
                       separatorBuilder: (context, index) =>
@@ -50,7 +51,7 @@ class MenuList extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: 15,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => MenuCard(
+                      itemBuilder: (context, index) => MenuDashboardCard(
                             menu: Menu(
                               id: 'asd',
                               name: 'Ayam Goyeng',

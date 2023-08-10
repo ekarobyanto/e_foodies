@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:e_foodies/src/utills/connection_checker.dart';
 
 class APIService {
-  static const String _apiBaseUrl = "asslink-middle-745kw5phpq-uc.a.run.app";
+  static const String _apiBaseUrl = "efoodies.pythonanywhere.com";
   static const String _apiPath = "/api";
 
-  Uri _buildUri({
+  Uri buildUri({
     required String endpoints,
     Map<String, dynamic>? params,
   }) {
@@ -20,11 +21,12 @@ class APIService {
 
   Future<T> call<T>(
       {required Future<Response> Function() request, parse}) async {
+    await checkConnection();
     try {
       final response = await request().timeout(
         const Duration(seconds: 30),
         onTimeout: () {
-          throw {'errors': 'Connection Timeout'};
+          throw {'detail': 'Connection Timeout'};
         },
       );
       return parse(response.data);
@@ -34,12 +36,12 @@ class APIService {
       print(res?.data);
       print(res?.statusCode.toString() ?? 'Unknown Error');
       if (res?.data['detail'] == 'Given token not valid for any token type') {
-        //
+        throw {'detail': 'Invalid Token'};
       }
       if (res != null) {
-        throw res.data;
+        throw res.data['detail'];
       } else {
-        throw 'Unknown Error';
+        throw {'detail': 'Unknown Error'};
       }
     }
   }

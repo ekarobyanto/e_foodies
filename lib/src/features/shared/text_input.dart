@@ -11,12 +11,16 @@ class TextInput extends StatefulWidget {
     required this.hint,
     required this.validator,
     required this.textController,
+    required this.disableInput,
+    this.keyboardType,
   });
 
   final String label;
   final String hint;
   final String? Function(String?)? validator;
   TextEditingController textController;
+  TextInputType? keyboardType;
+  bool disableInput;
 
   @override
   State<TextInput> createState() => _TextInputState();
@@ -39,17 +43,19 @@ class _TextInputState extends State<TextInput> {
         ),
         Container(
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[200]!, width: 1.5),
+            // border: Border.all(color: Colors.grey[200]!, width: 1.5),
             borderRadius: BorderRadius.circular(
               10.r,
             ),
           ),
           child: TextFormField(
+            enabled: !widget.disableInput,
             style: Styles.font.bold.copyWith(fontWeight: FontWeight.w500),
             textAlignVertical: TextAlignVertical.center,
             obscureText:
                 widget.label.contains('Password') ? _isObsecure : false,
             validator: widget.validator,
+            keyboardType: widget.keyboardType,
             onChanged: (value) => widget.textController.text = value,
             decoration: Styles.input.accent.copyWith(
               contentPadding: EdgeInsets.symmetric(
@@ -57,6 +63,14 @@ class _TextInputState extends State<TextInput> {
                 horizontal: 10,
               ),
               hintText: widget.hint,
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Styles.color.primary,
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Styles.color.primary,
@@ -68,6 +82,14 @@ class _TextInputState extends State<TextInput> {
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Styles.color.danger,
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.grey[300]!,
                 ),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10),

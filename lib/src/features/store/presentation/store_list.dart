@@ -22,7 +22,10 @@ class StoreList extends StatelessWidget {
       body: SingleChildScrollView(
         child: Background(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 20,
+            ),
             child: SizedBox(
               width: 1.sw,
               child: Column(
@@ -42,8 +45,9 @@ class StoreList extends StatelessWidget {
                     'Lihat warung yang tersedia',
                     style: Styles.font.base,
                   ),
-                  SizedBox(
-                    height: 15.h,
+                  Divider(
+                    color: Styles.color.darkGreen,
+                    thickness: 2,
                   ),
                   ListView.separated(
                     separatorBuilder: (context, index) =>

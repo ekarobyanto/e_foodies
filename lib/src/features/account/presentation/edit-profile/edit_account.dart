@@ -3,9 +3,11 @@ import 'package:e_foodies/src/features/shared/shrink_property.dart';
 import 'package:e_foodies/src/features/shared/text_input.dart';
 import 'package:e_foodies/src/utills/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/styles.dart';
+import '../../../../core/bloc/app_bloc.dart';
 import '../../../shared/background.dart';
 import '../../../shared/circle_net_pic.dart';
 
@@ -60,6 +62,8 @@ class _EditAccountState extends State<EditAccount> {
                   height: 20.h,
                 ),
                 TextInput(
+                  disableInput:
+                      context.read<AppBloc>().state == const AppState.loading(),
                   label: 'Nama',
                   hint: 'Masukan nama baru anda',
                   validator: (value) {
@@ -68,6 +72,8 @@ class _EditAccountState extends State<EditAccount> {
                   textController: _namaController,
                 ),
                 TextInput(
+                  disableInput:
+                      context.read<AppBloc>().state == const AppState.loading(),
                   label: 'Email',
                   hint: 'Masukan email baru anda',
                   validator: (value) {
@@ -83,6 +89,8 @@ class _EditAccountState extends State<EditAccount> {
                   textController: _emailController,
                 ),
                 TextInput(
+                  disableInput:
+                      context.read<AppBloc>().state == const AppState.loading(),
                   label: 'Alamat',
                   hint: 'Masukan alamat baru anda',
                   validator: (value) {

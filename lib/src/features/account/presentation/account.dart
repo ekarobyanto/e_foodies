@@ -1,14 +1,14 @@
-import 'package:e_foodies/src/features/dashboard/presentation/widgets/promotion_card.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
-import 'package:e_foodies/src/features/shared/rounded_container.dart';
 import 'package:e_foodies/src/features/shared/shrink_property.dart';
+import 'package:e_foodies/src/features/shared/rounded_container.dart';
+import 'package:e_foodies/src/features/dashboard/presentation/widgets/promotion_card.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../constants/styles.dart';
 import '../../shared/background.dart';
+import '../../../constants/styles.dart';
 
 class Account extends StatelessWidget {
   const Account({super.key});
@@ -139,7 +139,9 @@ class Account extends StatelessWidget {
                             title: 'Daftarkan warung',
                             desc:
                                 'Anda belum pernah melakukan pendaftaran warung',
-                            onTap: () {},
+                            onTap: () {
+                              context.push('/create-store');
+                            },
                           ),
                         )
                       ],

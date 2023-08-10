@@ -72,7 +72,7 @@ class Content extends StatelessWidget {
                       style: Styles.font.base.copyWith(color: Colors.white),
                     ),
                     InkWell(
-                      onTap: () => context.push('/login'),
+                      onTap: () => context.push('/login', extra: 'welcome'),
                       child: Container(
                         padding: const EdgeInsets.only(
                           bottom: 0,

@@ -2,21 +2,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../constants/styles.dart';
 import '../../../shared/rounded_container.dart';
 import '../../../shared/shrink_property.dart';
 import '../../domain/menu/menu.dart';
 
-class MenuCard extends StatelessWidget {
-  MenuCard({super.key, required this.menu});
+class MenuDashboardCard extends StatelessWidget {
+  MenuDashboardCard({super.key, required this.menu});
 
   Menu menu;
 
   @override
   Widget build(BuildContext context) {
     return ShrinkProperty(
-      onTap: () {},
+      onTap: () {
+        context.push('/store');
+      },
       child: RoundedContainer(
         radius: 20,
         border: Border.all(

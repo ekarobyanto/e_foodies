@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../constants/styles.dart';
-import '../menu/presentation/widgets/menu_card.dart';
+import '../menu/presentation/widgets/menu_dashboard_card.dart';
 import '../store/presentation/widgets/store_card.dart';
 
 class ItemShowcase extends StatelessWidget {
@@ -56,7 +56,7 @@ class ItemShowcase extends StatelessWidget {
                       warung: items[index],
                     );
                   } else {
-                    return MenuCard(
+                    return MenuDashboardCard(
                       menu: items[index],
                     );
                   }

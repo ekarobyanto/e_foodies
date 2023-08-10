@@ -3,6 +3,7 @@ import 'package:e_foodies/src/features/store/domain/store.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:e_foodies/src/constants/styles.dart';
+import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +78,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 const SizedBox(height: 20),
                 PromotionCard(
                   title: 'Warung',
-                  onTap: () {},
+                  onTap: () {
+                    context.push('/create-store');
+                  },
                   desc:
                       'Warung adalah usaha kecil milik keluarga yang berbentuk kedai, kios, toko kecil, atau restoran sederhana — istilah "warung" dapat ditemukan di Indonesia dan Malaysia. Warung adalah salah satu bagian penting dalam kehidupan keseharian rakyat Indonesia.',
                 ),

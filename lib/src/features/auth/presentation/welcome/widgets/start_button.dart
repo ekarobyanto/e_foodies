@@ -14,7 +14,7 @@ class StartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShrinkProperty(
       onTap: () {
-        context.push('/register');
+        context.push('/register', extra: 'welcome');
       },
       child: Container(
         decoration: BoxDecoration(

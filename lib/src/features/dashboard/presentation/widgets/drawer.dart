@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
@@ -27,7 +28,9 @@ class CustomDrawer extends StatelessWidget {
       backdropColor: Styles.color.darkGreen,
       childDecoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(16)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
       ),
       animationDuration: const Duration(milliseconds: 150),
       openScale: 0.9,
@@ -43,22 +46,16 @@ class CustomDrawer extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Container(
-                    width: 100.h,
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CircleNetPic(
+                    src: '',
                     height: 100.h,
-                    margin: const EdgeInsets.only(
-                      top: 24,
-                      bottom: 40,
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    decoration: const BoxDecoration(
-                      color: Colors.black26,
-                      shape: BoxShape.circle,
-                    ),
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          'https://images.unsplash.com/photo-1612833609248-5e9b4a1b0b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXR5JTIwY2FyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-                    ),
+                    width: 100.h,
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   ListTile(
                     onTap: () {
@@ -77,6 +74,7 @@ class CustomDrawer extends StatelessWidget {
                   ListTile(
                     onTap: () {
                       _advancedDrawerController.hideDrawer();
+                      context.push('/store');
                     },
                     leading: const Icon(
                       Icons.store,
@@ -92,7 +90,9 @@ class CustomDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: ShrinkProperty(
-                  onTap: () {},
+                  onTap: () {
+                    context.go('/welcome');
+                  },
                   child: RoundedContainer(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),

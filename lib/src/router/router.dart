@@ -4,9 +4,10 @@ import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart
 import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/splash_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.dart';
+import 'package:e_foodies/src/features/menu/presentation/edit_menu.dart';
 import 'package:e_foodies/src/features/menu/presentation/menu_list.dart';
 import 'package:e_foodies/src/features/search/presentation/search_screen.dart';
-import 'package:e_foodies/src/features/store/domain/store.dart';
+import 'package:e_foodies/src/features/store/presentation/register-store/register_store.dart';
 import 'package:e_foodies/src/features/store/presentation/store.dart';
 import 'package:e_foodies/src/features/store/presentation/store_list.dart';
 import 'package:flutter/material.dart';
@@ -33,13 +34,13 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/login',
       pageBuilder: (context, state) => slideTransitionRL(
-        const LoginScreen(),
+        LoginScreen(prevRoute: state.extra as String),
       ),
     ),
     GoRoute(
       path: '/register',
       pageBuilder: (context, state) => slideTransitionRL(
-        const RegisterScreen(),
+        RegisterScreen(prevRoute: state.extra as String),
       ),
     ),
     GoRoute(
@@ -55,6 +56,12 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/create-store',
+      pageBuilder: (context, state) => slideTransitionRL(
+        const CreateStore(),
+      ),
+    ),
+    GoRoute(
       path: '/menu-list',
       pageBuilder: (context, state) => slideTransitionRL(
         const MenuList(),
@@ -63,6 +70,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/search',
       pageBuilder: (context, state) => fadeTransition(const SearchScreen()),
+    ),
+    GoRoute(
+      path: '/menu',
+      pageBuilder: (context, state) => slideTransitionRL(const EditMenu()),
     ),
     GoRoute(
       path: '/account',
@@ -78,7 +89,7 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/store',
-      pageBuilder: (context, state) => fadeTransition(const StoreScreen()),
+      pageBuilder: (context, state) => slideTransitionRL(const StoreScreen()),
     ),
   ],
 );
