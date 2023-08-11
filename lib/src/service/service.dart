@@ -34,6 +34,7 @@ class APIService {
           );
         },
       );
+      log(response.data.toString());
       return parse(response.data);
     } on DioException catch (e) {
       Response? res = e.response;

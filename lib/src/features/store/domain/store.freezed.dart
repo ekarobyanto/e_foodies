@@ -192,7 +192,7 @@ class _$_Store implements _Store {
       required this.user,
       required this.address,
       required this.phone,
-      required final List<Menu> menus})
+      final List<Menu> menus = const []})
       : _menus = menus;
 
   factory _$_Store.fromJson(Map<String, dynamic> json) =>
@@ -214,6 +214,7 @@ class _$_Store implements _Store {
   final String phone;
   final List<Menu> _menus;
   @override
+  @JsonKey()
   List<Menu> get menus {
     if (_menus is EqualUnmodifiableListView) return _menus;
     // ignore: implicit_dynamic_type
@@ -268,7 +269,7 @@ abstract class _Store implements Store {
       required final String user,
       required final String address,
       required final String phone,
-      required final List<Menu> menus}) = _$_Store;
+      final List<Menu> menus}) = _$_Store;
 
   factory _Store.fromJson(Map<String, dynamic> json) = _$_Store.fromJson;
 

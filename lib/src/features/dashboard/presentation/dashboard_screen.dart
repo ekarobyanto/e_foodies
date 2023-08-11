@@ -131,7 +131,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ItemShowcase(
                               title: 'Warung',
                               route: '/store-list',
-                              items: const [],
+                              items: dashboard.store ?? [],
                             ),
                             SizedBox(height: 20.h),
                             ItemShowcase(

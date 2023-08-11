@@ -15,7 +15,7 @@ class Store with _$Store {
     required String user,
     required String address,
     required String phone,
-    required List<Menu> menus,
+    @Default([]) List<Menu> menus,
   }) = _Store;
 
   factory Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);

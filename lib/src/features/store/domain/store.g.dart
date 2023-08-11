@@ -14,9 +14,10 @@ _$_Store _$$_StoreFromJson(Map<String, dynamic> json) => _$_Store(
       user: json['user'] as String,
       address: json['address'] as String,
       phone: json['phone'] as String,
-      menus: (json['menus'] as List<dynamic>)
-          .map((e) => Menu.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      menus: (json['menus'] as List<dynamic>?)
+              ?.map((e) => Menu.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_StoreToJson(_$_Store instance) => <String, dynamic>{
