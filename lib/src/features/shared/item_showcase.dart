@@ -46,8 +46,10 @@ class ItemShowcase extends StatelessWidget {
             ? const Center(
                 child: Text('Item belum tersedia'),
               )
-            : ListView.builder(
+            : ListView.separated(
                 shrinkWrap: true,
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10),
                 itemCount: items.length,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {

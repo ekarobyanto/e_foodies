@@ -11,8 +11,10 @@ import 'package:e_foodies/src/features/store/presentation/register-store/registe
 import 'package:e_foodies/src/features/store/presentation/store.dart';
 import 'package:e_foodies/src/features/store/presentation/store_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../core/bloc/app_bloc.dart';
 import '../features/dashboard/presentation/dashboard_screen.dart';
 
 final GoRouter router = GoRouter(
@@ -24,6 +26,17 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => const NoTransitionPage(
         child: SplashScreen(),
       ),
+      redirect: (context, state) {
+        dynamic appState = context.watch<AppBloc>().state;
+        if (appState != const AppState.initial()) {
+          if (appState == const AppState.unauthenticated()) {
+            return '/welcome';
+          } else {
+            return '/dashboard';
+          }
+        }
+        return null;
+      },
     ),
     GoRoute(
       path: '/welcome',

@@ -14,10 +14,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     this.authRepository,
     this.storageRepository,
   ) : super(const _Initial()) {
-    on<LoginEvent>((event, emit) {
-      event.when(
+    on<LoginEvent>((event, emit) async {
+      await event.when(
         started: () {},
         login: (email, password) async {
+          emit(const LoginState.initial());
           try {
             final data = await authRepository.login(
               email: email,

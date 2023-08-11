@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:e_foodies/src/core/domain/failure.dart';
 import 'package:e_foodies/src/utills/connection_checker.dart';
 
 class APIService {
@@ -19,6 +20,7 @@ class APIService {
     );
   }
 
+  /// The `call` method is a generic method that makes an HTTP request and handles the response.
   Future<T> call<T>(
       {required Future<Response> Function() request, parse}) async {
     await checkConnection();
@@ -26,22 +28,29 @@ class APIService {
       final response = await request().timeout(
         const Duration(seconds: 30),
         onTimeout: () {
-          throw {'detail': 'Connection Timeout'};
+          throw Failure(
+            code: 408,
+            message: 'Connection TimeOut',
+          );
         },
       );
       return parse(response.data);
     } on DioException catch (e) {
       Response? res = e.response;
       log('=====Dio Error=====');
-      print(res?.data);
-      print(res?.statusCode.toString() ?? 'Unknown Error');
-      if (res?.data['detail'] == 'Given token not valid for any token type') {
-        throw {'detail': 'Invalid Token'};
+      if (res?.data['mess'] == 'token_not_valid') {
+        throw Failure(message: 'Token Expired', code: 401);
       }
       if (res != null) {
-        throw res.data['detail'];
+        throw Failure(
+          code: res.statusCode ?? 0,
+          message: res.data['detail'],
+        );
       } else {
-        throw {'detail': 'Unknown Error'};
+        throw Failure(
+          code: 0,
+          message: 'idk what happened',
+        );
       }
     }
   }

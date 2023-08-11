@@ -12,8 +12,8 @@ _$_Menu _$$_MenuFromJson(Map<String, dynamic> json) => _$_Menu(
       user: json['user'] as String,
       store: json['store'] as String,
       storeAddress: json['store_address'] as String,
-      desc: json['desc'] as String,
-      img: json['img'] as String?,
+      desc: json['desc'] as String? ?? '',
+      img: json['img'] as String? ?? '',
       ingredients: (json['ingredients'] as List<dynamic>)
           .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
           .toList(),

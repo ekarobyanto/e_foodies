@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 
 import '../../../service/service.dart';
@@ -6,11 +8,11 @@ class AuthRepository {
   final dio = Dio();
   final api = APIService();
 
-  Future login({
+  Future<dynamic> login({
     required String email,
     required String password,
   }) async {
-    await api.call(
+    return await api.call(
       request: () async => await dio.postUri(
         api.buildUri(endpoints: '/login/'),
         data: {
@@ -43,6 +45,7 @@ class AuthRepository {
   }
 
   Future refreshToken(String refreshToken) async {
+    log('Refreshing token');
     return await api.call(
       request: () async => await dio.postUri(
         api.buildUri(endpoints: '/token/refresh/'),

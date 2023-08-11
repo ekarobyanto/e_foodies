@@ -15,8 +15,8 @@ class Menu with _$Menu {
     required String user,
     required String store,
     @JsonKey(name: 'store_address') required String storeAddress,
-    required String desc,
-    String? img,
+    @Default('') String desc,
+    @Default('') String img,
     required List<Ingredient> ingredients,
   }) = _Menu;
 

@@ -42,7 +42,7 @@ class MenuDashboardCard extends StatelessWidget {
                 end: Alignment.bottomRight,
               ),
               child: Image.network(
-                menu.img ?? '',
+                menu.img,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Icon(
@@ -71,11 +71,15 @@ class MenuDashboardCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      Text(
+                        'Komposisi : ',
+                        style: Styles.font.xsm,
+                      ),
                       SizedBox(
                         width: 1.sw * 0.55,
                         child: Text(
-                          menu.desc,
-                          style: Styles.font.xsm,
+                          menu.ingredients.map((e) => e.name).join(', '),
+                          style: Styles.font.xsm.copyWith(color: Colors.grey),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),

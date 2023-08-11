@@ -27,7 +27,7 @@ mixin _$Menu {
   @JsonKey(name: 'store_address')
   String get storeAddress => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
-  String? get img => throw _privateConstructorUsedError;
+  String get img => throw _privateConstructorUsedError;
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $MenuCopyWith<$Res> {
       String store,
       @JsonKey(name: 'store_address') String storeAddress,
       String desc,
-      String? img,
+      String img,
       List<Ingredient> ingredients});
 }
 
@@ -70,7 +70,7 @@ class _$MenuCopyWithImpl<$Res, $Val extends Menu>
     Object? store = null,
     Object? storeAddress = null,
     Object? desc = null,
-    Object? img = freezed,
+    Object? img = null,
     Object? ingredients = null,
   }) {
     return _then(_value.copyWith(
@@ -98,10 +98,10 @@ class _$MenuCopyWithImpl<$Res, $Val extends Menu>
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
               as String,
-      img: freezed == img
+      img: null == img
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       ingredients: null == ingredients
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -123,7 +123,7 @@ abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
       String store,
       @JsonKey(name: 'store_address') String storeAddress,
       String desc,
-      String? img,
+      String img,
       List<Ingredient> ingredients});
 }
 
@@ -142,7 +142,7 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
     Object? store = null,
     Object? storeAddress = null,
     Object? desc = null,
-    Object? img = freezed,
+    Object? img = null,
     Object? ingredients = null,
   }) {
     return _then(_$_Menu(
@@ -170,10 +170,10 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
               as String,
-      img: freezed == img
+      img: null == img
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       ingredients: null == ingredients
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -191,8 +191,8 @@ class _$_Menu implements _Menu {
       required this.user,
       required this.store,
       @JsonKey(name: 'store_address') required this.storeAddress,
-      required this.desc,
-      this.img,
+      this.desc = '',
+      this.img = '',
       required final List<Ingredient> ingredients})
       : _ingredients = ingredients;
 
@@ -210,9 +210,11 @@ class _$_Menu implements _Menu {
   @JsonKey(name: 'store_address')
   final String storeAddress;
   @override
+  @JsonKey()
   final String desc;
   @override
-  final String? img;
+  @JsonKey()
+  final String img;
   final List<Ingredient> _ingredients;
   @override
   List<Ingredient> get ingredients {
@@ -277,8 +279,8 @@ abstract class _Menu implements Menu {
       required final String user,
       required final String store,
       @JsonKey(name: 'store_address') required final String storeAddress,
-      required final String desc,
-      final String? img,
+      final String desc,
+      final String img,
       required final List<Ingredient> ingredients}) = _$_Menu;
 
   factory _Menu.fromJson(Map<String, dynamic> json) = _$_Menu.fromJson;
@@ -297,7 +299,7 @@ abstract class _Menu implements Menu {
   @override
   String get desc;
   @override
-  String? get img;
+  String get img;
   @override
   List<Ingredient> get ingredients;
   @override

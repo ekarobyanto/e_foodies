@@ -12,17 +12,21 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppBloc(),
-      child: MultiRepositoryProvider(
-        providers: [
-          RepositoryProvider(
-            create: (context) => AuthRepository(),
-          ),
-          RepositoryProvider(
-            create: (context) => StorageRepository(),
-          ),
-        ],
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => AuthRepository(),
+        ),
+        RepositoryProvider(
+          create: (context) => StorageRepository(),
+        ),
+      ],
+      child: BlocProvider(
+        create: (context) =>
+            AppBloc(storageRepository: context.read<StorageRepository>())
+              ..add(
+                const AppEvent.started(),
+              ),
         child: ScreenUtilInit(
           designSize: const Size(375, 812),
           minTextAdapt: true,

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_foodies/src/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +16,12 @@ class CustomDrawer extends StatelessWidget {
     super.key,
     required AdvancedDrawerController advancedDrawerController,
     required this.child,
+    required this.img,
   }) : _advancedDrawerController = advancedDrawerController;
 
   final AdvancedDrawerController _advancedDrawerController;
   final Widget child;
+  final String img;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,7 @@ class CustomDrawer extends StatelessWidget {
                     height: 20,
                   ),
                   CircleNetPic(
-                    src: '',
+                    src: img,
                     height: 100.h,
                     width: 100.h,
                   ),
@@ -91,6 +94,7 @@ class CustomDrawer extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ShrinkProperty(
                   onTap: () {
+                    advancedDrawerController.hideDrawer();
                     context.go('/welcome');
                   },
                   child: RoundedContainer(

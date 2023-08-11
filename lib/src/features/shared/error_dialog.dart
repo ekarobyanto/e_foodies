@@ -1,3 +1,5 @@
+/// The `ErrorDialog` class is a Flutter widget that displays an error dialog with a title and an action
+/// button.
 import 'package:flutter/material.dart';
 
 import '../../constants/styles.dart';
@@ -45,6 +47,7 @@ class ErrorDialog extends StatelessWidget {
                           height: 75,
                           child: Text(
                             title,
+                            maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                             style: Styles.font.base,

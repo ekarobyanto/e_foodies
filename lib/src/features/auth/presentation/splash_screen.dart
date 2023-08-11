@@ -1,6 +1,5 @@
 import 'package:e_foodies/src/constants/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,7 +7,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.go('/welcome'),
       child: Scaffold(
         backgroundColor: Styles.color.primary,
         body: Center(
