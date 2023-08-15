@@ -64,6 +64,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
               data: value.account,
               password: value.password,
             );
+            emit(const _SuccesUpdate());
           } on Failure catch (e) {
             if (e.message == 'Token Expired') {
               try {
@@ -83,12 +84,13 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
                     ),
                   ],
                 );
-                add(const _Started());
+                add(_UpdateAccount(value.account, value.password));
               } on Failure catch (_) {
-                emit(const AccountState.error('Refresh Failed'));
+                emit(const AccountState.updateError('Refresh Failed'));
               }
+            } else {
+              emit(AccountState.updateError(e.message));
             }
-            emit(AccountState.error(e.message));
           }
         },
       );

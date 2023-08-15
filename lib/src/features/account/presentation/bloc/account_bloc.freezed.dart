@@ -335,24 +335,27 @@ mixin _$AccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Account account) succes,
-    required TResult Function(Account account) succesUpdate,
+    required TResult Function() succesUpdate,
     required TResult Function(String e) error,
+    required TResult Function(String e) updateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Account account)? succes,
-    TResult? Function(Account account)? succesUpdate,
+    TResult? Function()? succesUpdate,
     TResult? Function(String e)? error,
+    TResult? Function(String e)? updateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Account account)? succes,
-    TResult Function(Account account)? succesUpdate,
+    TResult Function()? succesUpdate,
     TResult Function(String e)? error,
+    TResult Function(String e)? updateError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -362,6 +365,7 @@ mixin _$AccountState {
     required TResult Function(_Succes value) succes,
     required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
+    required TResult Function(_UpdateError value) updateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -370,6 +374,7 @@ mixin _$AccountState {
     TResult? Function(_Succes value)? succes,
     TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
+    TResult? Function(_UpdateError value)? updateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -378,6 +383,7 @@ mixin _$AccountState {
     TResult Function(_Succes value)? succes,
     TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
+    TResult Function(_UpdateError value)? updateError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -440,8 +446,9 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Account account) succes,
-    required TResult Function(Account account) succesUpdate,
+    required TResult Function() succesUpdate,
     required TResult Function(String e) error,
+    required TResult Function(String e) updateError,
   }) {
     return initial();
   }
@@ -451,8 +458,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Account account)? succes,
-    TResult? Function(Account account)? succesUpdate,
+    TResult? Function()? succesUpdate,
     TResult? Function(String e)? error,
+    TResult? Function(String e)? updateError,
   }) {
     return initial?.call();
   }
@@ -462,8 +470,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Account account)? succes,
-    TResult Function(Account account)? succesUpdate,
+    TResult Function()? succesUpdate,
     TResult Function(String e)? error,
+    TResult Function(String e)? updateError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -479,6 +488,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Succes value) succes,
     required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
+    required TResult Function(_UpdateError value) updateError,
   }) {
     return initial(this);
   }
@@ -490,6 +500,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Succes value)? succes,
     TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
+    TResult? Function(_UpdateError value)? updateError,
   }) {
     return initial?.call(this);
   }
@@ -501,6 +512,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Succes value)? succes,
     TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
+    TResult Function(_UpdateError value)? updateError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -588,8 +600,9 @@ class _$_Succes implements _Succes {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Account account) succes,
-    required TResult Function(Account account) succesUpdate,
+    required TResult Function() succesUpdate,
     required TResult Function(String e) error,
+    required TResult Function(String e) updateError,
   }) {
     return succes(account);
   }
@@ -599,8 +612,9 @@ class _$_Succes implements _Succes {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Account account)? succes,
-    TResult? Function(Account account)? succesUpdate,
+    TResult? Function()? succesUpdate,
     TResult? Function(String e)? error,
+    TResult? Function(String e)? updateError,
   }) {
     return succes?.call(account);
   }
@@ -610,8 +624,9 @@ class _$_Succes implements _Succes {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Account account)? succes,
-    TResult Function(Account account)? succesUpdate,
+    TResult Function()? succesUpdate,
     TResult Function(String e)? error,
+    TResult Function(String e)? updateError,
     required TResult orElse(),
   }) {
     if (succes != null) {
@@ -627,6 +642,7 @@ class _$_Succes implements _Succes {
     required TResult Function(_Succes value) succes,
     required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
+    required TResult Function(_UpdateError value) updateError,
   }) {
     return succes(this);
   }
@@ -638,6 +654,7 @@ class _$_Succes implements _Succes {
     TResult? Function(_Succes value)? succes,
     TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
+    TResult? Function(_UpdateError value)? updateError,
   }) {
     return succes?.call(this);
   }
@@ -649,6 +666,7 @@ class _$_Succes implements _Succes {
     TResult Function(_Succes value)? succes,
     TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
+    TResult Function(_UpdateError value)? updateError,
     required TResult orElse(),
   }) {
     if (succes != null) {
@@ -672,10 +690,6 @@ abstract class _$$_SuccesUpdateCopyWith<$Res> {
   factory _$$_SuccesUpdateCopyWith(
           _$_SuccesUpdate value, $Res Function(_$_SuccesUpdate) then) =
       __$$_SuccesUpdateCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Account account});
-
-  $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
@@ -685,68 +699,37 @@ class __$$_SuccesUpdateCopyWithImpl<$Res>
   __$$_SuccesUpdateCopyWithImpl(
       _$_SuccesUpdate _value, $Res Function(_$_SuccesUpdate) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? account = null,
-  }) {
-    return _then(_$_SuccesUpdate(
-      null == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as Account,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AccountCopyWith<$Res> get account {
-    return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$_SuccesUpdate implements _SuccesUpdate {
-  const _$_SuccesUpdate(this.account);
-
-  @override
-  final Account account;
+  const _$_SuccesUpdate();
 
   @override
   String toString() {
-    return 'AccountState.succesUpdate(account: $account)';
+    return 'AccountState.succesUpdate()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SuccesUpdate &&
-            (identical(other.account, account) || other.account == account));
+        (other.runtimeType == runtimeType && other is _$_SuccesUpdate);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, account);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SuccesUpdateCopyWith<_$_SuccesUpdate> get copyWith =>
-      __$$_SuccesUpdateCopyWithImpl<_$_SuccesUpdate>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Account account) succes,
-    required TResult Function(Account account) succesUpdate,
+    required TResult Function() succesUpdate,
     required TResult Function(String e) error,
+    required TResult Function(String e) updateError,
   }) {
-    return succesUpdate(account);
+    return succesUpdate();
   }
 
   @override
@@ -754,10 +737,11 @@ class _$_SuccesUpdate implements _SuccesUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Account account)? succes,
-    TResult? Function(Account account)? succesUpdate,
+    TResult? Function()? succesUpdate,
     TResult? Function(String e)? error,
+    TResult? Function(String e)? updateError,
   }) {
-    return succesUpdate?.call(account);
+    return succesUpdate?.call();
   }
 
   @override
@@ -765,12 +749,13 @@ class _$_SuccesUpdate implements _SuccesUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Account account)? succes,
-    TResult Function(Account account)? succesUpdate,
+    TResult Function()? succesUpdate,
     TResult Function(String e)? error,
+    TResult Function(String e)? updateError,
     required TResult orElse(),
   }) {
     if (succesUpdate != null) {
-      return succesUpdate(account);
+      return succesUpdate();
     }
     return orElse();
   }
@@ -782,6 +767,7 @@ class _$_SuccesUpdate implements _SuccesUpdate {
     required TResult Function(_Succes value) succes,
     required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
+    required TResult Function(_UpdateError value) updateError,
   }) {
     return succesUpdate(this);
   }
@@ -793,6 +779,7 @@ class _$_SuccesUpdate implements _SuccesUpdate {
     TResult? Function(_Succes value)? succes,
     TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
+    TResult? Function(_UpdateError value)? updateError,
   }) {
     return succesUpdate?.call(this);
   }
@@ -804,6 +791,7 @@ class _$_SuccesUpdate implements _SuccesUpdate {
     TResult Function(_Succes value)? succes,
     TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
+    TResult Function(_UpdateError value)? updateError,
     required TResult orElse(),
   }) {
     if (succesUpdate != null) {
@@ -814,12 +802,7 @@ class _$_SuccesUpdate implements _SuccesUpdate {
 }
 
 abstract class _SuccesUpdate implements AccountState {
-  const factory _SuccesUpdate(final Account account) = _$_SuccesUpdate;
-
-  Account get account;
-  @JsonKey(ignore: true)
-  _$$_SuccesUpdateCopyWith<_$_SuccesUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _SuccesUpdate() = _$_SuccesUpdate;
 }
 
 /// @nodoc
@@ -886,8 +869,9 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Account account) succes,
-    required TResult Function(Account account) succesUpdate,
+    required TResult Function() succesUpdate,
     required TResult Function(String e) error,
+    required TResult Function(String e) updateError,
   }) {
     return error(e);
   }
@@ -897,8 +881,9 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Account account)? succes,
-    TResult? Function(Account account)? succesUpdate,
+    TResult? Function()? succesUpdate,
     TResult? Function(String e)? error,
+    TResult? Function(String e)? updateError,
   }) {
     return error?.call(e);
   }
@@ -908,8 +893,9 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Account account)? succes,
-    TResult Function(Account account)? succesUpdate,
+    TResult Function()? succesUpdate,
     TResult Function(String e)? error,
+    TResult Function(String e)? updateError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -925,6 +911,7 @@ class _$_Error implements _Error {
     required TResult Function(_Succes value) succes,
     required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
+    required TResult Function(_UpdateError value) updateError,
   }) {
     return error(this);
   }
@@ -936,6 +923,7 @@ class _$_Error implements _Error {
     TResult? Function(_Succes value)? succes,
     TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
+    TResult? Function(_UpdateError value)? updateError,
   }) {
     return error?.call(this);
   }
@@ -947,6 +935,7 @@ class _$_Error implements _Error {
     TResult Function(_Succes value)? succes,
     TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
+    TResult Function(_UpdateError value)? updateError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -962,5 +951,156 @@ abstract class _Error implements AccountState {
   String get e;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateErrorCopyWith<$Res> {
+  factory _$$_UpdateErrorCopyWith(
+          _$_UpdateError value, $Res Function(_$_UpdateError) then) =
+      __$$_UpdateErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String e});
+}
+
+/// @nodoc
+class __$$_UpdateErrorCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$_UpdateError>
+    implements _$$_UpdateErrorCopyWith<$Res> {
+  __$$_UpdateErrorCopyWithImpl(
+      _$_UpdateError _value, $Res Function(_$_UpdateError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? e = null,
+  }) {
+    return _then(_$_UpdateError(
+      null == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateError implements _UpdateError {
+  const _$_UpdateError(this.e);
+
+  @override
+  final String e;
+
+  @override
+  String toString() {
+    return 'AccountState.updateError(e: $e)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateError &&
+            (identical(other.e, e) || other.e == e));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, e);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateErrorCopyWith<_$_UpdateError> get copyWith =>
+      __$$_UpdateErrorCopyWithImpl<_$_UpdateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Account account) succes,
+    required TResult Function() succesUpdate,
+    required TResult Function(String e) error,
+    required TResult Function(String e) updateError,
+  }) {
+    return updateError(e);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Account account)? succes,
+    TResult? Function()? succesUpdate,
+    TResult? Function(String e)? error,
+    TResult? Function(String e)? updateError,
+  }) {
+    return updateError?.call(e);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Account account)? succes,
+    TResult Function()? succesUpdate,
+    TResult Function(String e)? error,
+    TResult Function(String e)? updateError,
+    required TResult orElse(),
+  }) {
+    if (updateError != null) {
+      return updateError(e);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Succes value) succes,
+    required TResult Function(_SuccesUpdate value) succesUpdate,
+    required TResult Function(_Error value) error,
+    required TResult Function(_UpdateError value) updateError,
+  }) {
+    return updateError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Succes value)? succes,
+    TResult? Function(_SuccesUpdate value)? succesUpdate,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_UpdateError value)? updateError,
+  }) {
+    return updateError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Succes value)? succes,
+    TResult Function(_SuccesUpdate value)? succesUpdate,
+    TResult Function(_Error value)? error,
+    TResult Function(_UpdateError value)? updateError,
+    required TResult orElse(),
+  }) {
+    if (updateError != null) {
+      return updateError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateError implements AccountState {
+  const factory _UpdateError(final String e) = _$_UpdateError;
+
+  String get e;
+  @JsonKey(ignore: true)
+  _$$_UpdateErrorCopyWith<_$_UpdateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

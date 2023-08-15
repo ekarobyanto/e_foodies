@@ -2,13 +2,16 @@ import 'dart:io';
 
 import 'package:e_foodies/src/features/account/domain/account.dart';
 import 'package:e_foodies/src/features/account/presentation/bloc/account_bloc.dart';
+import 'package:e_foodies/src/features/shared/error_dialog.dart';
 import 'package:e_foodies/src/features/shared/rounded_container.dart';
 import 'package:e_foodies/src/features/shared/shrink_property.dart';
+import 'package:e_foodies/src/features/shared/success_dialog.dart';
 import 'package:e_foodies/src/features/shared/text_input.dart';
 import 'package:e_foodies/src/utills/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../constants/styles.dart';
@@ -48,7 +51,43 @@ class _EditAccountState extends State<EditAccount> {
       child: MultiBlocListener(
         listeners: [
           BlocListener<AccountBloc, AccountState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              state.maybeMap(
+                  orElse: () {},
+                  succesUpdate: (state) {
+                    context
+                        .read<AppBloc>()
+                        .add(const AppEvent.loadingComplete());
+                    showScaleDialog(
+                      context,
+                      SuccessDialog(
+                        title: 'Akun anda berhasil dirubah',
+                        action: () {
+                          context
+                              .read<AccountBloc>()
+                              .add(const AccountEvent.started());
+                          context.pop();
+                          context.pop();
+                        },
+                      ),
+                      null,
+                      isDismissible: false,
+                    );
+                  },
+                  updateError: (value) {
+                    context
+                        .read<AppBloc>()
+                        .add(const AppEvent.loadingComplete());
+                    showScaleDialog(
+                      context,
+                      ErrorDialog(
+                        title: value.e,
+                        action: () => context.pop(),
+                      ),
+                      null,
+                    );
+                  });
+            },
           ),
           BlocListener<ImageBloc, ImageState>(
             listener: (context, state) {},
@@ -140,29 +179,38 @@ class _EditAccountState extends State<EditAccount> {
                             ),
                             ShrinkProperty(
                               onTap: () {
+                                if (_nameController.text == '' &&
+                                    _emailController.text == '' &&
+                                    _addressController.text == '' &&
+                                    _passwordController.text == '' &&
+                                    context.read<ImageBloc>().state ==
+                                        const ImageState.initial()) {
+                                  return;
+                                }
+                                context.pop();
                                 context
                                     .read<AppBloc>()
                                     .add(const AppEvent.loadingRequested());
-                                // context.read<AccountBloc>().add(
-                                //       AccountEvent.updateAccount(
-                                //         Account(
-                                //           id: '',
-                                //           username: _nameController.text,
-                                //           email: _emailController.text,
-                                //           address: _addressController.text,
-                                //           img: context
-                                //               .read<ImageBloc>()
-                                //               .state
-                                //               .when(
-                                //                 initial: () => '',
-                                //                 imageUpdated: (imagePath) =>
-                                //                     imagePath,
-                                //               ),
-                                //           isStore: false,
-                                //         ),
-                                //         _passwordController.text,
-                                //       ),
-                                //     );
+                                context.read<AccountBloc>().add(
+                                      AccountEvent.updateAccount(
+                                        Account(
+                                          id: '',
+                                          username: _nameController.text,
+                                          email: _emailController.text,
+                                          address: _addressController.text,
+                                          img: context
+                                              .read<ImageBloc>()
+                                              .state
+                                              .when(
+                                                initial: () => '',
+                                                imageUpdated: (imagePath) =>
+                                                    imagePath,
+                                              ),
+                                          isStore: false,
+                                        ),
+                                        _passwordController.text,
+                                      ),
+                                    );
                               },
                               child: RoundedContainer(
                                 radius: 20,

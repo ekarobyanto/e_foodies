@@ -24,6 +24,15 @@ class AccountRepository extends RepositoryBase {
       {required String token, required Account data, String? password}) async {
     return await service.call(
       request: () async {
+        final formData = FormData.fromMap({
+          if (data.username != '') "username": data.username,
+          if (data.img != '') "img": await MultipartFile.fromFile(data.img),
+          if (data.email != '') "email": data.email,
+          if (data.address != '') "address": data.address,
+          if (password != '') "password": password,
+        });
+        print(formData.fields);
+        print(formData.files);
         return await dio.putUri(
           service.buildUri(
             endpoints: '/profile/',
@@ -31,15 +40,7 @@ class AccountRepository extends RepositoryBase {
           options: Options(
             headers: {'Authorization': 'Bearer $token'},
           ),
-          data: {
-            {
-              "username": data.username,
-              "img": data.img,
-              "email": data.email,
-              "address": data.address,
-              if (password != null) "password": password,
-            }
-          },
+          data: formData,
         );
       },
       parse: (json) => Account.fromJson(json),

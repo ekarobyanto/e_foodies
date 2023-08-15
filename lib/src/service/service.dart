@@ -50,15 +50,17 @@ class APIService {
           'Token yang diberikan tidak valid untuk semua jenis token') {
         throw Failure(message: 'Token Expired', code: 401);
       }
-      if (res != null) {
+      //error dev
+      if (res != null && res.data['detail'] != null) {
         throw Failure(
           code: res.statusCode ?? 0,
           message: res.data['detail'],
         );
       } else {
+        //error backend framework
         throw Failure(
           code: 0,
-          message: 'idk what happened',
+          message: res.toString(),
         );
       }
     }
