@@ -1,4 +1,4 @@
-import 'package:e_foodies/src/features/menu/presentation/widgets/menu_dashboard_card.dart';
+import 'package:e_foodies/src/features/menu/presentation/widgets/menu_showcase_card.dart';
 import 'package:e_foodies/src/features/menu/domain/menu/menu.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_foodies/src/features/shared/background.dart';

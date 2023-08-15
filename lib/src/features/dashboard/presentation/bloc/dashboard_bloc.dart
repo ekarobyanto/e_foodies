@@ -25,7 +25,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   }) : super(const _Initial()) {
     on<DashboardEvent>((event, emit) async {
       await event.when(
-        started: () async {
+        refresh: () async {
           emit(const _Request());
           try {
             Dashboard data = await dashboardRepository.fetchDashboard(
@@ -54,11 +54,11 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
                   [
                     storageRepository.write(
                       key: 'access',
-                      value: tokens['access_token'],
+                      value: tokens['access'],
                     ),
                     storageRepository.write(
                       key: 'refresh',
-                      value: tokens['refresh_token'],
+                      value: tokens['refresh'],
                     ),
                   ],
                 );
@@ -69,6 +69,28 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
             } else {
               emit(_Error(e.message));
             }
+          }
+        },
+        started: () async {
+          emit(const _Request());
+          try {
+            Dashboard data = await dashboardRepository.fetchDashboard(
+              await storageRepository.read(key: 'access'),
+            );
+            String greeting = '';
+            int currentHour = DateTime.now().hour;
+            if (currentHour < 12) {
+              greeting = 'Selamat Pagi';
+            } else if (currentHour < 17) {
+              greeting = 'Selamat Siang';
+            } else if (currentHour < 19) {
+              greeting = 'Selamat Sore';
+            } else {
+              greeting = 'Selamat Malam';
+            }
+            emit(_Success(data, greeting));
+          } on Failure catch (e) {
+            emit(_Error(e.message));
           }
         },
       );

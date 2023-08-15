@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'dashboard_bloc.dart';
+part of 'account_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DashboardEvent {
+mixin _$AccountEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() refresh,
+    required TResult Function(Account account, String? password) updateAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? refresh,
+    TResult? Function(Account account, String? password)? updateAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? refresh,
+    TResult Function(Account account, String? password)? updateAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_UpdateAccount value) updateAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_UpdateAccount value)? updateAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
+    TResult Function(_UpdateAccount value)? updateAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DashboardEventCopyWith<$Res> {
-  factory $DashboardEventCopyWith(
-          DashboardEvent value, $Res Function(DashboardEvent) then) =
-      _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
+abstract class $AccountEventCopyWith<$Res> {
+  factory $AccountEventCopyWith(
+          AccountEvent value, $Res Function(AccountEvent) then) =
+      _$AccountEventCopyWithImpl<$Res, AccountEvent>;
 }
 
 /// @nodoc
-class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
-    implements $DashboardEventCopyWith<$Res> {
-  _$DashboardEventCopyWithImpl(this._value, this._then);
+class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent>
+    implements $AccountEventCopyWith<$Res> {
+  _$AccountEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$_StartedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StartedCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$_Started>
+    extends _$AccountEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
   __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
       : super(_value, _then);
@@ -96,7 +96,7 @@ class _$_Started implements _Started {
 
   @override
   String toString() {
-    return 'DashboardEvent.started()';
+    return 'AccountEvent.started()';
   }
 
   @override
@@ -112,7 +112,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() refresh,
+    required TResult Function(Account account, String? password) updateAccount,
   }) {
     return started();
   }
@@ -121,7 +121,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? refresh,
+    TResult? Function(Account account, String? password)? updateAccount,
   }) {
     return started?.call();
   }
@@ -130,7 +130,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? refresh,
+    TResult Function(Account account, String? password)? updateAccount,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -143,7 +143,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_UpdateAccount value) updateAccount,
   }) {
     return started(this);
   }
@@ -152,7 +152,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_UpdateAccount value)? updateAccount,
   }) {
     return started?.call(this);
   }
@@ -161,7 +161,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
+    TResult Function(_UpdateAccount value)? updateAccount,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -171,71 +171,117 @@ class _$_Started implements _Started {
   }
 }
 
-abstract class _Started implements DashboardEvent {
+abstract class _Started implements AccountEvent {
   const factory _Started() = _$_Started;
 }
 
 /// @nodoc
-abstract class _$$_RefreshCopyWith<$Res> {
-  factory _$$_RefreshCopyWith(
-          _$_Refresh value, $Res Function(_$_Refresh) then) =
-      __$$_RefreshCopyWithImpl<$Res>;
+abstract class _$$_UpdateAccountCopyWith<$Res> {
+  factory _$$_UpdateAccountCopyWith(
+          _$_UpdateAccount value, $Res Function(_$_UpdateAccount) then) =
+      __$$_UpdateAccountCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Account account, String? password});
+
+  $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class __$$_RefreshCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$_Refresh>
-    implements _$$_RefreshCopyWith<$Res> {
-  __$$_RefreshCopyWithImpl(_$_Refresh _value, $Res Function(_$_Refresh) _then)
+class __$$_UpdateAccountCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$_UpdateAccount>
+    implements _$$_UpdateAccountCopyWith<$Res> {
+  __$$_UpdateAccountCopyWithImpl(
+      _$_UpdateAccount _value, $Res Function(_$_UpdateAccount) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? account = null,
+    Object? password = freezed,
+  }) {
+    return _then(_$_UpdateAccount(
+      null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountCopyWith<$Res> get account {
+    return $AccountCopyWith<$Res>(_value.account, (value) {
+      return _then(_value.copyWith(account: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$_Refresh implements _Refresh {
-  const _$_Refresh();
+class _$_UpdateAccount implements _UpdateAccount {
+  const _$_UpdateAccount(this.account, this.password);
+
+  @override
+  final Account account;
+  @override
+  final String? password;
 
   @override
   String toString() {
-    return 'DashboardEvent.refresh()';
+    return 'AccountEvent.updateAccount(account: $account, password: $password)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Refresh);
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateAccount &&
+            (identical(other.account, account) || other.account == account) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, account, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateAccountCopyWith<_$_UpdateAccount> get copyWith =>
+      __$$_UpdateAccountCopyWithImpl<_$_UpdateAccount>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() refresh,
+    required TResult Function(Account account, String? password) updateAccount,
   }) {
-    return refresh();
+    return updateAccount(account, password);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? refresh,
+    TResult? Function(Account account, String? password)? updateAccount,
   }) {
-    return refresh?.call();
+    return updateAccount?.call(account, password);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? refresh,
+    TResult Function(Account account, String? password)? updateAccount,
     required TResult orElse(),
   }) {
-    if (refresh != null) {
-      return refresh();
+    if (updateAccount != null) {
+      return updateAccount(account, password);
     }
     return orElse();
   }
@@ -244,61 +290,68 @@ class _$_Refresh implements _Refresh {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_UpdateAccount value) updateAccount,
   }) {
-    return refresh(this);
+    return updateAccount(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_UpdateAccount value)? updateAccount,
   }) {
-    return refresh?.call(this);
+    return updateAccount?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
+    TResult Function(_UpdateAccount value)? updateAccount,
     required TResult orElse(),
   }) {
-    if (refresh != null) {
-      return refresh(this);
+    if (updateAccount != null) {
+      return updateAccount(this);
     }
     return orElse();
   }
 }
 
-abstract class _Refresh implements DashboardEvent {
-  const factory _Refresh() = _$_Refresh;
+abstract class _UpdateAccount implements AccountEvent {
+  const factory _UpdateAccount(final Account account, final String? password) =
+      _$_UpdateAccount;
+
+  Account get account;
+  String? get password;
+  @JsonKey(ignore: true)
+  _$$_UpdateAccountCopyWith<_$_UpdateAccount> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$DashboardState {
+mixin _$AccountState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() request,
-    required TResult Function(Dashboard dashboard, String greeting) success,
+    required TResult Function(Account account) succes,
+    required TResult Function(Account account) succesUpdate,
     required TResult Function(String e) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? request,
-    TResult? Function(Dashboard dashboard, String greeting)? success,
+    TResult? Function(Account account)? succes,
+    TResult? Function(Account account)? succesUpdate,
     TResult? Function(String e)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? request,
-    TResult Function(Dashboard dashboard, String greeting)? success,
+    TResult Function(Account account)? succes,
+    TResult Function(Account account)? succesUpdate,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) =>
@@ -306,24 +359,24 @@ mixin _$DashboardState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Request value) request,
-    required TResult Function(_Success value) success,
+    required TResult Function(_Succes value) succes,
+    required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Request value)? request,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_Succes value)? succes,
+    TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Request value)? request,
-    TResult Function(_Success value)? success,
+    TResult Function(_Succes value)? succes,
+    TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -331,16 +384,16 @@ mixin _$DashboardState {
 }
 
 /// @nodoc
-abstract class $DashboardStateCopyWith<$Res> {
-  factory $DashboardStateCopyWith(
-          DashboardState value, $Res Function(DashboardState) then) =
-      _$DashboardStateCopyWithImpl<$Res, DashboardState>;
+abstract class $AccountStateCopyWith<$Res> {
+  factory $AccountStateCopyWith(
+          AccountState value, $Res Function(AccountState) then) =
+      _$AccountStateCopyWithImpl<$Res, AccountState>;
 }
 
 /// @nodoc
-class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
-    implements $DashboardStateCopyWith<$Res> {
-  _$DashboardStateCopyWithImpl(this._value, this._then);
+class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
+    implements $AccountStateCopyWith<$Res> {
+  _$AccountStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -357,7 +410,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Initial>
+    extends _$AccountStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -370,7 +423,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'DashboardState.initial()';
+    return 'AccountState.initial()';
   }
 
   @override
@@ -386,8 +439,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() request,
-    required TResult Function(Dashboard dashboard, String greeting) success,
+    required TResult Function(Account account) succes,
+    required TResult Function(Account account) succesUpdate,
     required TResult Function(String e) error,
   }) {
     return initial();
@@ -397,8 +450,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? request,
-    TResult? Function(Dashboard dashboard, String greeting)? success,
+    TResult? Function(Account account)? succes,
+    TResult? Function(Account account)? succesUpdate,
     TResult? Function(String e)? error,
   }) {
     return initial?.call();
@@ -408,8 +461,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? request,
-    TResult Function(Dashboard dashboard, String greeting)? success,
+    TResult Function(Account account)? succes,
+    TResult Function(Account account)? succesUpdate,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) {
@@ -423,8 +476,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Request value) request,
-    required TResult Function(_Success value) success,
+    required TResult Function(_Succes value) succes,
+    required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -434,8 +487,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Request value)? request,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_Succes value)? succes,
+    TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -445,8 +498,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Request value)? request,
-    TResult Function(_Success value)? success,
+    TResult Function(_Succes value)? succes,
+    TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -457,236 +510,112 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements DashboardState {
+abstract class _Initial implements AccountState {
   const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-abstract class _$$_RequestCopyWith<$Res> {
-  factory _$$_RequestCopyWith(
-          _$_Request value, $Res Function(_$_Request) then) =
-      __$$_RequestCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_RequestCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Request>
-    implements _$$_RequestCopyWith<$Res> {
-  __$$_RequestCopyWithImpl(_$_Request _value, $Res Function(_$_Request) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Request implements _Request {
-  const _$_Request();
-
-  @override
-  String toString() {
-    return 'DashboardState.request()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Request);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() request,
-    required TResult Function(Dashboard dashboard, String greeting) success,
-    required TResult Function(String e) error,
-  }) {
-    return request();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? request,
-    TResult? Function(Dashboard dashboard, String greeting)? success,
-    TResult? Function(String e)? error,
-  }) {
-    return request?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? request,
-    TResult Function(Dashboard dashboard, String greeting)? success,
-    TResult Function(String e)? error,
-    required TResult orElse(),
-  }) {
-    if (request != null) {
-      return request();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Request value) request,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
-  }) {
-    return request(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Request value)? request,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
-  }) {
-    return request?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Request value)? request,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (request != null) {
-      return request(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Request implements DashboardState {
-  const factory _Request() = _$_Request;
-}
-
-/// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
+abstract class _$$_SuccesCopyWith<$Res> {
+  factory _$$_SuccesCopyWith(_$_Succes value, $Res Function(_$_Succes) then) =
+      __$$_SuccesCopyWithImpl<$Res>;
   @useResult
-  $Res call({Dashboard dashboard, String greeting});
+  $Res call({Account account});
 
-  $DashboardCopyWith<$Res> get dashboard;
+  $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+class __$$_SuccesCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$_Succes>
+    implements _$$_SuccesCopyWith<$Res> {
+  __$$_SuccesCopyWithImpl(_$_Succes _value, $Res Function(_$_Succes) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dashboard = null,
-    Object? greeting = null,
+    Object? account = null,
   }) {
-    return _then(_$_Success(
-      null == dashboard
-          ? _value.dashboard
-          : dashboard // ignore: cast_nullable_to_non_nullable
-              as Dashboard,
-      null == greeting
-          ? _value.greeting
-          : greeting // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$_Succes(
+      null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $DashboardCopyWith<$Res> get dashboard {
-    return $DashboardCopyWith<$Res>(_value.dashboard, (value) {
-      return _then(_value.copyWith(dashboard: value));
+  $AccountCopyWith<$Res> get account {
+    return $AccountCopyWith<$Res>(_value.account, (value) {
+      return _then(_value.copyWith(account: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$_Success implements _Success {
-  const _$_Success(this.dashboard, this.greeting);
+class _$_Succes implements _Succes {
+  const _$_Succes(this.account);
 
   @override
-  final Dashboard dashboard;
-  @override
-  final String greeting;
+  final Account account;
 
   @override
   String toString() {
-    return 'DashboardState.success(dashboard: $dashboard, greeting: $greeting)';
+    return 'AccountState.succes(account: $account)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Success &&
-            (identical(other.dashboard, dashboard) ||
-                other.dashboard == dashboard) &&
-            (identical(other.greeting, greeting) ||
-                other.greeting == greeting));
+            other is _$_Succes &&
+            (identical(other.account, account) || other.account == account));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, dashboard, greeting);
+  int get hashCode => Object.hash(runtimeType, account);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
+  _$$_SuccesCopyWith<_$_Succes> get copyWith =>
+      __$$_SuccesCopyWithImpl<_$_Succes>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() request,
-    required TResult Function(Dashboard dashboard, String greeting) success,
+    required TResult Function(Account account) succes,
+    required TResult Function(Account account) succesUpdate,
     required TResult Function(String e) error,
   }) {
-    return success(dashboard, greeting);
+    return succes(account);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? request,
-    TResult? Function(Dashboard dashboard, String greeting)? success,
+    TResult? Function(Account account)? succes,
+    TResult? Function(Account account)? succesUpdate,
     TResult? Function(String e)? error,
   }) {
-    return success?.call(dashboard, greeting);
+    return succes?.call(account);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? request,
-    TResult Function(Dashboard dashboard, String greeting)? success,
+    TResult Function(Account account)? succes,
+    TResult Function(Account account)? succesUpdate,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(dashboard, greeting);
+    if (succes != null) {
+      return succes(account);
     }
     return orElse();
   }
@@ -695,48 +624,201 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Request value) request,
-    required TResult Function(_Success value) success,
+    required TResult Function(_Succes value) succes,
+    required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
   }) {
-    return success(this);
+    return succes(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Request value)? request,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_Succes value)? succes,
+    TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
   }) {
-    return success?.call(this);
+    return succes?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Request value)? request,
-    TResult Function(_Success value)? success,
+    TResult Function(_Succes value)? succes,
+    TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if (succes != null) {
+      return succes(this);
     }
     return orElse();
   }
 }
 
-abstract class _Success implements DashboardState {
-  const factory _Success(final Dashboard dashboard, final String greeting) =
-      _$_Success;
+abstract class _Succes implements AccountState {
+  const factory _Succes(final Account account) = _$_Succes;
 
-  Dashboard get dashboard;
-  String get greeting;
+  Account get account;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+  _$$_SuccesCopyWith<_$_Succes> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SuccesUpdateCopyWith<$Res> {
+  factory _$$_SuccesUpdateCopyWith(
+          _$_SuccesUpdate value, $Res Function(_$_SuccesUpdate) then) =
+      __$$_SuccesUpdateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Account account});
+
+  $AccountCopyWith<$Res> get account;
+}
+
+/// @nodoc
+class __$$_SuccesUpdateCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$_SuccesUpdate>
+    implements _$$_SuccesUpdateCopyWith<$Res> {
+  __$$_SuccesUpdateCopyWithImpl(
+      _$_SuccesUpdate _value, $Res Function(_$_SuccesUpdate) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? account = null,
+  }) {
+    return _then(_$_SuccesUpdate(
+      null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountCopyWith<$Res> get account {
+    return $AccountCopyWith<$Res>(_value.account, (value) {
+      return _then(_value.copyWith(account: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SuccesUpdate implements _SuccesUpdate {
+  const _$_SuccesUpdate(this.account);
+
+  @override
+  final Account account;
+
+  @override
+  String toString() {
+    return 'AccountState.succesUpdate(account: $account)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccesUpdate &&
+            (identical(other.account, account) || other.account == account));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, account);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SuccesUpdateCopyWith<_$_SuccesUpdate> get copyWith =>
+      __$$_SuccesUpdateCopyWithImpl<_$_SuccesUpdate>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Account account) succes,
+    required TResult Function(Account account) succesUpdate,
+    required TResult Function(String e) error,
+  }) {
+    return succesUpdate(account);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Account account)? succes,
+    TResult? Function(Account account)? succesUpdate,
+    TResult? Function(String e)? error,
+  }) {
+    return succesUpdate?.call(account);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Account account)? succes,
+    TResult Function(Account account)? succesUpdate,
+    TResult Function(String e)? error,
+    required TResult orElse(),
+  }) {
+    if (succesUpdate != null) {
+      return succesUpdate(account);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Succes value) succes,
+    required TResult Function(_SuccesUpdate value) succesUpdate,
+    required TResult Function(_Error value) error,
+  }) {
+    return succesUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Succes value)? succes,
+    TResult? Function(_SuccesUpdate value)? succesUpdate,
+    TResult? Function(_Error value)? error,
+  }) {
+    return succesUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Succes value)? succes,
+    TResult Function(_SuccesUpdate value)? succesUpdate,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (succesUpdate != null) {
+      return succesUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccesUpdate implements AccountState {
+  const factory _SuccesUpdate(final Account account) = _$_SuccesUpdate;
+
+  Account get account;
+  @JsonKey(ignore: true)
+  _$$_SuccesUpdateCopyWith<_$_SuccesUpdate> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -750,7 +832,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Error>
+    extends _$AccountStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
@@ -779,7 +861,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'DashboardState.error(e: $e)';
+    return 'AccountState.error(e: $e)';
   }
 
   @override
@@ -803,8 +885,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() request,
-    required TResult Function(Dashboard dashboard, String greeting) success,
+    required TResult Function(Account account) succes,
+    required TResult Function(Account account) succesUpdate,
     required TResult Function(String e) error,
   }) {
     return error(e);
@@ -814,8 +896,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? request,
-    TResult? Function(Dashboard dashboard, String greeting)? success,
+    TResult? Function(Account account)? succes,
+    TResult? Function(Account account)? succesUpdate,
     TResult? Function(String e)? error,
   }) {
     return error?.call(e);
@@ -825,8 +907,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? request,
-    TResult Function(Dashboard dashboard, String greeting)? success,
+    TResult Function(Account account)? succes,
+    TResult Function(Account account)? succesUpdate,
     TResult Function(String e)? error,
     required TResult orElse(),
   }) {
@@ -840,8 +922,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Request value) request,
-    required TResult Function(_Success value) success,
+    required TResult Function(_Succes value) succes,
+    required TResult Function(_SuccesUpdate value) succesUpdate,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -851,8 +933,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Request value)? request,
-    TResult? Function(_Success value)? success,
+    TResult? Function(_Succes value)? succes,
+    TResult? Function(_SuccesUpdate value)? succesUpdate,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -862,8 +944,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Request value)? request,
-    TResult Function(_Success value)? success,
+    TResult Function(_Succes value)? succes,
+    TResult Function(_SuccesUpdate value)? succesUpdate,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -874,7 +956,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements DashboardState {
+abstract class _Error implements AccountState {
   const factory _Error(final String e) = _$_Error;
 
   String get e;

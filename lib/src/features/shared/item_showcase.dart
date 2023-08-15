@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../constants/styles.dart';
-import '../menu/presentation/widgets/menu_dashboard_card.dart';
+import '../menu/presentation/widgets/menu_showcase_card.dart';
 import '../store/presentation/widgets/store_card.dart';
 
-class ItemShowcase extends StatelessWidget {
+class ItemShowcase extends StatefulWidget {
   ItemShowcase({
     super.key,
     required this.title,
@@ -18,6 +18,11 @@ class ItemShowcase extends StatelessWidget {
   String route;
 
   @override
+  State<ItemShowcase> createState() => _ItemShowcaseState();
+}
+
+class _ItemShowcaseState extends State<ItemShowcase> {
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -25,12 +30,12 @@ class ItemShowcase extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              title,
+              widget.title,
               style: Styles.font.blg,
             ),
             InkWell(
               onTap: () {
-                context.push(route);
+                context.push(widget.route);
               },
               child: Text(
                 'Lihat semua',
@@ -42,7 +47,7 @@ class ItemShowcase extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        items.isEmpty
+        widget.items.isEmpty
             ? const Center(
                 child: Text('Item belum tersedia'),
               )
@@ -50,16 +55,16 @@ class ItemShowcase extends StatelessWidget {
                 shrinkWrap: true,
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),
-                itemCount: items.length,
+                itemCount: widget.items.length,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  if (title == 'Warung') {
+                  if (widget.title == 'Warung') {
                     return WarungCard(
-                      warung: items[index],
+                      warung: widget.items[index],
                     );
                   } else {
-                    return MenuDashboardCard(
-                      menu: items[index],
+                    return MenuShowcase(
+                      menu: widget.items[index],
                     );
                   }
                 },

@@ -9,8 +9,8 @@ import '../../../shared/rounded_container.dart';
 import '../../../shared/shrink_property.dart';
 import '../../domain/menu/menu.dart';
 
-class MenuDashboardCard extends StatelessWidget {
-  MenuDashboardCard({super.key, required this.menu});
+class MenuShowcase extends StatelessWidget {
+  MenuShowcase({super.key, required this.menu});
 
   Menu menu;
 

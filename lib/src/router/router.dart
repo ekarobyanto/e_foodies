@@ -1,4 +1,5 @@
 import 'package:e_foodies/src/features/account/presentation/account.dart';
+import 'package:e_foodies/src/features/account/presentation/bloc/account_bloc.dart';
 import 'package:e_foodies/src/features/account/presentation/edit-profile/edit_account.dart';
 import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
@@ -95,8 +96,9 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: 'edit-account',
           name: 'edit-account',
-          pageBuilder: (context, state) =>
-              slideTransitionRL(const EditAccount()),
+          pageBuilder: (context, state) => slideTransitionRL(
+            EditAccount(),
+          ),
         ),
       ],
     ),

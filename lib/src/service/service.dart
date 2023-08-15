@@ -12,6 +12,13 @@ class APIService {
     required String endpoints,
     Map<String, dynamic>? params,
   }) {
+    final url = Uri(
+      scheme: "https",
+      host: _apiBaseUrl,
+      path: "$_apiPath$endpoints",
+      queryParameters: params,
+    );
+    log(url.toString());
     return Uri(
       scheme: "https",
       host: _apiBaseUrl,
@@ -39,7 +46,8 @@ class APIService {
     } on DioException catch (e) {
       Response? res = e.response;
       log('=====Dio Error=====');
-      if (res?.data['mess'] == 'token_not_valid') {
+      if (res?.data['detail'] ==
+          'Token yang diberikan tidak valid untuk semua jenis token') {
         throw Failure(message: 'Token Expired', code: 401);
       }
       if (res != null) {

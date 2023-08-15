@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/bloc/app_bloc.dart';
+import 'features/account/data/account_repository.dart';
+import 'features/account/presentation/bloc/account_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -21,12 +23,23 @@ class App extends StatelessWidget {
           create: (context) => StorageRepository(),
         ),
       ],
-      child: BlocProvider(
-        create: (context) =>
-            AppBloc(storageRepository: context.read<StorageRepository>())
-              ..add(
-                const AppEvent.started(),
-              ),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
+                AppBloc(storageRepository: context.read<StorageRepository>())
+                  ..add(
+                    const AppEvent.started(),
+                  ),
+          ),
+          BlocProvider(
+            create: (context) => AccountBloc(
+              accountRepository: AccountRepository(),
+              authRepository: context.read<AuthRepository>(),
+              storageRepository: context.read<StorageRepository>(),
+            )..add(const AccountEvent.started()),
+          ),
+        ],
         child: ScreenUtilInit(
           designSize: const Size(375, 812),
           minTextAdapt: true,
