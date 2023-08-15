@@ -177,57 +177,64 @@ class _EditAccountState extends State<EditAccount> {
                             SizedBox(
                               height: 20.h,
                             ),
-                            ShrinkProperty(
-                              onTap: () {
-                                if (_nameController.text == '' &&
-                                    _emailController.text == '' &&
-                                    _addressController.text == '' &&
-                                    _passwordController.text == '' &&
-                                    context.read<ImageBloc>().state ==
-                                        const ImageState.initial()) {
-                                  return;
-                                }
-                                context.pop();
-                                context
-                                    .read<AppBloc>()
-                                    .add(const AppEvent.loadingRequested());
-                                context.read<AccountBloc>().add(
-                                      AccountEvent.updateAccount(
-                                        Account(
-                                          id: '',
-                                          username: _nameController.text,
-                                          email: _emailController.text,
-                                          address: _addressController.text,
-                                          img: context
-                                              .read<ImageBloc>()
-                                              .state
-                                              .when(
-                                                initial: () => '',
-                                                imageUpdated: (imagePath) =>
-                                                    imagePath,
+                            context.read<AppBloc>().state.maybeWhen(
+                                  loading: () => Center(
+                                    child: CircularProgressIndicator(
+                                      color: Styles.color.primary,
+                                    ),
+                                  ),
+                                  orElse: () => ShrinkProperty(
+                                    onTap: () {
+                                      if (_nameController.text == '' &&
+                                          _emailController.text == '' &&
+                                          _addressController.text == '' &&
+                                          _passwordController.text == '' &&
+                                          context.read<ImageBloc>().state ==
+                                              const ImageState.initial()) {
+                                        return;
+                                      }
+                                      context.read<AppBloc>().add(
+                                          const AppEvent.loadingRequested());
+                                      context.read<AccountBloc>().add(
+                                            AccountEvent.updateAccount(
+                                              Account(
+                                                id: '',
+                                                username: _nameController.text,
+                                                email: _emailController.text,
+                                                address:
+                                                    _addressController.text,
+                                                img: context
+                                                    .read<ImageBloc>()
+                                                    .state
+                                                    .when(
+                                                      initial: () => '',
+                                                      imageUpdated:
+                                                          (imagePath) =>
+                                                              imagePath,
+                                                    ),
+                                                isStore: false,
                                               ),
-                                          isStore: false,
-                                        ),
-                                        _passwordController.text,
+                                              _passwordController.text,
+                                            ),
+                                          );
+                                    },
+                                    child: RoundedContainer(
+                                      radius: 20,
+                                      color: Styles.color.primary,
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 10,
+                                        horizontal: 20,
                                       ),
-                                    );
-                              },
-                              child: RoundedContainer(
-                                radius: 20,
-                                color: Styles.color.primary,
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 20,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Simpan',
-                                    style: Styles.font.lg
-                                        .copyWith(color: Colors.white),
+                                      child: Center(
+                                        child: Text(
+                                          'Simpan',
+                                          style: Styles.font.lg
+                                              .copyWith(color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
