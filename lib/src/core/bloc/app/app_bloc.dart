@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../data/storage/storage_repository.dart';
+import '../../data/storage/storage_repository.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

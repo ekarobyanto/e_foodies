@@ -4,10 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:e_foodies/src/features/account/data/account_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/data/storage/storage_repository.dart';
-import '../../../../core/domain/failure.dart';
-import '../../../auth/data/auth_repository.dart';
-import '../../domain/account.dart';
+import '../../../features/account/domain/account.dart';
+import '../../../features/auth/data/auth_repository.dart';
+import '../../data/storage/storage_repository.dart';
+import '../../domain/failure.dart';
 
 part 'account_event.dart';
 part 'account_state.dart';
@@ -15,6 +15,7 @@ part 'account_bloc.freezed.dart';
 
 class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final AccountRepository accountRepository;
+
   final AuthRepository authRepository;
   final StorageRepository storageRepository;
   AccountBloc({
@@ -36,7 +37,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
                 final token = await authRepository.refreshToken(
                   await storageRepository.read(key: 'refresh'),
                 );
-                log(token.toString());
                 await Future.any(
                   [
                     storageRepository.write(

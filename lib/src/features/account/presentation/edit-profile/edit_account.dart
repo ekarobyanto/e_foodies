@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:e_foodies/src/features/account/domain/account.dart';
-import 'package:e_foodies/src/features/account/presentation/bloc/account_bloc.dart';
+
 import 'package:e_foodies/src/features/shared/error_dialog.dart';
 import 'package:e_foodies/src/features/shared/rounded_container.dart';
 import 'package:e_foodies/src/features/shared/shrink_property.dart';
@@ -15,8 +15,9 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../constants/styles.dart';
-import '../../../../core/bloc/app_bloc.dart';
-import '../../../../core/bloc/image_bloc.dart';
+import '../../../../core/bloc/account/account_bloc.dart';
+import '../../../../core/bloc/app/app_bloc.dart';
+import '../../../../core/bloc/image/image_bloc.dart';
 import '../../../../utills/show_scaled_dialog.dart';
 import '../../../shared/background.dart';
 import '../../../shared/circle_net_pic.dart';

@@ -1,3 +1,3 @@
 extension StringExtension on String {
-  String get png => '$this.png';
+  String get png => 'lib/src/assets/images/$this.png';
 }

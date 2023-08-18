@@ -1,9 +1,7 @@
-import 'package:e_foodies/src/features/account/data/account_repository.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
 import 'package:e_foodies/src/features/shared/error_screen.dart';
 import 'package:e_foodies/src/features/shared/loading_screen.dart';
 import 'package:e_foodies/src/features/shared/shrink_property.dart';
-import 'package:e_foodies/src/features/shared/rounded_container.dart';
 import 'package:e_foodies/src/features/dashboard/presentation/widgets/promotion_card.dart';
 
 import 'package:flutter/material.dart';
@@ -12,12 +10,11 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../core/data/storage/storage_repository.dart';
-import '../../auth/data/auth_repository.dart';
+import '../../../core/bloc/account/account_bloc.dart';
+
 import '../../shared/background.dart';
 import '../../../constants/styles.dart';
 import '../../shared/rounded_animated_container.dart';
-import 'bloc/account_bloc.dart';
 
 class Account extends StatelessWidget {
   const Account({super.key});

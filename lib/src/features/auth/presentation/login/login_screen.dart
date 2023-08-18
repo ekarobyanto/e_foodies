@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:e_foodies/src/core/bloc/account/account_bloc.dart';
 import 'package:e_foodies/src/core/data/storage/storage_repository.dart';
 import 'package:e_foodies/src/features/auth/data/auth_repository.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../constants/styles.dart';
-import '../../../../core/bloc/app_bloc.dart';
+import '../../../../core/bloc/app/app_bloc.dart';
 import '../../../../utills/email_validator.dart';
 import '../../../../utills/show_scaled_dialog.dart';
 import '../../../shared/error_dialog.dart';
@@ -42,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
             state.whenOrNull(
               success: () {
                 context.read<AppBloc>().add(const AppEvent.loadingComplete());
+                context.read<AccountBloc>().add(const AccountEvent.started());
                 context.go('/dashboard');
               },
               error: (e) {
@@ -221,7 +223,9 @@ class _LoginContentState extends State<LoginContent> {
                         ),
                         InkWell(
                           onTap: () {
-                            if (widget.prevRoute == 'register') {
+                            if (context.read<AppBloc>().state ==
+                                const AppState.loading()) {
+                            } else if (widget.prevRoute == 'register') {
                               context.pop();
                             } else {
                               context.push('/register', extra: 'login');

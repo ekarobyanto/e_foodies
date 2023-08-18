@@ -1,10 +1,8 @@
 import 'package:e_foodies/src/core/data/storage/storage_repository.dart';
 import 'package:e_foodies/src/features/auth/data/auth_repository.dart';
 import 'package:e_foodies/src/features/dashboard/data/dashboard_repository.dart';
-import 'package:e_foodies/src/features/dashboard/domain/dashboard.dart';
 import 'package:e_foodies/src/features/menu/domain/ingredient/ingredient.dart';
 import 'package:e_foodies/src/features/shared/loading_screen.dart';
-import 'package:e_foodies/src/features/store/domain/store.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +11,7 @@ import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:flutter/material.dart';
 
-import '../../account/presentation/bloc/account_bloc.dart';
+import '../../../core/bloc/account/account_bloc.dart';
 import '../../menu/domain/menu/menu.dart';
 import '../../shared/circle_net_pic.dart';
 import '../../shared/error_screen.dart';
@@ -62,43 +60,55 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   advancedDrawerController: advancedDrawerController,
                   child: Scaffold(
+                    backgroundColor: Colors.white,
+                    appBar: AppBar(
                       backgroundColor: Colors.white,
-                      appBar: AppBar(
-                        backgroundColor: Colors.white,
-                        elevation: 0,
-                        automaticallyImplyLeading: false,
-                        leading: Material(
-                          color: Colors.transparent,
-                          child: IconButton(
-                            onPressed: () {
-                              state.whenOrNull(
-                                success: (data, greeting) {
-                                  advancedDrawerController.showDrawer();
-                                },
-                              );
-                            },
-                            icon: const Icon(
-                              BoxIcons.bx_menu_alt_left,
-                              color: Colors.black,
-                            ),
+                      elevation: 0,
+                      automaticallyImplyLeading: false,
+                      leading: Material(
+                        color: Colors.transparent,
+                        child: IconButton(
+                          onPressed: () {
+                            state.whenOrNull(
+                              success: (data, greeting) {
+                                advancedDrawerController.showDrawer();
+                              },
+                            );
+                          },
+                          icon: const Icon(
+                            BoxIcons.bx_menu_alt_left,
+                            color: Colors.black,
                           ),
-                        ),
-                        centerTitle: true,
-                        title: Text(
-                          state.when(
-                            initial: () => '',
-                            request: () => '',
-                            success: (dashboard, greeting) =>
-                                '$greeting, ${accountState.maybeWhen(
-                              succes: (account) => account.username,
-                              orElse: () => '',
-                            )}',
-                            error: (message) => message,
-                          ),
-                          style: Styles.font.lg,
                         ),
                       ),
-                      body: state.when(
+                      centerTitle: true,
+                      title: Text(
+                        state.when(
+                          initial: () => '',
+                          request: () => '',
+                          success: (dashboard, greeting) =>
+                              '$greeting, ${accountState.maybeWhen(
+                            succes: (account) => account.username,
+                            orElse: () => '',
+                          )}',
+                          error: (message) => message,
+                        ),
+                        style: Styles.font.lg,
+                      ),
+                    ),
+                    body: accountState.maybeWhen(
+                      orElse: () => ErrorScreen(
+                        error: 'Terjadi Kesalahan',
+                        onRetry: () {
+                          context.read<AccountBloc>().add(
+                                const AccountEvent.started(),
+                              );
+                        },
+                      ),
+                      initial: () => const Center(
+                        child: LoadingScreen(),
+                      ),
+                      succes: (account) => state.when(
                         initial: () {
                           return const SizedBox();
                         },
@@ -130,10 +140,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         ),
                                         const SizedBox(width: 10),
                                         CircleNetPic(
-                                          src: accountState.maybeWhen(
-                                            succes: (account) => account.img,
-                                            orElse: () => '',
-                                          ),
+                                          src: account.img,
                                           height: 50.h,
                                           width: 50.h,
                                         ),
@@ -145,7 +152,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       PromotionCard(
                                         title: 'Warung',
                                         onTap: () {
-                                          context.push('/create-store');
+                                          context.push(
+                                            '/create-store',
+                                          );
                                         },
                                         desc:
                                             'Warung adalah usaha kecil milik keluarga yang berbentuk kedai, kios, toko kecil, atau restoran sederhana — istilah "warung" dapat ditemukan di Indonesia dan Malaysia. Warung adalah salah satu bagian penting dalam kehidupan keseharian rakyat Indonesia.',
@@ -201,7 +210,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ),
                           );
                         },
-                      )),
+                      ),
+                    ),
+                  ),
                 );
               },
             );

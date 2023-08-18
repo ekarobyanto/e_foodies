@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_foodies/src/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
 import 'package:flutter/cupertino.dart';
@@ -77,7 +76,7 @@ class CustomDrawer extends StatelessWidget {
                   ListTile(
                     onTap: () {
                       _advancedDrawerController.hideDrawer();
-                      context.push('/store');
+                      context.push('/user-store');
                     },
                     leading: const Icon(
                       Icons.store,

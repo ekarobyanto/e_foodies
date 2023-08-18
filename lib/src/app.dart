@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'core/bloc/app_bloc.dart';
+import 'core/bloc/account/account_bloc.dart';
+import 'core/bloc/app/app_bloc.dart';
 import 'features/account/data/account_repository.dart';
-import 'features/account/presentation/bloc/account_bloc.dart';
+import 'features/store/data/store_repository.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -21,6 +22,9 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => StorageRepository(),
+        ),
+        RepositoryProvider(
+          create: (context) => StoreRepository(),
         ),
       ],
       child: MultiBlocProvider(
@@ -48,7 +52,10 @@ class App extends StatelessWidget {
             routerConfig: router,
             debugShowCheckedModeBanner: false,
             builder: (context, child) => MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              data: MediaQuery.of(context).copyWith(
+                textScaleFactor: 1.0,
+                alwaysUse24HourFormat: true,
+              ),
               child: child!,
             ),
           ),

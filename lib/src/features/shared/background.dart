@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../constants/styles.dart';
-import '../../core/bloc/app_bloc.dart';
+import '../../core/bloc/app/app_bloc.dart';
 import 'rounded_animated_container.dart';
 
 class Background extends StatelessWidget {

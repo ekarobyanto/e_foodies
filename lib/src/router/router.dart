@@ -1,5 +1,4 @@
 import 'package:e_foodies/src/features/account/presentation/account.dart';
-import 'package:e_foodies/src/features/account/presentation/bloc/account_bloc.dart';
 import 'package:e_foodies/src/features/account/presentation/edit-profile/edit_account.dart';
 import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
@@ -11,11 +10,13 @@ import 'package:e_foodies/src/features/search/presentation/search_screen.dart';
 import 'package:e_foodies/src/features/store/presentation/register-store/register_store.dart';
 import 'package:e_foodies/src/features/store/presentation/store.dart';
 import 'package:e_foodies/src/features/store/presentation/store_list.dart';
+import 'package:e_foodies/src/features/store/presentation/user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../core/bloc/app_bloc.dart';
+import '../core/bloc/app/app_bloc.dart';
+
 import '../features/dashboard/presentation/dashboard_screen.dart';
 
 final GoRouter router = GoRouter(
@@ -104,7 +105,16 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/store',
-      pageBuilder: (context, state) => slideTransitionRL(const StoreScreen()),
+      pageBuilder: (context, state) => slideTransitionRL(
+        StoreScreen(
+          storeId: state.pathParameters['storeId']!,
+          menuId: state.pathParameters['menuId'],
+        ),
+      ),
+    ),
+    GoRoute(
+      path: '/user-store',
+      pageBuilder: (context, state) => slideTransitionRL(const UserStore()),
     ),
   ],
 );

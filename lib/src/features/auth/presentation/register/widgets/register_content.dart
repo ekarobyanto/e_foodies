@@ -1,4 +1,3 @@
-import 'package:e_foodies/src/core/bloc/app_bloc.dart';
 import 'package:e_foodies/src/features/auth/presentation/register/bloc/register_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants/styles.dart';
+import '../../../../../core/bloc/app/app_bloc.dart';
 import '../../../../../utills/email_validator.dart';
 import '../../../../shared/shrink_property.dart';
 import '../../../../shared/text_input.dart';
@@ -205,7 +205,9 @@ class _RegisterContentState extends State<RegisterContent> {
                       ),
                       InkWell(
                         onTap: () {
-                          if (widget.prevRoute == 'login') {
+                          if (context.read<AppBloc>().state ==
+                              const AppState.loading()) {
+                          } else if (widget.prevRoute == 'login') {
                             context.pop();
                           } else {
                             context.push('/login', extra: 'register');

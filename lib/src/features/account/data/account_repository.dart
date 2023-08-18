@@ -31,8 +31,6 @@ class AccountRepository extends RepositoryBase {
           if (data.address != '') "address": data.address,
           if (password != '') "password": password,
         });
-        print(formData.fields);
-        print(formData.files);
         return await dio.putUri(
           service.buildUri(
             endpoints: '/profile/',

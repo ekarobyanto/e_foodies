@@ -1,5 +1,3 @@
-import 'package:e_foodies/src/features/menu/presentation/widgets/menu_showcase_card.dart';
-import 'package:e_foodies/src/features/menu/domain/menu/menu.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_foodies/src/features/shared/background.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +6,10 @@ import 'package:flutter/material.dart';
 import '../../../constants/styles.dart';
 
 class StoreScreen extends StatelessWidget {
-  const StoreScreen({super.key});
+  StoreScreen({super.key, required this.storeId, this.menuId});
+
+  final String storeId;
+  String? menuId;
 
   @override
   Widget build(BuildContext context) {
