@@ -43,6 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Future<void> _fetchPage(int pageKey, String query) async {
+    _pagingController.refresh();
     try {
       final Pagination<Store> newItems = await SearchRepository().search(
         query: query,
