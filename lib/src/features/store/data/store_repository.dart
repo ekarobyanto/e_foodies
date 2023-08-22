@@ -12,9 +12,10 @@ class StoreRepository extends RepositoryBase {
       return await service.call(
         request: () {
           return dio.getUri(
-            service.buildUri(
-              endpoints: '/store/',
-            ),
+            service.buildUri(endpoints: '/store/', params: {
+              'page': pageKey.toString(),
+              'page_size': pageSize.toString()
+            }),
             options: Options(
               headers: {'Authorization': 'Bearer $token'},
             ),
