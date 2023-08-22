@@ -21,6 +21,7 @@ mixin _$AppEvent {
     required TResult Function() started,
     required TResult Function() loadingRequested,
     required TResult Function() loadingComplete,
+    required TResult Function() signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AppEvent {
     TResult? Function()? started,
     TResult? Function()? loadingRequested,
     TResult? Function()? loadingComplete,
+    TResult? Function()? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AppEvent {
     TResult Function()? started,
     TResult Function()? loadingRequested,
     TResult Function()? loadingComplete,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AppEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_Request value) loadingRequested,
     required TResult Function(_RequestCompleted value) loadingComplete,
+    required TResult Function(_SignOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AppEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_Request value)? loadingRequested,
     TResult? Function(_RequestCompleted value)? loadingComplete,
+    TResult? Function(_SignOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AppEvent {
     TResult Function(_Started value)? started,
     TResult Function(_Request value)? loadingRequested,
     TResult Function(_RequestCompleted value)? loadingComplete,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function() loadingRequested,
     required TResult Function() loadingComplete,
+    required TResult Function() signOut,
   }) {
     return started();
   }
@@ -129,6 +136,7 @@ class _$_Started implements _Started {
     TResult? Function()? started,
     TResult? Function()? loadingRequested,
     TResult? Function()? loadingComplete,
+    TResult? Function()? signOut,
   }) {
     return started?.call();
   }
@@ -139,6 +147,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function()? loadingRequested,
     TResult Function()? loadingComplete,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -153,6 +162,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_Request value) loadingRequested,
     required TResult Function(_RequestCompleted value) loadingComplete,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return started(this);
   }
@@ -163,6 +173,7 @@ class _$_Started implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_Request value)? loadingRequested,
     TResult? Function(_RequestCompleted value)? loadingComplete,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return started?.call(this);
   }
@@ -173,6 +184,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_Request value)? loadingRequested,
     TResult Function(_RequestCompleted value)? loadingComplete,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -226,6 +238,7 @@ class _$_Request implements _Request {
     required TResult Function() started,
     required TResult Function() loadingRequested,
     required TResult Function() loadingComplete,
+    required TResult Function() signOut,
   }) {
     return loadingRequested();
   }
@@ -236,6 +249,7 @@ class _$_Request implements _Request {
     TResult? Function()? started,
     TResult? Function()? loadingRequested,
     TResult? Function()? loadingComplete,
+    TResult? Function()? signOut,
   }) {
     return loadingRequested?.call();
   }
@@ -246,6 +260,7 @@ class _$_Request implements _Request {
     TResult Function()? started,
     TResult Function()? loadingRequested,
     TResult Function()? loadingComplete,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (loadingRequested != null) {
@@ -260,6 +275,7 @@ class _$_Request implements _Request {
     required TResult Function(_Started value) started,
     required TResult Function(_Request value) loadingRequested,
     required TResult Function(_RequestCompleted value) loadingComplete,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return loadingRequested(this);
   }
@@ -270,6 +286,7 @@ class _$_Request implements _Request {
     TResult? Function(_Started value)? started,
     TResult? Function(_Request value)? loadingRequested,
     TResult? Function(_RequestCompleted value)? loadingComplete,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return loadingRequested?.call(this);
   }
@@ -280,6 +297,7 @@ class _$_Request implements _Request {
     TResult Function(_Started value)? started,
     TResult Function(_Request value)? loadingRequested,
     TResult Function(_RequestCompleted value)? loadingComplete,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (loadingRequested != null) {
@@ -334,6 +352,7 @@ class _$_RequestCompleted implements _RequestCompleted {
     required TResult Function() started,
     required TResult Function() loadingRequested,
     required TResult Function() loadingComplete,
+    required TResult Function() signOut,
   }) {
     return loadingComplete();
   }
@@ -344,6 +363,7 @@ class _$_RequestCompleted implements _RequestCompleted {
     TResult? Function()? started,
     TResult? Function()? loadingRequested,
     TResult? Function()? loadingComplete,
+    TResult? Function()? signOut,
   }) {
     return loadingComplete?.call();
   }
@@ -354,6 +374,7 @@ class _$_RequestCompleted implements _RequestCompleted {
     TResult Function()? started,
     TResult Function()? loadingRequested,
     TResult Function()? loadingComplete,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (loadingComplete != null) {
@@ -368,6 +389,7 @@ class _$_RequestCompleted implements _RequestCompleted {
     required TResult Function(_Started value) started,
     required TResult Function(_Request value) loadingRequested,
     required TResult Function(_RequestCompleted value) loadingComplete,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return loadingComplete(this);
   }
@@ -378,6 +400,7 @@ class _$_RequestCompleted implements _RequestCompleted {
     TResult? Function(_Started value)? started,
     TResult? Function(_Request value)? loadingRequested,
     TResult? Function(_RequestCompleted value)? loadingComplete,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return loadingComplete?.call(this);
   }
@@ -388,6 +411,7 @@ class _$_RequestCompleted implements _RequestCompleted {
     TResult Function(_Started value)? started,
     TResult Function(_Request value)? loadingRequested,
     TResult Function(_RequestCompleted value)? loadingComplete,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (loadingComplete != null) {
@@ -399,6 +423,119 @@ class _$_RequestCompleted implements _RequestCompleted {
 
 abstract class _RequestCompleted implements AppEvent {
   const factory _RequestCompleted() = _$_RequestCompleted;
+}
+
+/// @nodoc
+abstract class _$$_SignOutCopyWith<$Res> {
+  factory _$$_SignOutCopyWith(
+          _$_SignOut value, $Res Function(_$_SignOut) then) =
+      __$$_SignOutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SignOutCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$_SignOut>
+    implements _$$_SignOutCopyWith<$Res> {
+  __$$_SignOutCopyWithImpl(_$_SignOut _value, $Res Function(_$_SignOut) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SignOut implements _SignOut {
+  const _$_SignOut();
+
+  @override
+  String toString() {
+    return 'AppEvent.signOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SignOut);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() loadingRequested,
+    required TResult Function() loadingComplete,
+    required TResult Function() signOut,
+  }) {
+    return signOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? loadingRequested,
+    TResult? Function()? loadingComplete,
+    TResult? Function()? signOut,
+  }) {
+    return signOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? loadingRequested,
+    TResult Function()? loadingComplete,
+    TResult Function()? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Request value) loadingRequested,
+    required TResult Function(_RequestCompleted value) loadingComplete,
+    required TResult Function(_SignOut value) signOut,
+  }) {
+    return signOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Request value)? loadingRequested,
+    TResult? Function(_RequestCompleted value)? loadingComplete,
+    TResult? Function(_SignOut value)? signOut,
+  }) {
+    return signOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Request value)? loadingRequested,
+    TResult Function(_RequestCompleted value)? loadingComplete,
+    TResult Function(_SignOut value)? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignOut implements AppEvent {
+  const factory _SignOut() = _$_SignOut;
 }
 
 /// @nodoc

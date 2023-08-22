@@ -26,8 +26,12 @@ mixin _$Store {
   String? get img => throw _privateConstructorUsedError;
   String get user => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  @JsonKey(name: 'open_time')
+  String get openTime => throw _privateConstructorUsedError;
+  @JsonKey(name: 'close_time')
+  String get closeTime => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  List<Menu> get menus => throw _privateConstructorUsedError;
+  List<Menu> get recipes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,8 +50,10 @@ abstract class $StoreCopyWith<$Res> {
       String? img,
       String user,
       String address,
+      @JsonKey(name: 'open_time') String openTime,
+      @JsonKey(name: 'close_time') String closeTime,
       String phone,
-      List<Menu> menus});
+      List<Menu> recipes});
 }
 
 /// @nodoc
@@ -69,8 +75,10 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
     Object? img = freezed,
     Object? user = null,
     Object? address = null,
+    Object? openTime = null,
+    Object? closeTime = null,
     Object? phone = null,
-    Object? menus = null,
+    Object? recipes = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,13 +105,21 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      openTime: null == openTime
+          ? _value.openTime
+          : openTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      closeTime: null == closeTime
+          ? _value.closeTime
+          : closeTime // ignore: cast_nullable_to_non_nullable
+              as String,
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      menus: null == menus
-          ? _value.menus
-          : menus // ignore: cast_nullable_to_non_nullable
+      recipes: null == recipes
+          ? _value.recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
               as List<Menu>,
     ) as $Val);
   }
@@ -122,8 +138,10 @@ abstract class _$$_StoreCopyWith<$Res> implements $StoreCopyWith<$Res> {
       String? img,
       String user,
       String address,
+      @JsonKey(name: 'open_time') String openTime,
+      @JsonKey(name: 'close_time') String closeTime,
       String phone,
-      List<Menu> menus});
+      List<Menu> recipes});
 }
 
 /// @nodoc
@@ -141,8 +159,10 @@ class __$$_StoreCopyWithImpl<$Res> extends _$StoreCopyWithImpl<$Res, _$_Store>
     Object? img = freezed,
     Object? user = null,
     Object? address = null,
+    Object? openTime = null,
+    Object? closeTime = null,
     Object? phone = null,
-    Object? menus = null,
+    Object? recipes = null,
   }) {
     return _then(_$_Store(
       id: null == id
@@ -169,13 +189,21 @@ class __$$_StoreCopyWithImpl<$Res> extends _$StoreCopyWithImpl<$Res, _$_Store>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      openTime: null == openTime
+          ? _value.openTime
+          : openTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      closeTime: null == closeTime
+          ? _value.closeTime
+          : closeTime // ignore: cast_nullable_to_non_nullable
+              as String,
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      menus: null == menus
-          ? _value._menus
-          : menus // ignore: cast_nullable_to_non_nullable
+      recipes: null == recipes
+          ? _value._recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
               as List<Menu>,
     ));
   }
@@ -191,9 +219,11 @@ class _$_Store implements _Store {
       this.img,
       required this.user,
       required this.address,
+      @JsonKey(name: 'open_time') required this.openTime,
+      @JsonKey(name: 'close_time') required this.closeTime,
       required this.phone,
-      final List<Menu> menus = const []})
-      : _menus = menus;
+      final List<Menu> recipes = const []})
+      : _recipes = recipes;
 
   factory _$_Store.fromJson(Map<String, dynamic> json) =>
       _$$_StoreFromJson(json);
@@ -211,19 +241,25 @@ class _$_Store implements _Store {
   @override
   final String address;
   @override
+  @JsonKey(name: 'open_time')
+  final String openTime;
+  @override
+  @JsonKey(name: 'close_time')
+  final String closeTime;
+  @override
   final String phone;
-  final List<Menu> _menus;
+  final List<Menu> _recipes;
   @override
   @JsonKey()
-  List<Menu> get menus {
-    if (_menus is EqualUnmodifiableListView) return _menus;
+  List<Menu> get recipes {
+    if (_recipes is EqualUnmodifiableListView) return _recipes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_menus);
+    return EqualUnmodifiableListView(_recipes);
   }
 
   @override
   String toString() {
-    return 'Store(id: $id, name: $name, desc: $desc, img: $img, user: $user, address: $address, phone: $phone, menus: $menus)';
+    return 'Store(id: $id, name: $name, desc: $desc, img: $img, user: $user, address: $address, openTime: $openTime, closeTime: $closeTime, phone: $phone, recipes: $recipes)';
   }
 
   @override
@@ -237,14 +273,28 @@ class _$_Store implements _Store {
             (identical(other.img, img) || other.img == img) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.openTime, openTime) ||
+                other.openTime == openTime) &&
+            (identical(other.closeTime, closeTime) ||
+                other.closeTime == closeTime) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            const DeepCollectionEquality().equals(other._menus, _menus));
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, desc, img, user,
-      address, phone, const DeepCollectionEquality().hash(_menus));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      desc,
+      img,
+      user,
+      address,
+      openTime,
+      closeTime,
+      phone,
+      const DeepCollectionEquality().hash(_recipes));
 
   @JsonKey(ignore: true)
   @override
@@ -268,8 +318,10 @@ abstract class _Store implements Store {
       final String? img,
       required final String user,
       required final String address,
+      @JsonKey(name: 'open_time') required final String openTime,
+      @JsonKey(name: 'close_time') required final String closeTime,
       required final String phone,
-      final List<Menu> menus}) = _$_Store;
+      final List<Menu> recipes}) = _$_Store;
 
   factory _Store.fromJson(Map<String, dynamic> json) = _$_Store.fromJson;
 
@@ -286,9 +338,15 @@ abstract class _Store implements Store {
   @override
   String get address;
   @override
+  @JsonKey(name: 'open_time')
+  String get openTime;
+  @override
+  @JsonKey(name: 'close_time')
+  String get closeTime;
+  @override
   String get phone;
   @override
-  List<Menu> get menus;
+  List<Menu> get recipes;
   @override
   @JsonKey(ignore: true)
   _$$_StoreCopyWith<_$_Store> get copyWith =>

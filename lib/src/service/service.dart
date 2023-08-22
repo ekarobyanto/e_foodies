@@ -52,12 +52,13 @@ class APIService {
       }
       //error dev
       if (res != null && res.data['detail'] != null) {
+        log(res.data['detail'].toString());
         throw Failure(
           code: res.statusCode ?? 0,
           message: res.data['detail'],
         );
       } else {
-        //error backend framework
+        log(res.toString());
         throw Failure(
           code: 0,
           message: res.toString(),

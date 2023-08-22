@@ -26,6 +26,11 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         loadingComplete: () {
           emit(const AppState.initial());
         },
+        signOut: () async {
+          await storageRepository.delete(key: 'access');
+          await storageRepository.delete(key: 'refresh');
+          emit(const AppState.unauthenticated());
+        },
       );
     });
   }

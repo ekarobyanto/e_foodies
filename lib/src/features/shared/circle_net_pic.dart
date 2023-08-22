@@ -18,9 +18,14 @@ class CircleNetPic extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Styles.color.primary,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(180),
+        border: Border.all(
+          color: Styles.color.primary,
+          width: 2,
+        ),
       ),
+      padding: const EdgeInsets.all(2),
       height: height,
       width: width,
       child: ClipRRect(

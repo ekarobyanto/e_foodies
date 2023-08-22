@@ -1,3 +1,4 @@
+import 'package:e_foodies/src/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
 import 'package:e_foodies/src/features/shared/error_screen.dart';
 import 'package:e_foodies/src/features/shared/loading_screen.dart';
@@ -15,6 +16,7 @@ import '../../../core/bloc/account/account_bloc.dart';
 import '../../shared/background.dart';
 import '../../../constants/styles.dart';
 import '../../shared/rounded_animated_container.dart';
+import '../../shared/rounded_container.dart';
 
 class Account extends StatelessWidget {
   const Account({super.key});
@@ -193,16 +195,67 @@ class Account extends StatelessWidget {
                                         SizedBox(
                                           height: 10.h,
                                         ),
-                                        Center(
-                                          child: PromotionCard(
-                                            title: 'Daftarkan warung',
-                                            desc:
-                                                'Anda belum pernah melakukan pendaftaran warung',
-                                            onTap: () {
-                                              context.push('/create-store');
-                                            },
-                                          ),
-                                        )
+                                        context
+                                            .watch<DashboardBloc>()
+                                            .state
+                                            .maybeWhen(
+                                              orElse: () => const SizedBox(),
+                                              success: (dashboard, greeting) {
+                                                if (dashboard.statusStore ==
+                                                    'never_requested') {
+                                                  return PromotionCard(
+                                                    title: 'Daftarkan warung',
+                                                    desc:
+                                                        'Anda belum pernah melakukan pendaftaran warung',
+                                                    onTap: () {
+                                                      context.push(
+                                                          '/create-store');
+                                                    },
+                                                  );
+                                                } else {
+                                                  return RoundedContainer(
+                                                    radius: 20.r,
+                                                    border: Border.all(
+                                                      color:
+                                                          Styles.color.primary,
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              20),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              const Icon(
+                                                                  Icons
+                                                                      .info_outline,
+                                                                  color: Colors
+                                                                      .red),
+                                                              Text(
+                                                                ' Warung Anda Sedang Diverifikasi',
+                                                                style: Styles
+                                                                    .font.bold,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          const SizedBox(
+                                                              height: 10),
+                                                          Text(
+                                                            'Selama Menunggu Warung Anda Diverifikasi, mari menjelajahi menu-menu yang ada di aplikasi ini. Jika sudah diverifikasi, Anda dapat menambahkan menu baru di warung Anda.',
+                                                            style:
+                                                                Styles.font.xsm,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                              },
+                                            ),
                                       ],
                                     );
                                   },

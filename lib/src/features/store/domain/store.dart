@@ -14,8 +14,10 @@ class Store with _$Store {
     String? img,
     required String user,
     required String address,
+    @JsonKey(name: 'open_time') required String openTime,
+    @JsonKey(name: 'close_time') required String closeTime,
     required String phone,
-    @Default([]) List<Menu> menus,
+    @Default([]) List<Menu> recipes,
   }) = _Store;
 
   factory Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);

@@ -10,14 +10,16 @@ part 'menu.g.dart';
 @freezed
 class Menu with _$Menu {
   factory Menu({
-    required String id,
-    required String name,
-    required String user,
-    required String store,
-    @JsonKey(name: 'store_address') required String storeAddress,
+    @Default('') String id,
+    @Default('') String name,
+    @Default('') String user,
+    @Default('') String store,
+    @Default('') @JsonKey(name: 'store_address') String storeAddress,
+    @Default('') @JsonKey(name: 'id_store') String storeId,
     @Default('') String desc,
     @Default('') String img,
-    required List<Ingredient> ingredients,
+    int? price,
+    @Default([]) List<Ingredient> ingredients,
   }) = _Menu;
 
   factory Menu.fromJson(Map<String, dynamic> json) => _$MenuFromJson(json);

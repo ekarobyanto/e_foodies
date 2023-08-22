@@ -19,7 +19,9 @@ class WarungCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShrinkProperty(
       onTap: () {
-        context.push('/store');
+        context.push(
+          '/store/${warung.id}}',
+        );
       },
       child: RoundedContainer(
         radius: 20,
@@ -68,18 +70,20 @@ class WarungCard extends StatelessWidget {
                       children: [
                         Text(
                           warung.name,
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: TextStyle(
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(
-                          width: 1.sw * 0.55,
-                          child: Text(
-                            warung.desc,
-                            style: Styles.font.xsm,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                          height: 5.h,
+                        ),
+                        Text(
+                          '(${warung.openTime} - ${warung.closeTime})',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                            color: Styles.color.hint,
                           ),
                         ),
                       ],
@@ -94,7 +98,7 @@ class WarungCard extends StatelessWidget {
                         SizedBox(
                           width: 1.sw * 0.55,
                           child: Text(
-                            warung.menus.map((menu) => menu.name).join(', '),
+                            warung.recipes.map((menu) => menu.name).join(', '),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(

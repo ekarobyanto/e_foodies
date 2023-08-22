@@ -17,6 +17,7 @@ import '../../../../core/bloc/app/app_bloc.dart';
 import '../../../../core/bloc/image/image_bloc.dart';
 import '../../../../core/data/storage/storage_repository.dart';
 import '../../../../utills/show_scaled_dialog.dart';
+import '../../../dashboard/presentation/bloc/dashboard_bloc.dart';
 import '../../../shared/rounded_container.dart';
 import '../../../shared/shrink_property.dart';
 import '../../data/store_repository.dart';
@@ -87,15 +88,19 @@ class _CreateStoreState extends State<CreateStore> {
               storeCreated: () {
                 context.read<AppBloc>().add(const AppEvent.loadingComplete());
                 showScaleDialog(
-                    context,
-                    SuccessDialog(
-                      title: 'Toko Anda Berhasil Dibuat!',
-                      action: () {
-                        context.pop();
-                        context.go('/home');
-                      },
-                    ),
-                    null);
+                  context,
+                  SuccessDialog(
+                    title: 'Toko Anda Berhasil Dibuat!',
+                    action: () {
+                      context.pop();
+                      context
+                          .read<DashboardBloc>()
+                          .add(const DashboardEvent.refresh());
+                      context.go('/dashboard');
+                    },
+                  ),
+                  null,
+                );
               },
               orElse: () {},
             );
@@ -240,7 +245,7 @@ class _CreateStoreState extends State<CreateStore> {
                               TextInput(
                                 disableInput: context.read<AppBloc>().state ==
                                     const AppState.loading(),
-                                label: 'Nomor Telpon',
+                                label: 'Nomor Telpon Whatsapp',
                                 hint: 'Masukan nomor telpon',
                                 keyboardType: TextInputType.phone,
                                 validator: (v) {

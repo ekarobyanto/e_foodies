@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/bloc/account/account_bloc.dart';
 import 'core/bloc/app/app_bloc.dart';
 import 'features/account/data/account_repository.dart';
+import 'features/dashboard/data/dashboard_repository.dart';
+import 'features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'features/store/data/store_repository.dart';
 
 class App extends StatelessWidget {
@@ -42,6 +44,13 @@ class App extends StatelessWidget {
               authRepository: context.read<AuthRepository>(),
               storageRepository: context.read<StorageRepository>(),
             )..add(const AccountEvent.started()),
+          ),
+          BlocProvider(
+            create: (context) => DashboardBloc(
+              authRepository: context.read<AuthRepository>(),
+              storageRepository: context.read<StorageRepository>(),
+              dashboardRepository: DashboardRepository(),
+            ),
           ),
         ],
         child: ScreenUtilInit(

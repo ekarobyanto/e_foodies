@@ -104,14 +104,15 @@ final GoRouter router = GoRouter(
       ],
     ),
     GoRoute(
-      path: '/store',
-      pageBuilder: (context, state) => slideTransitionRL(
-        StoreScreen(
-          storeId: state.pathParameters['storeId']!,
-          menuId: state.pathParameters['menuId'],
-        ),
-      ),
-    ),
+        path: '/store/:storeId',
+        pageBuilder: (context, state) {
+          return slideTransitionRL(
+            StoreScreen(
+              storeId: state.pathParameters['storeId']!,
+              menuId: state.extra as String?,
+            ),
+          );
+        }),
     GoRoute(
       path: '/user-store',
       pageBuilder: (context, state) => slideTransitionRL(const UserStore()),

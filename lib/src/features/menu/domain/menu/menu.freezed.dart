@@ -26,8 +26,11 @@ mixin _$Menu {
   String get store => throw _privateConstructorUsedError;
   @JsonKey(name: 'store_address')
   String get storeAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_store')
+  String get storeId => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
   String get img => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,8 +49,10 @@ abstract class $MenuCopyWith<$Res> {
       String user,
       String store,
       @JsonKey(name: 'store_address') String storeAddress,
+      @JsonKey(name: 'id_store') String storeId,
       String desc,
       String img,
+      int? price,
       List<Ingredient> ingredients});
 }
 
@@ -69,8 +74,10 @@ class _$MenuCopyWithImpl<$Res, $Val extends Menu>
     Object? user = null,
     Object? store = null,
     Object? storeAddress = null,
+    Object? storeId = null,
     Object? desc = null,
     Object? img = null,
+    Object? price = freezed,
     Object? ingredients = null,
   }) {
     return _then(_value.copyWith(
@@ -94,6 +101,10 @@ class _$MenuCopyWithImpl<$Res, $Val extends Menu>
           ? _value.storeAddress
           : storeAddress // ignore: cast_nullable_to_non_nullable
               as String,
+      storeId: null == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as String,
       desc: null == desc
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -102,6 +113,10 @@ class _$MenuCopyWithImpl<$Res, $Val extends Menu>
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
       ingredients: null == ingredients
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -122,8 +137,10 @@ abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
       String user,
       String store,
       @JsonKey(name: 'store_address') String storeAddress,
+      @JsonKey(name: 'id_store') String storeId,
       String desc,
       String img,
+      int? price,
       List<Ingredient> ingredients});
 }
 
@@ -141,8 +158,10 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
     Object? user = null,
     Object? store = null,
     Object? storeAddress = null,
+    Object? storeId = null,
     Object? desc = null,
     Object? img = null,
+    Object? price = freezed,
     Object? ingredients = null,
   }) {
     return _then(_$_Menu(
@@ -166,6 +185,10 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
           ? _value.storeAddress
           : storeAddress // ignore: cast_nullable_to_non_nullable
               as String,
+      storeId: null == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as String,
       desc: null == desc
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -174,6 +197,10 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
       ingredients: null == ingredients
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -186,37 +213,49 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
 @JsonSerializable()
 class _$_Menu implements _Menu {
   _$_Menu(
-      {required this.id,
-      required this.name,
-      required this.user,
-      required this.store,
-      @JsonKey(name: 'store_address') required this.storeAddress,
+      {this.id = '',
+      this.name = '',
+      this.user = '',
+      this.store = '',
+      @JsonKey(name: 'store_address') this.storeAddress = '',
+      @JsonKey(name: 'id_store') this.storeId = '',
       this.desc = '',
       this.img = '',
-      required final List<Ingredient> ingredients})
+      this.price,
+      final List<Ingredient> ingredients = const []})
       : _ingredients = ingredients;
 
   factory _$_Menu.fromJson(Map<String, dynamic> json) => _$$_MenuFromJson(json);
 
   @override
+  @JsonKey()
   final String id;
   @override
+  @JsonKey()
   final String name;
   @override
+  @JsonKey()
   final String user;
   @override
+  @JsonKey()
   final String store;
   @override
   @JsonKey(name: 'store_address')
   final String storeAddress;
+  @override
+  @JsonKey(name: 'id_store')
+  final String storeId;
   @override
   @JsonKey()
   final String desc;
   @override
   @JsonKey()
   final String img;
+  @override
+  final int? price;
   final List<Ingredient> _ingredients;
   @override
+  @JsonKey()
   List<Ingredient> get ingredients {
     if (_ingredients is EqualUnmodifiableListView) return _ingredients;
     // ignore: implicit_dynamic_type
@@ -225,7 +264,7 @@ class _$_Menu implements _Menu {
 
   @override
   String toString() {
-    return 'Menu(id: $id, name: $name, user: $user, store: $store, storeAddress: $storeAddress, desc: $desc, img: $img, ingredients: $ingredients)';
+    return 'Menu(id: $id, name: $name, user: $user, store: $store, storeAddress: $storeAddress, storeId: $storeId, desc: $desc, img: $img, price: $price, ingredients: $ingredients)';
   }
 
   @override
@@ -239,8 +278,10 @@ class _$_Menu implements _Menu {
             (identical(other.store, store) || other.store == store) &&
             (identical(other.storeAddress, storeAddress) ||
                 other.storeAddress == storeAddress) &&
+            (identical(other.storeId, storeId) || other.storeId == storeId) &&
             (identical(other.desc, desc) || other.desc == desc) &&
             (identical(other.img, img) || other.img == img) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
                 .equals(other._ingredients, _ingredients));
   }
@@ -254,8 +295,10 @@ class _$_Menu implements _Menu {
       user,
       store,
       storeAddress,
+      storeId,
       desc,
       img,
+      price,
       const DeepCollectionEquality().hash(_ingredients));
 
   @JsonKey(ignore: true)
@@ -274,14 +317,16 @@ class _$_Menu implements _Menu {
 
 abstract class _Menu implements Menu {
   factory _Menu(
-      {required final String id,
-      required final String name,
-      required final String user,
-      required final String store,
-      @JsonKey(name: 'store_address') required final String storeAddress,
+      {final String id,
+      final String name,
+      final String user,
+      final String store,
+      @JsonKey(name: 'store_address') final String storeAddress,
+      @JsonKey(name: 'id_store') final String storeId,
       final String desc,
       final String img,
-      required final List<Ingredient> ingredients}) = _$_Menu;
+      final int? price,
+      final List<Ingredient> ingredients}) = _$_Menu;
 
   factory _Menu.fromJson(Map<String, dynamic> json) = _$_Menu.fromJson;
 
@@ -297,9 +342,14 @@ abstract class _Menu implements Menu {
   @JsonKey(name: 'store_address')
   String get storeAddress;
   @override
+  @JsonKey(name: 'id_store')
+  String get storeId;
+  @override
   String get desc;
   @override
   String get img;
+  @override
+  int? get price;
   @override
   List<Ingredient> get ingredients;
   @override
