@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../core/bloc/account/account_bloc.dart';
@@ -212,7 +213,9 @@ class Account extends StatelessWidget {
                                                           '/create-store');
                                                     },
                                                   );
-                                                } else {
+                                                } else if (dashboard
+                                                        .statusStore ==
+                                                    'Pending') {
                                                   return RoundedContainer(
                                                     radius: 20.r,
                                                     border: Border.all(
@@ -250,6 +253,54 @@ class Account extends StatelessWidget {
                                                                 Styles.font.xsm,
                                                           ),
                                                         ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                } else {
+                                                  return RoundedContainer(
+                                                    radius: 20.r,
+                                                    border: Border.all(
+                                                      color: Styles
+                                                          .color.darkGreen,
+                                                      width: 2,
+                                                    ),
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 5,
+                                                    ),
+                                                    child: ListTile(
+                                                      leading: CircleNetPic(
+                                                        src: dashboard
+                                                                .imageStore ??
+                                                            '',
+                                                        height: 60.h,
+                                                        width: 55.h,
+                                                      ),
+                                                      title: Text(
+                                                        dashboard.nameStore ??
+                                                            '',
+                                                        style: Styles.font.blg,
+                                                      ),
+                                                      subtitle: Text(
+                                                        dashboard
+                                                                .addressStore ??
+                                                            '',
+                                                        style: Styles.font.sm,
+                                                      ),
+                                                      trailing: IconButton(
+                                                        onPressed: () {
+                                                          context.push(
+                                                            '/user-store',
+                                                          );
+                                                        },
+                                                        icon: Icon(
+                                                          BoxIcons
+                                                              .bx_chevron_right,
+                                                          color: Styles
+                                                              .color.primary,
+                                                          size: 30.sp,
+                                                        ),
                                                       ),
                                                     ),
                                                   );
