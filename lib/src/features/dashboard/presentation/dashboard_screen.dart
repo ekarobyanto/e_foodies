@@ -57,8 +57,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Scaffold(
                   backgroundColor: Colors.grey[100],
                   appBar: AppBar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Styles.color.primary,
                     elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10.r),
+                        bottomRight: Radius.circular(10.r),
+                      ),
+                    ),
                     automaticallyImplyLeading: false,
                     leading: Material(
                       color: Colors.transparent,
@@ -181,6 +187,45 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                               style: Styles.font.xsm,
                                             ),
                                           ],
+                                        ),
+                                      ),
+                                    ),
+                                  if (dashboard.statusStore == 'Approved')
+                                    RoundedContainer(
+                                      radius: 20.r,
+                                      border: Border.all(
+                                        color: Styles.color.darkGreen,
+                                        width: 2,
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 10,
+                                        horizontal: 5,
+                                      ),
+                                      child: ListTile(
+                                        leading: CircleNetPic(
+                                          src: dashboard.imageStore ?? '',
+                                          height: 60.h,
+                                          width: 55.h,
+                                        ),
+                                        title: Text(
+                                          dashboard.nameStore ?? '',
+                                          style: Styles.font.blg,
+                                        ),
+                                        subtitle: Text(
+                                          dashboard.addressStore ?? '',
+                                          style: Styles.font.sm,
+                                        ),
+                                        trailing: IconButton(
+                                          onPressed: () {
+                                            context.push(
+                                              '/user-store',
+                                            );
+                                          },
+                                          icon: Icon(
+                                            BoxIcons.bx_chevron_right,
+                                            color: Styles.color.primary,
+                                            size: 30.sp,
+                                          ),
                                         ),
                                       ),
                                     ),
