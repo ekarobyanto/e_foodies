@@ -56,9 +56,11 @@ class _LabelTimeInputState extends State<LabelTimeInput> {
                 String hourFormat = pickedTime.hour.toString().length < 2
                     ? '0${pickedTime.hour}'
                     : pickedTime.hour.toString();
+                String minuteFormat = pickedTime.minute.toString().length < 2
+                    ? '0${pickedTime.minute}'
+                    : pickedTime.minute.toString();
                 setState(() {
-                  widget.timeController.text =
-                      '$hourFormat:${pickedTime.minute}';
+                  widget.timeController.text = '$hourFormat:$minuteFormat';
                 });
               } else {
                 log("Time is not selected");

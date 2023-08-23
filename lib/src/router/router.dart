@@ -7,10 +7,12 @@ import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.
 import 'package:e_foodies/src/features/menu/presentation/edit_menu.dart';
 import 'package:e_foodies/src/features/menu/presentation/menu_list.dart';
 import 'package:e_foodies/src/features/search/presentation/search_screen.dart';
+import 'package:e_foodies/src/features/store/presentation/edit-user-store/edit_user_store.dart';
 import 'package:e_foodies/src/features/store/presentation/register-store/register_store.dart';
 import 'package:e_foodies/src/features/store/presentation/store.dart';
 import 'package:e_foodies/src/features/store/presentation/store_list.dart';
-import 'package:e_foodies/src/features/store/presentation/user_store.dart';
+import 'package:e_foodies/src/features/store/presentation/user-store/bloc/user_store_bloc.dart';
+import 'package:e_foodies/src/features/store/presentation/user-store/user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -116,6 +118,12 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/user-store',
       pageBuilder: (context, state) => slideTransitionRL(const UserStore()),
+    ),
+    GoRoute(
+      path: '/edit-user-store',
+      pageBuilder: (context, state) => slideTransitionRL(EditUserStore(
+        // storeBloc: state.extra as UserStoreBloc,
+      )),
     ),
   ],
 );

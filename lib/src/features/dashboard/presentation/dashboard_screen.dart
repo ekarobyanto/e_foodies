@@ -1,8 +1,5 @@
-import 'package:e_foodies/src/core/data/storage/storage_repository.dart';
-import 'package:e_foodies/src/features/auth/data/auth_repository.dart';
-import 'package:e_foodies/src/features/dashboard/data/dashboard_repository.dart';
-import 'package:e_foodies/src/features/menu/domain/ingredient/ingredient.dart';
 import 'package:e_foodies/src/features/shared/loading_screen.dart';
+import 'package:e_foodies/src/features/store/presentation/user-store/bloc/user_store_bloc.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +9,6 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/bloc/account/account_bloc.dart';
-import '../../menu/domain/menu/menu.dart';
 import '../../shared/circle_net_pic.dart';
 import '../../shared/error_screen.dart';
 import '../../shared/item_showcase.dart';
@@ -34,16 +30,32 @@ final advancedDrawerController = AdvancedDrawerController();
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AccountBloc, AccountState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          succes: (account) {
-            context.read<DashboardBloc>().add(
-                  const DashboardEvent.started(),
-                );
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AccountBloc, AccountState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              succes: (account) {
+                context.read<DashboardBloc>().add(
+                      const DashboardEvent.started(),
+                    );
+              },
+            );
           },
-        );
-      },
+        ),
+        BlocListener<DashboardBloc, DashboardState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              success: (dashboardData, greeting) =>
+                  dashboardData.statusStore == "Approved"
+                      ? context.read<UserStoreBloc>().add(
+                            const UserStoreEvent.started(),
+                          )
+                      : null,
+            );
+          },
+        ),
+      ],
       child: BlocBuilder<AccountBloc, AccountState>(
         builder: (context, accountState) {
           return BlocBuilder<DashboardBloc, DashboardState>(
@@ -194,7 +206,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     RoundedContainer(
                                       radius: 20.r,
                                       border: Border.all(
-                                        color: Styles.color.darkGreen,
+                                        color: Styles.color.primary,
                                         width: 2,
                                       ),
                                       padding: const EdgeInsets.symmetric(

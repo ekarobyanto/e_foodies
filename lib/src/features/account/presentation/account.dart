@@ -106,7 +106,7 @@ class Account extends StatelessWidget {
                           child: Container(
                             width: double.maxFinite,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Styles.color.primary,
                               border: Border.all(
                                 color: Styles.color.primary,
                                 width: 1.5,
@@ -129,32 +129,37 @@ class Account extends StatelessWidget {
                                       children: [
                                         Text(
                                           'Data Diri',
-                                          style: Styles.font.blg,
+                                          style: Styles.font.blg
+                                              .copyWith(color: Colors.white),
                                         ),
                                         SizedBox(
                                           height: 20.h,
                                         ),
                                         Text(
                                           'Email : ',
-                                          style: Styles.font.bold,
+                                          style: Styles.font.bold
+                                              .copyWith(color: Colors.white),
                                         ),
                                         Text(
                                           account.email,
-                                          style: Styles.font.base,
+                                          style: Styles.font.base
+                                              .copyWith(color: Colors.white),
                                         ),
                                         SizedBox(
                                           height: 10.h,
                                         ),
                                         Text(
                                           'Alamat : ',
-                                          style: Styles.font.bold,
+                                          style: Styles.font.bold
+                                              .copyWith(color: Colors.white),
                                         ),
                                         SizedBox(
                                           width: 1.sw,
                                           child: Text(
                                             account.address,
                                             maxLines: 2,
-                                            style: Styles.font.base,
+                                            style: Styles.font.base
+                                                .copyWith(color: Colors.white),
                                             textDirection: TextDirection.ltr,
                                           ),
                                         ),
@@ -174,24 +179,30 @@ class Account extends StatelessWidget {
                                             padding: const EdgeInsets.symmetric(
                                                 vertical: 10),
                                             alignment: Alignment.center,
+                                            color: Colors.white,
                                             border: Border.all(
-                                              color: Styles.color.primary,
+                                              color: Colors.white,
                                               width: 1.5,
                                             ),
                                             child: Text(
                                               'Ubah Profil',
-                                              style: Styles.font.base.copyWith(
+                                              style: Styles.font.bold.copyWith(
                                                 color: Styles.color.primary,
                                               ),
                                             ),
                                           ),
                                         ),
                                         SizedBox(
-                                          height: 20.h,
+                                          height: 15.h,
+                                        ),
+                                        const Divider(
+                                          color: Colors.white,
+                                          thickness: 1.5,
                                         ),
                                         Text(
                                           'Warung',
-                                          style: Styles.font.blg,
+                                          style: Styles.font.blg
+                                              .copyWith(color: Colors.white),
                                         ),
                                         SizedBox(
                                           height: 10.h,
@@ -259,9 +270,9 @@ class Account extends StatelessWidget {
                                                 } else {
                                                   return RoundedContainer(
                                                     radius: 20.r,
+                                                    color: Colors.white,
                                                     border: Border.all(
-                                                      color: Styles
-                                                          .color.darkGreen,
+                                                      color: Colors.black,
                                                       width: 2,
                                                     ),
                                                     padding: const EdgeInsets

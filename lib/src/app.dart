@@ -11,6 +11,7 @@ import 'features/account/data/account_repository.dart';
 import 'features/dashboard/data/dashboard_repository.dart';
 import 'features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'features/store/data/store_repository.dart';
+import 'features/store/presentation/user-store/bloc/user_store_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -52,6 +53,13 @@ class App extends StatelessWidget {
               dashboardRepository: DashboardRepository(),
             ),
           ),
+          BlocProvider(
+            create: (context) => UserStoreBloc(
+              authRepository: context.read<AuthRepository>(),
+              storageRepository: context.read<StorageRepository>(),
+              storeRepository: context.read<StoreRepository>(),
+            ),
+          )
         ],
         child: ScreenUtilInit(
           designSize: const Size(375, 812),

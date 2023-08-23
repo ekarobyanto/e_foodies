@@ -68,9 +68,7 @@ class StoreRepository extends RepositoryBase {
             ),
           );
         },
-        parse: (response) {
-          return response.data;
-        },
+        parse: (response) => Store.fromJson(response),
       );
     } on Failure catch (_) {
       rethrow;
@@ -103,6 +101,31 @@ class StoreRepository extends RepositoryBase {
       });
       return await service.call(
         request: () => dio.postUri(
+          service.buildUri(endpoints: '/my-store/'),
+          options: Options(headers: {'Authorization': 'Bearer $token'}),
+          data: formData,
+        ),
+        parse: (response) => response,
+      );
+    } on Failure catch (_) {
+      rethrow;
+    }
+  }
+
+  Future editUserStore({required String token, required StoreForm form}) async {
+    try {
+      final formData = FormData.fromMap({
+        if (form.name != '') 'name': form.name,
+        if (form.desc != '') 'desc': form.desc,
+        if (form.address != '') 'address': form.address,
+        if (form.phone != '') 'phone': form.phone,
+        if (form.openTime != '') 'open_time': form.openTime,
+        if (form.closeTime != '') 'close_time': form.closeTime,
+        if (form.imagePath != '')
+          'img': await MultipartFile.fromFile(form.imagePath),
+      });
+      return await service.call(
+        request: () => dio.putUri(
           service.buildUri(endpoints: '/my-store/'),
           options: Options(headers: {'Authorization': 'Bearer $token'}),
           data: formData,

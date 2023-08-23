@@ -5,4 +5,5 @@ class Assets {
   static String welcomeBackground = 'welcome_bg'.jpg;
   static String restaurant = 'restraurant'.png;
   static String defaultImage = 'default'.jpg;
+  static String book = 'book'.png;
 }
