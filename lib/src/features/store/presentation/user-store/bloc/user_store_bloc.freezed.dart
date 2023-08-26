@@ -19,32 +19,44 @@ mixin _$UserStoreEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id) deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id)? deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id)? deleteMenu,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_DeleteMenu value) deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_DeleteMenu value)? deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_DeleteMenu value)? deleteMenu,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +118,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id) deleteMenu,
   }) {
     return started();
   }
@@ -114,6 +128,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id)? deleteMenu,
   }) {
     return started?.call();
   }
@@ -122,6 +138,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id)? deleteMenu,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -134,6 +152,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_DeleteMenu value) deleteMenu,
   }) {
     return started(this);
   }
@@ -142,6 +162,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_DeleteMenu value)? deleteMenu,
   }) {
     return started?.call(this);
   }
@@ -150,6 +172,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_DeleteMenu value)? deleteMenu,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -161,6 +185,304 @@ class _$_Started implements _Started {
 
 abstract class _Started implements UserStoreEvent {
   const factory _Started() = _$_Started;
+}
+
+/// @nodoc
+abstract class _$$_UpdateMenuCopyWith<$Res> {
+  factory _$$_UpdateMenuCopyWith(
+          _$_UpdateMenu value, $Res Function(_$_UpdateMenu) then) =
+      __$$_UpdateMenuCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MenuForm form, String id});
+
+  $MenuFormCopyWith<$Res> get form;
+}
+
+/// @nodoc
+class __$$_UpdateMenuCopyWithImpl<$Res>
+    extends _$UserStoreEventCopyWithImpl<$Res, _$_UpdateMenu>
+    implements _$$_UpdateMenuCopyWith<$Res> {
+  __$$_UpdateMenuCopyWithImpl(
+      _$_UpdateMenu _value, $Res Function(_$_UpdateMenu) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? form = null,
+    Object? id = null,
+  }) {
+    return _then(_$_UpdateMenu(
+      null == form
+          ? _value.form
+          : form // ignore: cast_nullable_to_non_nullable
+              as MenuForm,
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MenuFormCopyWith<$Res> get form {
+    return $MenuFormCopyWith<$Res>(_value.form, (value) {
+      return _then(_value.copyWith(form: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateMenu implements _UpdateMenu {
+  const _$_UpdateMenu(this.form, this.id);
+
+  @override
+  final MenuForm form;
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'UserStoreEvent.updateMenu(form: $form, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateMenu &&
+            (identical(other.form, form) || other.form == form) &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, form, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateMenuCopyWith<_$_UpdateMenu> get copyWith =>
+      __$$_UpdateMenuCopyWithImpl<_$_UpdateMenu>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id) deleteMenu,
+  }) {
+    return updateMenu(form, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id)? deleteMenu,
+  }) {
+    return updateMenu?.call(form, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id)? deleteMenu,
+    required TResult orElse(),
+  }) {
+    if (updateMenu != null) {
+      return updateMenu(form, id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_DeleteMenu value) deleteMenu,
+  }) {
+    return updateMenu(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_DeleteMenu value)? deleteMenu,
+  }) {
+    return updateMenu?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_DeleteMenu value)? deleteMenu,
+    required TResult orElse(),
+  }) {
+    if (updateMenu != null) {
+      return updateMenu(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateMenu implements UserStoreEvent {
+  const factory _UpdateMenu(final MenuForm form, final String id) =
+      _$_UpdateMenu;
+
+  MenuForm get form;
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_UpdateMenuCopyWith<_$_UpdateMenu> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeleteMenuCopyWith<$Res> {
+  factory _$$_DeleteMenuCopyWith(
+          _$_DeleteMenu value, $Res Function(_$_DeleteMenu) then) =
+      __$$_DeleteMenuCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_DeleteMenuCopyWithImpl<$Res>
+    extends _$UserStoreEventCopyWithImpl<$Res, _$_DeleteMenu>
+    implements _$$_DeleteMenuCopyWith<$Res> {
+  __$$_DeleteMenuCopyWithImpl(
+      _$_DeleteMenu _value, $Res Function(_$_DeleteMenu) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$_DeleteMenu(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteMenu implements _DeleteMenu {
+  const _$_DeleteMenu(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'UserStoreEvent.deleteMenu(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeleteMenu &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeleteMenuCopyWith<_$_DeleteMenu> get copyWith =>
+      __$$_DeleteMenuCopyWithImpl<_$_DeleteMenu>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id) deleteMenu,
+  }) {
+    return deleteMenu(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id)? deleteMenu,
+  }) {
+    return deleteMenu?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id)? deleteMenu,
+    required TResult orElse(),
+  }) {
+    if (deleteMenu != null) {
+      return deleteMenu(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_DeleteMenu value) deleteMenu,
+  }) {
+    return deleteMenu(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_DeleteMenu value)? deleteMenu,
+  }) {
+    return deleteMenu?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_DeleteMenu value)? deleteMenu,
+    required TResult orElse(),
+  }) {
+    if (deleteMenu != null) {
+      return deleteMenu(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteMenu implements UserStoreEvent {
+  const factory _DeleteMenu(final String id) = _$_DeleteMenu;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_DeleteMenuCopyWith<_$_DeleteMenu> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -10,6 +10,7 @@ import 'core/bloc/app/app_bloc.dart';
 import 'features/account/data/account_repository.dart';
 import 'features/dashboard/data/dashboard_repository.dart';
 import 'features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'features/menu/data/menu_repository.dart';
 import 'features/store/data/store_repository.dart';
 import 'features/store/presentation/user-store/bloc/user_store_bloc.dart';
 
@@ -58,6 +59,7 @@ class App extends StatelessWidget {
               authRepository: context.read<AuthRepository>(),
               storageRepository: context.read<StorageRepository>(),
               storeRepository: context.read<StoreRepository>(),
+              menuRepository: MenuRepository(),
             ),
           )
         ],

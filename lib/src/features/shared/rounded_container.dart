@@ -12,6 +12,7 @@ class RoundedContainer extends StatelessWidget {
     this.padding,
     this.alignment,
     this.gradient,
+    this.shadow,
   });
 
   Color? color;
@@ -22,6 +23,7 @@ class RoundedContainer extends StatelessWidget {
   EdgeInsetsGeometry? padding;
   AlignmentGeometry? alignment;
   Gradient? gradient;
+  List<BoxShadow>? shadow;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class RoundedContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(radius),
         border: border,
         gradient: gradient,
+        boxShadow: shadow,
       ),
       child: child,
     );

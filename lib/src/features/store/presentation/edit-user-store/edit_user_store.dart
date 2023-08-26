@@ -13,28 +13,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../constants/image_path.dart';
-import '../../../../constants/styles.dart';
-import '../../../../core/bloc/app/app_bloc.dart';
-import '../../../../core/bloc/image/image_bloc.dart';
 import '../../../../router/router.dart';
-import '../../../../utills/show_scaled_dialog.dart';
-import '../../../shared/background.dart';
-import '../../../shared/error_dialog.dart';
-import '../../../shared/rounded_container.dart';
-import '../../../shared/shrink_property.dart';
 import '../../../shared/text_input.dart';
+import '../../../shared/background.dart';
 import '../../data/store_repository.dart';
+import '../../../shared/error_dialog.dart';
+import '../../../../constants/styles.dart';
+import '../../../shared/shrink_property.dart';
+import '../../../../constants/image_path.dart';
+import '../../../shared/rounded_container.dart';
+import '../../../../core/bloc/app/app_bloc.dart';
+import '../../../../utills/show_scaled_dialog.dart';
+import '../../../../core/bloc/image/image_bloc.dart';
 import '../register-store/widget/label_time_input.dart';
-import '../user-store/bloc/user_store_bloc.dart';
 
 class EditUserStore extends StatefulWidget {
   EditUserStore({
     super.key,
-    // required this.storeBloc,
   });
-
-  // UserStoreBloc storeBloc;
 
   @override
   State<EditUserStore> createState() => _EditUserStoreState();

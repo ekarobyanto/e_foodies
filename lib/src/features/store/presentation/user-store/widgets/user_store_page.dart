@@ -4,14 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants/styles.dart';
-import '../../../../../core/data/storage/storage_repository.dart';
-import '../../../../auth/data/auth_repository.dart';
 import '../../../../shared/circle_net_pic.dart';
 import '../../../../shared/error_screen.dart';
 import '../../../../shared/loading_screen.dart';
 import '../../../../shared/rounded_container.dart';
 import '../../../../shared/shrink_property.dart';
-import '../../../data/store_repository.dart';
 import '../bloc/user_store_bloc.dart';
 import 'menu_empty.dart';
 import 'user_menu_list.dart';
@@ -25,14 +22,19 @@ class UserStorePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserStoreBloc, UserStoreState>(
       builder: (context, state) {
-        return state.when(
-          initial: () => const SizedBox(),
+        return state.maybeWhen(
+          orElse: () => const SizedBox(),
           loading: () => const LoadingScreen(),
-          error: (error) => ErrorScreen(
-            error: error,
-            onRetry: () => context.read<UserStoreBloc>().add(
-                  const UserStoreEvent.started(),
-                ),
+          error: (error) => Center(
+            child: SizedBox(
+              height: 1.sh,
+              child: ErrorScreen(
+                error: error,
+                onRetry: () => context.read<UserStoreBloc>().add(
+                      const UserStoreEvent.started(),
+                    ),
+              ),
+            ),
           ),
           loaded: (store) {
             return Column(
@@ -104,7 +106,9 @@ class UserStorePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ShrinkProperty(
-                          onTap: () {},
+                          onTap: () {
+                            context.push('/add-menu');
+                          },
                           child: RoundedContainer(
                             radius: 10.r,
                             color: Styles.color.primary,

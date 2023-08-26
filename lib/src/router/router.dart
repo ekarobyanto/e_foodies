@@ -4,14 +4,13 @@ import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart
 import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/splash_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.dart';
-import 'package:e_foodies/src/features/menu/presentation/edit_menu.dart';
+import 'package:e_foodies/src/features/menu/presentation/edit-menu/edit_menu.dart';
 import 'package:e_foodies/src/features/menu/presentation/menu_list.dart';
 import 'package:e_foodies/src/features/search/presentation/search_screen.dart';
 import 'package:e_foodies/src/features/store/presentation/edit-user-store/edit_user_store.dart';
 import 'package:e_foodies/src/features/store/presentation/register-store/register_store.dart';
 import 'package:e_foodies/src/features/store/presentation/store.dart';
 import 'package:e_foodies/src/features/store/presentation/store_list.dart';
-import 'package:e_foodies/src/features/store/presentation/user-store/bloc/user_store_bloc.dart';
 import 'package:e_foodies/src/features/store/presentation/user-store/user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +19,7 @@ import 'package:go_router/go_router.dart';
 import '../core/bloc/app/app_bloc.dart';
 
 import '../features/dashboard/presentation/dashboard_screen.dart';
+import '../features/menu/presentation/add-menu/add_menu.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -89,10 +89,6 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => fadeTransition(const SearchScreen()),
     ),
     GoRoute(
-      path: '/menu',
-      pageBuilder: (context, state) => slideTransitionRL(const EditMenu()),
-    ),
-    GoRoute(
       path: '/account',
       pageBuilder: (context, state) => slideTransitionRL(const Account()),
       routes: [
@@ -121,9 +117,17 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/edit-user-store',
-      pageBuilder: (context, state) => slideTransitionRL(EditUserStore(
-        // storeBloc: state.extra as UserStoreBloc,
-      )),
+      pageBuilder: (context, state) => slideTransitionRL(
+        EditUserStore(),
+      ),
+    ),
+    GoRoute(
+      path: '/add-menu',
+      pageBuilder: (context, state) => slideTransitionRL(const AddMenu()),
+    ),
+    GoRoute(
+      path: '/edit-menu',
+      pageBuilder: (context, state) => slideTransitionRL(const EditMenu()),
     ),
   ],
 );

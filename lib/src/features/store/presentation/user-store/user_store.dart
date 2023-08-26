@@ -46,7 +46,6 @@ class UserStore extends StatelessWidget {
                             Text(
                               'Warung Anda Sedang Diverifikasi',
                               style: Styles.font.bxl3,
-                              // textAlign: TextAlign.center,
                             ),
                             SizedBox(
                               height: 40.h,
