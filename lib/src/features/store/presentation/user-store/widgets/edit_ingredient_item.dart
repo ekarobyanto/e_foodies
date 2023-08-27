@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../constants/styles.dart';
+import '../../../../../core/bloc/app/app_bloc.dart';
 import '../../../../menu/domain/ingredient/ingredient.dart';
 import '../../../../menu/presentation/add-menu/cubit/ingredient/ingredient_state_cubit.dart';
 import '../../../../shared/rounded_container.dart';
@@ -88,6 +89,8 @@ class _IngredientItemState extends State<EditIngredientItem> {
                 child: TextField(
                   style: Styles.font.base,
                   controller: controller,
+                  enabled:
+                      context.read<AppBloc>().state != const AppState.loading(),
                   cursorColor: Styles.color.primary,
                   decoration: const InputDecoration(
                     hintText: 'Nama komposisi',
