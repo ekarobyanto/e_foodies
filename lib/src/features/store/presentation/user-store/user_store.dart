@@ -13,11 +13,13 @@ import 'widgets/no_store.dart';
 import 'widgets/user_store_page.dart';
 
 class UserStore extends StatelessWidget {
-  const UserStore({super.key});
+  UserStore({super.key});
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Styles.color.darkGreen,

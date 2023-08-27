@@ -103,7 +103,7 @@ class MenuRepository extends RepositoryBase {
             ),
             data: {
               if (form.name != '') "name": form.name,
-              if (form.description != '') "description": form.description,
+              if (form.description != '') "desc": form.description,
               if (form.price != '') "price": form.price,
               if (form.ingredients != [])
                 "ingredients": form.ingredients

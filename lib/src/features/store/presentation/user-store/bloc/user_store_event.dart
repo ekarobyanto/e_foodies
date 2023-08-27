@@ -5,5 +5,7 @@ class UserStoreEvent with _$UserStoreEvent {
   const factory UserStoreEvent.started() = _Started;
   const factory UserStoreEvent.updateMenu(MenuForm form, String id) =
       _UpdateMenu;
+  const factory UserStoreEvent.updateMenuImage(String id, String image) =
+      _UpdateMenuImage;
   const factory UserStoreEvent.deleteMenu(String id) = _DeleteMenu;
 }

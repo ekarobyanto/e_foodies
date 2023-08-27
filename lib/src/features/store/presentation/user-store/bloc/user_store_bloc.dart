@@ -55,15 +55,39 @@ class UserStoreBloc extends Bloc<UserStoreEvent, UserStoreState> {
               value.form,
               value.id,
             );
-            final storeData = await storeRepository.getUserStore(
-              token: await storageRepository.read(key: 'access'),
-            );
-            emit(_Loaded(storeData));
+            if (value.form.image != '') {
+              add(UserStoreEvent.updateMenuImage(value.id, value.form.image));
+            } else {
+              add(const UserStoreEvent.started());
+            }
           } on Failure catch (e) {
             tokenHandler(
               e: e,
               onSuccess: () {
                 add(UserStoreEvent.updateMenu(value.form, value.id));
+              },
+              onError: (e) {
+                emit(_Error(e));
+              },
+            );
+          }
+        },
+        updateMenuImage: (value) async {
+          emit(const _Loading());
+          try {
+            if (value.image != '') {
+              await menuRepository.updateMenuImage(
+                value.id,
+                value.image,
+                await storageRepository.read(key: 'access'),
+              );
+            }
+            add(const UserStoreEvent.started());
+          } on Failure catch (e) {
+            tokenHandler(
+              e: e,
+              onSuccess: () {
+                add(UserStoreEvent.updateMenuImage(value.id, value.image));
               },
               onError: (e) {
                 emit(_Error(e));

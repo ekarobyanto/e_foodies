@@ -72,7 +72,7 @@ class App extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             builder: (context, child) => MediaQuery(
               data: MediaQuery.of(context).copyWith(
-                textScaleFactor: 1.0,
+                textScaleFactor: 1.0.sp,
                 alwaysUse24HourFormat: true,
               ),
               child: child!,

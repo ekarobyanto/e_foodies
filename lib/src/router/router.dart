@@ -113,7 +113,7 @@ final GoRouter router = GoRouter(
         }),
     GoRoute(
       path: '/user-store',
-      pageBuilder: (context, state) => slideTransitionRL(const UserStore()),
+      pageBuilder: (context, state) => slideTransitionRL(UserStore()),
     ),
     GoRoute(
       path: '/edit-user-store',

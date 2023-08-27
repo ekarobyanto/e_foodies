@@ -20,6 +20,7 @@ mixin _$UserStoreEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id, String image) updateMenuImage,
     required TResult Function(String id) deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$UserStoreEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id, String image)? updateMenuImage,
     TResult? Function(String id)? deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$UserStoreEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id, String image)? updateMenuImage,
     TResult Function(String id)? deleteMenu,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$UserStoreEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_UpdateMenuImage value) updateMenuImage,
     required TResult Function(_DeleteMenu value) deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$UserStoreEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_UpdateMenuImage value)? updateMenuImage,
     TResult? Function(_DeleteMenu value)? deleteMenu,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$UserStoreEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_UpdateMenuImage value)? updateMenuImage,
     TResult Function(_DeleteMenu value)? deleteMenu,
     required TResult orElse(),
   }) =>
@@ -119,6 +125,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id, String image) updateMenuImage,
     required TResult Function(String id) deleteMenu,
   }) {
     return started();
@@ -129,6 +136,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id, String image)? updateMenuImage,
     TResult? Function(String id)? deleteMenu,
   }) {
     return started?.call();
@@ -139,6 +147,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id, String image)? updateMenuImage,
     TResult Function(String id)? deleteMenu,
     required TResult orElse(),
   }) {
@@ -153,6 +162,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_UpdateMenuImage value) updateMenuImage,
     required TResult Function(_DeleteMenu value) deleteMenu,
   }) {
     return started(this);
@@ -163,6 +173,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_UpdateMenuImage value)? updateMenuImage,
     TResult? Function(_DeleteMenu value)? deleteMenu,
   }) {
     return started?.call(this);
@@ -173,6 +184,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_UpdateMenuImage value)? updateMenuImage,
     TResult Function(_DeleteMenu value)? deleteMenu,
     required TResult orElse(),
   }) {
@@ -271,6 +283,7 @@ class _$_UpdateMenu implements _UpdateMenu {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id, String image) updateMenuImage,
     required TResult Function(String id) deleteMenu,
   }) {
     return updateMenu(form, id);
@@ -281,6 +294,7 @@ class _$_UpdateMenu implements _UpdateMenu {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id, String image)? updateMenuImage,
     TResult? Function(String id)? deleteMenu,
   }) {
     return updateMenu?.call(form, id);
@@ -291,6 +305,7 @@ class _$_UpdateMenu implements _UpdateMenu {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id, String image)? updateMenuImage,
     TResult Function(String id)? deleteMenu,
     required TResult orElse(),
   }) {
@@ -305,6 +320,7 @@ class _$_UpdateMenu implements _UpdateMenu {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_UpdateMenuImage value) updateMenuImage,
     required TResult Function(_DeleteMenu value) deleteMenu,
   }) {
     return updateMenu(this);
@@ -315,6 +331,7 @@ class _$_UpdateMenu implements _UpdateMenu {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_UpdateMenuImage value)? updateMenuImage,
     TResult? Function(_DeleteMenu value)? deleteMenu,
   }) {
     return updateMenu?.call(this);
@@ -325,6 +342,7 @@ class _$_UpdateMenu implements _UpdateMenu {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_UpdateMenuImage value)? updateMenuImage,
     TResult Function(_DeleteMenu value)? deleteMenu,
     required TResult orElse(),
   }) {
@@ -343,6 +361,161 @@ abstract class _UpdateMenu implements UserStoreEvent {
   String get id;
   @JsonKey(ignore: true)
   _$$_UpdateMenuCopyWith<_$_UpdateMenu> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateMenuImageCopyWith<$Res> {
+  factory _$$_UpdateMenuImageCopyWith(
+          _$_UpdateMenuImage value, $Res Function(_$_UpdateMenuImage) then) =
+      __$$_UpdateMenuImageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String image});
+}
+
+/// @nodoc
+class __$$_UpdateMenuImageCopyWithImpl<$Res>
+    extends _$UserStoreEventCopyWithImpl<$Res, _$_UpdateMenuImage>
+    implements _$$_UpdateMenuImageCopyWith<$Res> {
+  __$$_UpdateMenuImageCopyWithImpl(
+      _$_UpdateMenuImage _value, $Res Function(_$_UpdateMenuImage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? image = null,
+  }) {
+    return _then(_$_UpdateMenuImage(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateMenuImage implements _UpdateMenuImage {
+  const _$_UpdateMenuImage(this.id, this.image);
+
+  @override
+  final String id;
+  @override
+  final String image;
+
+  @override
+  String toString() {
+    return 'UserStoreEvent.updateMenuImage(id: $id, image: $image)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateMenuImage &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateMenuImageCopyWith<_$_UpdateMenuImage> get copyWith =>
+      __$$_UpdateMenuImageCopyWithImpl<_$_UpdateMenuImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id, String image) updateMenuImage,
+    required TResult Function(String id) deleteMenu,
+  }) {
+    return updateMenuImage(id, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id, String image)? updateMenuImage,
+    TResult? Function(String id)? deleteMenu,
+  }) {
+    return updateMenuImage?.call(id, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id, String image)? updateMenuImage,
+    TResult Function(String id)? deleteMenu,
+    required TResult orElse(),
+  }) {
+    if (updateMenuImage != null) {
+      return updateMenuImage(id, image);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_UpdateMenuImage value) updateMenuImage,
+    required TResult Function(_DeleteMenu value) deleteMenu,
+  }) {
+    return updateMenuImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_UpdateMenuImage value)? updateMenuImage,
+    TResult? Function(_DeleteMenu value)? deleteMenu,
+  }) {
+    return updateMenuImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_UpdateMenuImage value)? updateMenuImage,
+    TResult Function(_DeleteMenu value)? deleteMenu,
+    required TResult orElse(),
+  }) {
+    if (updateMenuImage != null) {
+      return updateMenuImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateMenuImage implements UserStoreEvent {
+  const factory _UpdateMenuImage(final String id, final String image) =
+      _$_UpdateMenuImage;
+
+  String get id;
+  String get image;
+  @JsonKey(ignore: true)
+  _$$_UpdateMenuImageCopyWith<_$_UpdateMenuImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -412,6 +585,7 @@ class _$_DeleteMenu implements _DeleteMenu {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(MenuForm form, String id) updateMenu,
+    required TResult Function(String id, String image) updateMenuImage,
     required TResult Function(String id) deleteMenu,
   }) {
     return deleteMenu(id);
@@ -422,6 +596,7 @@ class _$_DeleteMenu implements _DeleteMenu {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(MenuForm form, String id)? updateMenu,
+    TResult? Function(String id, String image)? updateMenuImage,
     TResult? Function(String id)? deleteMenu,
   }) {
     return deleteMenu?.call(id);
@@ -432,6 +607,7 @@ class _$_DeleteMenu implements _DeleteMenu {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(MenuForm form, String id)? updateMenu,
+    TResult Function(String id, String image)? updateMenuImage,
     TResult Function(String id)? deleteMenu,
     required TResult orElse(),
   }) {
@@ -446,6 +622,7 @@ class _$_DeleteMenu implements _DeleteMenu {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateMenu value) updateMenu,
+    required TResult Function(_UpdateMenuImage value) updateMenuImage,
     required TResult Function(_DeleteMenu value) deleteMenu,
   }) {
     return deleteMenu(this);
@@ -456,6 +633,7 @@ class _$_DeleteMenu implements _DeleteMenu {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateMenu value)? updateMenu,
+    TResult? Function(_UpdateMenuImage value)? updateMenuImage,
     TResult? Function(_DeleteMenu value)? deleteMenu,
   }) {
     return deleteMenu?.call(this);
@@ -466,6 +644,7 @@ class _$_DeleteMenu implements _DeleteMenu {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateMenu value)? updateMenu,
+    TResult Function(_UpdateMenuImage value)? updateMenuImage,
     TResult Function(_DeleteMenu value)? deleteMenu,
     required TResult orElse(),
   }) {

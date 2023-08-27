@@ -19,11 +19,13 @@ import '../../../../core/bloc/app/app_bloc.dart';
 import '../../../../core/bloc/image/image_bloc.dart';
 import '../../../../core/data/storage/storage_repository.dart';
 import '../../../../utills/show_scaled_dialog.dart';
+import '../../../shared/pick_image_from.dart';
 import '../../../shared/rounded_container.dart';
 import '../../../shared/shrink_property.dart';
 import '../../../shared/text_input.dart';
 import '../../data/menu_repository.dart';
 import '../../domain/ingredient/ingredient.dart';
+import '../widgets/ingredient_item.dart';
 
 class AddMenu extends StatefulWidget {
   const AddMenu({super.key});
@@ -152,52 +154,9 @@ class _AddMenuState extends State<AddMenu> {
                                         child: InkWell(
                                           onTap: () => showScaleDialog(
                                             context,
-                                            AlertDialog(
-                                              title: Text(
-                                                'Gambar dari...',
-                                                style: Styles.font.bold,
-                                              ),
-                                              content: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  ListTile(
-                                                    onTap: () {
-                                                      context
-                                                          .read<ImageBloc>()
-                                                          .add(
-                                                            const ImageEvent
-                                                                    .pickImage(
-                                                                ImageSource
-                                                                    .camera),
-                                                          );
-                                                      Navigator.pop(context);
-                                                    },
-                                                    leading: const Icon(
-                                                        Icons.camera),
-                                                    title: Text(
-                                                      'Kamera',
-                                                      style: Styles.font.base,
-                                                    ),
-                                                  ),
-                                                  ListTile(
-                                                    onTap: () {
-                                                      context
-                                                          .read<ImageBloc>()
-                                                          .add(const ImageEvent
-                                                                  .pickImage(
-                                                              ImageSource
-                                                                  .gallery));
-                                                      Navigator.pop(context);
-                                                    },
-                                                    leading: const Icon(
-                                                        Icons.photo_library),
-                                                    title: Text(
-                                                      'Galeri',
-                                                      style: Styles.font.base,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
+                                            PickImageFromDialog(
+                                              imageBloc:
+                                                  context.read<ImageBloc>(),
                                             ),
                                             null,
                                           ),
@@ -220,52 +179,9 @@ class _AddMenuState extends State<AddMenu> {
                                       imageUpdated: (imagePath) => InkWell(
                                         onTap: () => showScaleDialog(
                                           context,
-                                          AlertDialog(
-                                            title: Text(
-                                              'Gambar dari...',
-                                              style: Styles.font.bold,
-                                            ),
-                                            content: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                ListTile(
-                                                  onTap: () {
-                                                    context
-                                                        .read<ImageBloc>()
-                                                        .add(
-                                                          const ImageEvent
-                                                                  .pickImage(
-                                                              ImageSource
-                                                                  .camera),
-                                                        );
-                                                    Navigator.pop(context);
-                                                  },
-                                                  leading:
-                                                      const Icon(Icons.camera),
-                                                  title: Text(
-                                                    'Kamera',
-                                                    style: Styles.font.base,
-                                                  ),
-                                                ),
-                                                ListTile(
-                                                  onTap: () {
-                                                    context
-                                                        .read<ImageBloc>()
-                                                        .add(const ImageEvent
-                                                                .pickImage(
-                                                            ImageSource
-                                                                .gallery));
-                                                    Navigator.pop(context);
-                                                  },
-                                                  leading: const Icon(
-                                                      Icons.photo_library),
-                                                  title: Text(
-                                                    'Galeri',
-                                                    style: Styles.font.base,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+                                          PickImageFromDialog(
+                                            imageBloc:
+                                                context.read<ImageBloc>(),
                                           ),
                                           null,
                                         ),
@@ -517,89 +433,6 @@ class IngredientItems extends StatelessWidget {
         key: ValueKey(ingredients[index].name),
         ingredient: ingredients[index],
         index: index,
-      ),
-    );
-  }
-}
-
-class IngredientItem extends StatefulWidget {
-  const IngredientItem(
-      {super.key, required this.ingredient, required this.index});
-
-  final Ingredient ingredient;
-  final int index;
-
-  @override
-  State<IngredientItem> createState() => _IngredientItemState();
-}
-
-class _IngredientItemState extends State<IngredientItem> {
-  TextEditingController controller = TextEditingController();
-
-  @override
-  void initState() {
-    controller.text = widget.ingredient.name;
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return RoundedContainer(
-      radius: 10.r,
-      shadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.1),
-          blurRadius: 5,
-          offset: const Offset(0, 2),
-        )
-      ],
-      color: Colors.white,
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        children: [
-          InkWell(
-            onTap: () {
-              context
-                  .read<IngredientStateCubit>()
-                  .removeIngredient(widget.index);
-            },
-            child: Icon(
-              Icons.delete,
-              color: Styles.color.danger,
-            ),
-          ),
-          SizedBox(
-            width: 10.w,
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10.r),
-            child: SizedBox(
-              width: 0.7.sw,
-              child: Focus(
-                onFocusChange: (value) => value
-                    ? null
-                    : context
-                        .read<IngredientStateCubit>()
-                        .editIngredient(controller.text, widget.index),
-                child: TextField(
-                  style: Styles.font.base,
-                  controller: controller,
-                  cursorColor: Styles.color.primary,
-                  decoration: const InputDecoration(
-                    hintText: 'Nama komposisi',
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

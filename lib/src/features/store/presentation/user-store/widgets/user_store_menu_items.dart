@@ -1,13 +1,14 @@
 import 'package:e_foodies/src/constants/styles.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
 import 'package:e_foodies/src/features/shared/rounded_container.dart';
+import 'package:e_foodies/src/features/store/presentation/user-store/bloc/user_store_bloc.dart';
 import 'package:e_foodies/src/utills/currency_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/bloc/app/app_bloc.dart';
-import '../../../../../core/bloc/image/image_bloc.dart';
 import '../../../../menu/domain/menu/menu.dart';
 import 'edit_menu_dialog.dart';
 
@@ -28,13 +29,20 @@ class UserStoreMenuItems extends StatelessWidget {
           useSafeArea: true,
           showDragHandle: true,
           isScrollControlled: true,
+          isDismissible:
+              context.read<AppBloc>().state != const AppState.loading(),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
           ),
-          builder: (context) => EditMenuDialog(menu: menu),
+          builder: (_) => Padding(
+            padding: MediaQuery.of(_).viewInsets,
+            child: EditMenuDialog(
+              menu: menu,
+            ),
+          ),
         );
       },
       child: RoundedContainer(
