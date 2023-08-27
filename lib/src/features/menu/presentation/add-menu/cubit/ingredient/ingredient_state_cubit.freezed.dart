@@ -19,19 +19,19 @@ mixin _$IngredientStateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<String> ingredients) updated,
+    required TResult Function(List<Ingredient> ingredients) updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<String> ingredients)? updated,
+    TResult? Function(List<Ingredient> ingredients)? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<String> ingredients)? updated,
+    TResult Function(List<Ingredient> ingredients)? updated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<String> ingredients) updated,
+    required TResult Function(List<Ingredient> ingredients) updated,
   }) {
     return initial();
   }
@@ -122,7 +122,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<String> ingredients)? updated,
+    TResult? Function(List<Ingredient> ingredients)? updated,
   }) {
     return initial?.call();
   }
@@ -131,7 +131,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<String> ingredients)? updated,
+    TResult Function(List<Ingredient> ingredients)? updated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -182,7 +182,7 @@ abstract class _$$_UpdatedCopyWith<$Res> {
           _$_Updated value, $Res Function(_$_Updated) then) =
       __$$_UpdatedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<String> ingredients});
+  $Res call({List<Ingredient> ingredients});
 }
 
 /// @nodoc
@@ -201,7 +201,7 @@ class __$$_UpdatedCopyWithImpl<$Res>
       null == ingredients
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Ingredient>,
     ));
   }
 }
@@ -209,11 +209,12 @@ class __$$_UpdatedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Updated implements _Updated {
-  const _$_Updated(final List<String> ingredients) : _ingredients = ingredients;
+  const _$_Updated(final List<Ingredient> ingredients)
+      : _ingredients = ingredients;
 
-  final List<String> _ingredients;
+  final List<Ingredient> _ingredients;
   @override
-  List<String> get ingredients {
+  List<Ingredient> get ingredients {
     if (_ingredients is EqualUnmodifiableListView) return _ingredients;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_ingredients);
@@ -247,7 +248,7 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<String> ingredients) updated,
+    required TResult Function(List<Ingredient> ingredients) updated,
   }) {
     return updated(ingredients);
   }
@@ -256,7 +257,7 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<String> ingredients)? updated,
+    TResult? Function(List<Ingredient> ingredients)? updated,
   }) {
     return updated?.call(ingredients);
   }
@@ -265,7 +266,7 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<String> ingredients)? updated,
+    TResult Function(List<Ingredient> ingredients)? updated,
     required TResult orElse(),
   }) {
     if (updated != null) {
@@ -307,9 +308,9 @@ class _$_Updated implements _Updated {
 }
 
 abstract class _Updated implements IngredientStateState {
-  const factory _Updated(final List<String> ingredients) = _$_Updated;
+  const factory _Updated(final List<Ingredient> ingredients) = _$_Updated;
 
-  List<String> get ingredients;
+  List<Ingredient> get ingredients;
   @JsonKey(ignore: true)
   _$$_UpdatedCopyWith<_$_Updated> get copyWith =>
       throw _privateConstructorUsedError;

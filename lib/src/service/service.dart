@@ -5,8 +5,8 @@ import 'package:e_foodies/src/core/domain/failure.dart';
 import 'package:e_foodies/src/utills/connection_checker.dart';
 
 class APIService {
-  // static const String _apiBaseUrl = "efoodies.pythonanywhere.com";
-  static const String _apiBaseUrl = "19d6-182-1-85-159.ngrok-free.app";
+  static const String _apiBaseUrl = "efoodies.pythonanywhere.com";
+  // static const String _apiBaseUrl = "19d6-182-1-85-159.ngrok-free.app";
   static const String _apiPath = "/api";
   // https://6d48-182-1-114-111.ngrok-free.app/
 

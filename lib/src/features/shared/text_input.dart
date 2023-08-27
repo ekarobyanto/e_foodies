@@ -6,7 +6,7 @@ class TextInput extends StatefulWidget {
   TextInput({
     super.key,
     required this.label,
-    required this.hint,
+    this.hint,
     required this.validator,
     required this.textController,
     required this.disableInput,
@@ -14,7 +14,7 @@ class TextInput extends StatefulWidget {
   });
 
   final String label;
-  final String hint;
+  final String? hint;
   final String? Function(String?)? validator;
   TextEditingController textController;
   TextInputType? keyboardType;
@@ -48,13 +48,13 @@ class _TextInputState extends State<TextInput> {
           ),
           child: TextFormField(
             enabled: !widget.disableInput,
+            controller: widget.textController,
             style: Styles.font.bold.copyWith(fontWeight: FontWeight.w500),
             textAlignVertical: TextAlignVertical.center,
             obscureText:
                 widget.label.contains('Password') ? _isObsecure : false,
             validator: widget.validator,
             keyboardType: widget.keyboardType,
-            onChanged: (value) => widget.textController.text = value,
             decoration: Styles.input.accent.copyWith(
               contentPadding: EdgeInsets.symmetric(
                 vertical: widget.label.contains('Password') ? 10 : 15,

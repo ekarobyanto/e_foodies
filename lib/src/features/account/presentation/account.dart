@@ -196,8 +196,7 @@ class Account extends StatelessWidget {
                                         ),
                                         Text(
                                           'Warung',
-                                          style: Styles.font.blg
-                                              .copyWith(color: Colors.white),
+                                          style: Styles.font.blg,
                                         ),
                                         SizedBox(
                                           height: 10.h,

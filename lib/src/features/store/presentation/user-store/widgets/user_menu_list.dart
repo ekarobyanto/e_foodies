@@ -1,12 +1,10 @@
 // ignore: must_be_immutable
-
-import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
-import 'package:e_foodies/src/utills/currency_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../constants/styles.dart';
 import '../../../../menu/domain/menu/menu.dart';
+import 'user_store_menu_items.dart';
 
 // ignore: must_be_immutable
 class UserStoreMenuList extends StatelessWidget {
@@ -20,6 +18,7 @@ class UserStoreMenuList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Menu',
@@ -41,23 +40,7 @@ class UserStoreMenuList extends StatelessWidget {
             ),
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleNetPic(
-                  src: menus[index].img,
-                  height: 50.h,
-                  width: 50.h,
-                ),
-                title: Text(
-                  '${menus[index].name} ${menus[index].desc}',
-                  style: Styles.font.bxl2,
-                ),
-                subtitle: Text(
-                  convertCurrency(menus[index].price ?? 0),
-                  style: Styles.font.bxl2.copyWith(
-                    color: Styles.color.darkGreen,
-                  ),
-                ),
-              );
+              return UserStoreMenuItems(menu: menus[index]);
             },
           ),
         ),

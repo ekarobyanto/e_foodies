@@ -23,6 +23,7 @@ import '../../../shared/rounded_container.dart';
 import '../../../shared/shrink_property.dart';
 import '../../../shared/text_input.dart';
 import '../../data/menu_repository.dart';
+import '../../domain/ingredient/ingredient.dart';
 
 class AddMenu extends StatefulWidget {
   const AddMenu({super.key});
@@ -404,6 +405,8 @@ class _AddMenuState extends State<AddMenu> {
                                               !context
                                                   .read<IngredientStateCubit>()
                                                   .ingredients
+                                                  .map((e) => e.name)
+                                                  .toList()
                                                   .contains('') &&
                                               context.read<ImageBloc>().state !=
                                                   const ImageState.initial()) {
@@ -422,7 +425,9 @@ class _AddMenuState extends State<AddMenu> {
                                                     ingredients: context
                                                         .read<
                                                             IngredientStateCubit>()
-                                                        .ingredients,
+                                                        .ingredients
+                                                        .map((e) => e.name)
+                                                        .toList(),
                                                     image: context
                                                         .read<ImageBloc>()
                                                         .state
@@ -497,7 +502,7 @@ class IngredientItems extends StatelessWidget {
     required this.ingredients,
   });
 
-  final List<String> ingredients;
+  final List<Ingredient> ingredients;
 
   @override
   Widget build(BuildContext context) {
@@ -509,6 +514,7 @@ class IngredientItems extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: ingredients.length,
       itemBuilder: (context, index) => IngredientItem(
+        key: ValueKey(ingredients[index].name),
         ingredient: ingredients[index],
         index: index,
       ),
@@ -516,12 +522,31 @@ class IngredientItems extends StatelessWidget {
   }
 }
 
-class IngredientItem extends StatelessWidget {
+class IngredientItem extends StatefulWidget {
   const IngredientItem(
       {super.key, required this.ingredient, required this.index});
 
-  final String ingredient;
+  final Ingredient ingredient;
   final int index;
+
+  @override
+  State<IngredientItem> createState() => _IngredientItemState();
+}
+
+class _IngredientItemState extends State<IngredientItem> {
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    controller.text = widget.ingredient.name;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -540,7 +565,9 @@ class IngredientItem extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              context.read<IngredientStateCubit>().removeIngredient(index);
+              context
+                  .read<IngredientStateCubit>()
+                  .removeIngredient(widget.index);
             },
             child: Icon(
               Icons.delete,
@@ -554,15 +581,20 @@ class IngredientItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
             child: SizedBox(
               width: 0.7.sw,
-              child: TextField(
-                onChanged: (v) {
-                  context.read<IngredientStateCubit>().editIngredient(v, index);
-                },
-                style: Styles.font.base,
-                cursorColor: Styles.color.primary,
-                decoration: const InputDecoration(
-                  hintText: 'Nama komposisi',
-                  border: InputBorder.none,
+              child: Focus(
+                onFocusChange: (value) => value
+                    ? null
+                    : context
+                        .read<IngredientStateCubit>()
+                        .editIngredient(controller.text, widget.index),
+                child: TextField(
+                  style: Styles.font.base,
+                  controller: controller,
+                  cursorColor: Styles.color.primary,
+                  decoration: const InputDecoration(
+                    hintText: 'Nama komposisi',
+                    border: InputBorder.none,
+                  ),
                 ),
               ),
             ),
