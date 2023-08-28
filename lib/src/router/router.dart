@@ -4,7 +4,6 @@ import 'package:e_foodies/src/features/auth/presentation/login/login_screen.dart
 import 'package:e_foodies/src/features/auth/presentation/register/register_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/splash_screen.dart';
 import 'package:e_foodies/src/features/auth/presentation/welcome/welcome_screen.dart';
-import 'package:e_foodies/src/features/menu/presentation/edit-menu/edit_menu.dart';
 import 'package:e_foodies/src/features/menu/presentation/menu_list.dart';
 import 'package:e_foodies/src/features/search/presentation/search_screen.dart';
 import 'package:e_foodies/src/features/store/presentation/edit-user-store/edit_user_store.dart';
@@ -124,10 +123,6 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/add-menu',
       pageBuilder: (context, state) => slideTransitionRL(const AddMenu()),
-    ),
-    GoRoute(
-      path: '/edit-menu',
-      pageBuilder: (context, state) => slideTransitionRL(const EditMenu()),
     ),
   ],
 );

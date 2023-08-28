@@ -99,7 +99,7 @@ class WarungCard extends StatelessWidget {
                           style: Styles.font.xsm,
                         ),
                         SizedBox(
-                          width: 1.sw * 0.55,
+                          width: 1.sw * 0.5,
                           child: Text(
                             warung.recipes.map((menu) => menu.name).join(', '),
                             maxLines: 1,

@@ -160,7 +160,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   ),
                                   const SizedBox(height: 20),
                                   if (dashboard.statusStore ==
-                                      'never_requested')
+                                          'never_requested' ||
+                                      dashboard.statusStore == 'Rejected')
                                     PromotionCard(
                                       title: 'Warung',
                                       onTap: () {

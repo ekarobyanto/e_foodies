@@ -7,6 +7,7 @@ import 'package:e_foodies/src/features/dashboard/presentation/bloc/dashboard_blo
 import 'package:e_foodies/src/features/shared/success_dialog.dart';
 import 'package:e_foodies/src/features/store/domain/store-form/store_form.dart';
 import 'package:e_foodies/src/features/store/presentation/edit-user-store/cubit/edit_user_store_cubit.dart';
+import 'package:e_foodies/src/features/store/presentation/user-store/bloc/user_store_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -100,8 +101,8 @@ class _EditUserStoreState extends State<EditUserStore> {
                 updateSucces: () {
                   context.read<AppBloc>().add(const AppEvent.loadingComplete());
                   context
-                      .read<DashboardBloc>()
-                      .add(const DashboardEvent.refresh());
+                      .read<UserStoreBloc>()
+                      .add(const UserStoreEvent.started());
                   showScaleDialog(
                     context,
                     SuccessDialog(

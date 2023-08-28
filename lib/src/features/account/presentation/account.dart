@@ -208,7 +208,9 @@ class Account extends StatelessWidget {
                                               orElse: () => const SizedBox(),
                                               success: (dashboard, greeting) {
                                                 if (dashboard.statusStore ==
-                                                    'never_requested') {
+                                                        'never_requested' ||
+                                                    dashboard.statusStore ==
+                                                        'Rejected') {
                                                   return PromotionCard(
                                                     title: 'Daftarkan warung',
                                                     desc:
@@ -265,10 +267,15 @@ class Account extends StatelessWidget {
                                                   return RoundedContainer(
                                                     radius: 20.r,
                                                     color: Colors.white,
-                                                    border: Border.all(
-                                                      color: Colors.black,
-                                                      width: 2,
-                                                    ),
+                                                    shadow: [
+                                                      BoxShadow(
+                                                        color: Colors.black
+                                                            .withOpacity(0.25),
+                                                        blurRadius: 4,
+                                                        offset:
+                                                            const Offset(0, 4),
+                                                      ),
+                                                    ],
                                                     padding: const EdgeInsets
                                                         .symmetric(
                                                       vertical: 10,

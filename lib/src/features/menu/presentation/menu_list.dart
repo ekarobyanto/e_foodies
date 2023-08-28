@@ -92,14 +92,16 @@ class MenuItems extends StatefulWidget {
 class _MenuItemsState extends State<MenuItems> {
   static const _pageSize = 5;
 
-  final PagingController<int, Menu> _pagingController =
-      PagingController(firstPageKey: 2);
+  final PagingController<int, Menu> _pagingController = PagingController(
+    firstPageKey: 1,
+  );
 
   @override
   void initState() {
     if (widget.menus.next == null) {
       _pagingController.appendLastPage(widget.menus.results);
     } else {
+      _pagingController.appendPage(widget.menus.results, 2);
       _pagingController.addPageRequestListener((pageKey) {
         _fetchPage(pageKey);
       });

@@ -83,11 +83,11 @@ class MenuShowcase extends StatelessWidget {
                         style: Styles.font.xsm,
                       ),
                       SizedBox(
-                        width: 1.sw * 0.55,
+                        width: 1.sw * 0.5,
                         child: Text(
                           menu.ingredients.map((e) => e.name).join(', '),
                           style: Styles.font.xsm.copyWith(color: Colors.grey),
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -171,14 +171,16 @@ class MenuShowcase extends StatelessWidget {
                     icon: const Icon(Icons.close)),
               ],
             ),
-            CachedNetworkImage(
-              imageUrl: menu.img,
-              width: 1.sw,
-              height: 0.3.sh,
-              errorWidget: (context, url, error) => Icon(
-                Icons.error,
-                color: Styles.color.danger,
-                size: 50,
+            Align(
+              alignment: Alignment.center,
+              child: CachedNetworkImage(
+                alignment: Alignment.center,
+                imageUrl: menu.img,
+                errorWidget: (context, url, error) => Icon(
+                  Icons.error,
+                  color: Styles.color.danger,
+                  size: 50,
+                ),
               ),
             ),
             Row(
@@ -214,7 +216,7 @@ class MenuShowcase extends StatelessWidget {
               child: Text(
                 menu.ingredients.map((e) => e.name).join(', '),
                 style: Styles.font.base.copyWith(color: Styles.color.darkGreen),
-                maxLines: 2,
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
             ),

@@ -119,6 +119,7 @@ class UserStorePage extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 'Tambah Menu',
+                                textAlign: TextAlign.center,
                                 style: Styles.font.base
                                     .copyWith(color: Colors.white),
                               ),
