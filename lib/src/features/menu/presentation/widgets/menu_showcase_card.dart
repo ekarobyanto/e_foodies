@@ -36,7 +36,7 @@ class MenuShowcase extends StatelessWidget {
           children: [
             RoundedContainer(
               heightWidth: Size(100.h, 100.h),
-              radius: 20,
+              radius: 10.r,
               gradient: LinearGradient(
                 colors: [
                   Styles.color.primary,
@@ -45,16 +45,19 @@ class MenuShowcase extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-              child: Image.network(
-                menu.img,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Icon(
-                    Icons.error,
-                    size: 30,
-                    color: Styles.color.danger,
-                  );
-                },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.r),
+                child: Image.network(
+                  menu.img,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(
+                      Icons.error,
+                      size: 30,
+                      color: Styles.color.danger,
+                    );
+                  },
+                ),
               ),
             ),
             const SizedBox(width: 10),

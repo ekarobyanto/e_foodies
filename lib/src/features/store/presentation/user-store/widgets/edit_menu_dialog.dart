@@ -81,13 +81,20 @@ class _EditMenuDialogState extends State<EditMenuDialog> {
                 null,
               );
             },
-            loaded: (store) {
+            loaded: (store, msg) {
               context.read<AppBloc>().add(const AppEvent.loadingComplete());
               showScaleDialog(
                   context,
                   SuccessDialog(
-                    title: 'Data Menu Berhasil Dirubah',
-                    action: () => context.pop(),
+                    title: msg ?? 'Data Menu Berhasil Dirubah',
+                    action: () {
+                      if (msg != null) {
+                        context.pop();
+                        context.pop();
+                      } else {
+                        context.pop();
+                      }
+                    },
                   ),
                   null);
             },
@@ -109,7 +116,68 @@ class _EditMenuDialogState extends State<EditMenuDialog> {
                         style: Styles.font.blg,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          showScaleDialog(
+                            context,
+                            Dialog(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 20,
+                                  horizontal: 10,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Yakin ingin menghapus menu \'${widget.menu.name}\' ?',
+                                      style: Styles.font.base,
+                                    ),
+                                    SizedBox(
+                                      height: 20.h,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        InkWell(
+                                          onTap: () => context.pop(),
+                                          child: Center(
+                                            child: Text(
+                                              'Tidak',
+                                              style: Styles.font.bold.copyWith(
+                                                  color: Styles.color.primary),
+                                            ),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            context.pop();
+                                            context.read<AppBloc>().add(
+                                                const AppEvent
+                                                    .loadingRequested());
+                                            context.read<UserStoreBloc>().add(
+                                                  UserStoreEvent.deleteMenu(
+                                                      widget.menu.id),
+                                                );
+                                          },
+                                          child: Center(
+                                            child: Text(
+                                              'Ya',
+                                              style: Styles.font.bold.copyWith(
+                                                  color: Styles.color.danger),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            null,
+                          );
+                        },
                         child: Text('Hapus Menu',
                             style: Styles.font.sm
                                 .copyWith(color: Styles.color.danger)),

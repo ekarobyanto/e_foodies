@@ -105,7 +105,7 @@ class UserStoreBloc extends Bloc<UserStoreEvent, UserStoreState> {
             final storeData = await storeRepository.getUserStore(
               token: await storageRepository.read(key: 'access'),
             );
-            emit(_Loaded(storeData));
+            emit(_Loaded(storeData, 'Menu Berhasil Dihapus'));
           } on Failure catch (e) {
             tokenHandler(
               e: e,

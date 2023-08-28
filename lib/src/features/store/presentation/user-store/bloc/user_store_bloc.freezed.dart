@@ -670,7 +670,7 @@ mixin _$UserStoreState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Store store, String? msg) loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -678,7 +678,7 @@ mixin _$UserStoreState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Store store)? loaded,
+    TResult? Function(Store store, String? msg)? loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -686,7 +686,7 @@ mixin _$UserStoreState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Store store)? loaded,
+    TResult Function(Store store, String? msg)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -775,7 +775,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Store store, String? msg) loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -786,7 +786,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Store store)? loaded,
+    TResult? Function(Store store, String? msg)? loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -797,7 +797,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Store store)? loaded,
+    TResult Function(Store store, String? msg)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -888,7 +888,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Store store, String? msg) loaded,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -899,7 +899,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Store store)? loaded,
+    TResult? Function(Store store, String? msg)? loaded,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -910,7 +910,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Store store)? loaded,
+    TResult Function(Store store, String? msg)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -967,7 +967,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Store store});
+  $Res call({Store store, String? msg});
 
   $StoreCopyWith<$Res> get store;
 }
@@ -983,12 +983,17 @@ class __$$_LoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? store = null,
+    Object? msg = freezed,
   }) {
     return _then(_$_Loaded(
       null == store
           ? _value.store
           : store // ignore: cast_nullable_to_non_nullable
               as Store,
+      freezed == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -1004,14 +1009,16 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.store);
+  const _$_Loaded(this.store, [this.msg]);
 
   @override
   final Store store;
+  @override
+  final String? msg;
 
   @override
   String toString() {
-    return 'UserStoreState.loaded(store: $store)';
+    return 'UserStoreState.loaded(store: $store, msg: $msg)';
   }
 
   @override
@@ -1019,11 +1026,12 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            (identical(other.store, store) || other.store == store));
+            (identical(other.store, store) || other.store == store) &&
+            (identical(other.msg, msg) || other.msg == msg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, store);
+  int get hashCode => Object.hash(runtimeType, store, msg);
 
   @JsonKey(ignore: true)
   @override
@@ -1036,10 +1044,10 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Store store, String? msg) loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(store);
+    return loaded(store, msg);
   }
 
   @override
@@ -1047,10 +1055,10 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Store store)? loaded,
+    TResult? Function(Store store, String? msg)? loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(store);
+    return loaded?.call(store, msg);
   }
 
   @override
@@ -1058,12 +1066,12 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Store store)? loaded,
+    TResult Function(Store store, String? msg)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(store);
+      return loaded(store, msg);
     }
     return orElse();
   }
@@ -1107,9 +1115,10 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements UserStoreState {
-  const factory _Loaded(final Store store) = _$_Loaded;
+  const factory _Loaded(final Store store, [final String? msg]) = _$_Loaded;
 
   Store get store;
+  String? get msg;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1179,7 +1188,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Store store, String? msg) loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -1190,7 +1199,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Store store)? loaded,
+    TResult? Function(Store store, String? msg)? loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -1201,7 +1210,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Store store)? loaded,
+    TResult Function(Store store, String? msg)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

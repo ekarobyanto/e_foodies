@@ -36,7 +36,7 @@ class UserStorePage extends StatelessWidget {
               ),
             ),
           ),
-          loaded: (store) {
+          loaded: (store, msg) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,

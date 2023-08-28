@@ -69,7 +69,7 @@ class UserStoreMenuItems extends StatelessWidget {
                 ),
                 SizedBox(
                   width: 10.w,
-                ),
+                ),  
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
