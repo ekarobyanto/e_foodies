@@ -86,11 +86,11 @@ class StoreMenuItems extends StatelessWidget {
                           style: Styles.font.xsm,
                         ),
                         SizedBox(
-                          width: 1.sw * 0.55,
+                          width: 1.sw * 0.5,
                           child: Text(
                             menu.ingredients.map((e) => e.name).join(', '),
                             style: Styles.font.xsm.copyWith(color: Colors.grey),
-                            maxLines: 2,
+                            maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -188,7 +188,6 @@ class StoreMenuItems extends StatelessWidget {
                       menu.ingredients.map((e) => e.name).join(', '),
                       style: Styles.font.base
                           .copyWith(color: Styles.color.darkGreen),
-                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

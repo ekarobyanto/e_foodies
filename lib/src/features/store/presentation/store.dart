@@ -1,4 +1,7 @@
 // ignore_for_file: must_be_immutable
+import 'dart:developer';
+
+import 'package:e_foodies/src/core/bloc/account/account_bloc.dart';
 import 'package:e_foodies/src/core/data/storage/storage_repository.dart';
 import 'package:e_foodies/src/features/shared/background.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
@@ -9,6 +12,8 @@ import 'package:e_foodies/src/features/store/presentation/widgets/store_menu_ite
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../constants/styles.dart';
 import '../../../utills/currency_formatter.dart';
@@ -46,134 +51,188 @@ class StoreScreen extends StatelessWidget {
           backgroundColor: Styles.color.darkGreen,
           toolbarHeight: 0,
         ),
-        bottomSheet: BlocBuilder<OrderMenuCubit, OrderMenuState>(
-          builder: (context, state) {
-            return state.maybeWhen(
-              orderUpdated: (orders) {
-                OrderMenuCubit cubit = context.read<OrderMenuCubit>();
-                return orders.isEmpty
-                    ? const SizedBox()
-                    : InkWell(
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            showDragHandle: true,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20.r),
-                                topRight: Radius.circular(20.r),
+        bottomSheet: Builder(builder: (context) {
+          return BlocBuilder<OrderMenuCubit, OrderMenuState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orderUpdated: (orders) {
+                  OrderMenuCubit cubit = context.read<OrderMenuCubit>();
+                  OpenStoreBloc bloc = context.read<OpenStoreBloc>();
+                  return orders.isEmpty
+                      ? const SizedBox()
+                      : InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              showDragHandle: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20.r),
+                                  topRight: Radius.circular(20.r),
+                                ),
+                              ),
+                              builder: (_) {
+                                return MultiBlocProvider(
+                                  providers: [
+                                    BlocProvider.value(
+                                      value: cubit,
+                                    ),
+                                    BlocProvider.value(
+                                      value: bloc,
+                                    ),
+                                  ],
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Menu',
+                                              style: Styles.font.base,
+                                            ),
+                                            Text(
+                                              'Total Harga',
+                                              style: Styles.font.base,
+                                            )
+                                          ],
+                                        ),
+                                        Divider(
+                                          color: Styles.color.darkGreen,
+                                          thickness: 2,
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        BlocBuilder<OrderMenuCubit,
+                                            OrderMenuState>(
+                                          builder: (context, state) {
+                                            return state.maybeWhen(
+                                              orElse: () => const SizedBox(),
+                                              orderUpdated: (orderss) => Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: orderss
+                                                    .map((order) =>
+                                                        OrderList(order: order))
+                                                    .toList(),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        Text(
+                                          'Total : ${convertCurrency(
+                                            orders.fold(
+                                              0,
+                                              (previousValue, element) =>
+                                                  previousValue +
+                                                  element.menu.price! *
+                                                      element.quantity,
+                                            ),
+                                          )}',
+                                          style: Styles.font.bold,
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        BlocBuilder<OpenStoreBloc,
+                                            OpenStoreState>(
+                                          builder: (context, state) {
+                                            return state.maybeWhen(
+                                              orElse: () => const SizedBox(),
+                                              storeLoaded: (store) =>
+                                                  ShrinkProperty(
+                                                onTap: () async {
+                                                  Uri url = Uri.parse(
+                                                      "whatsapp://send?phone=${store.phone.replaceFirst('0', '+62')}&text=Halo, saya ingin memesan : \n${orders.map((e) => '${e.menu.name} ${e.quantity}x\nCatatan : ${e.note}').toList().join('\n')}\nTotal : ${convertCurrency(orders.fold(0, (previousValue, element) => previousValue + element.menu.price! * element.quantity))}\nAtas nama : ${context.read<AccountBloc>().state.maybeWhen(
+                                                            orElse: () => '',
+                                                            succes: (account) =>
+                                                                account
+                                                                    .username,
+                                                          )}\nAlamat : ${context.read<AccountBloc>().state.maybeWhen(
+                                                            orElse: () => '',
+                                                            succes: (account) =>
+                                                                account.address,
+                                                          )}");
+                                                  // if (await canLaunchUrl(url)) {
+                                                  log('launching wa ${store.phone}');
+                                                  await launchUrl(url);
+                                                  // } else {
+                                                  // log('cant launch wa');
+                                                  // }
+                                                },
+                                                child: RoundedContainer(
+                                                  radius: 20.r,
+                                                  alignment: Alignment.center,
+                                                  color: Styles.color.primary,
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 20),
+                                                  child: Text(
+                                                    'Pesan via WhatsApp',
+                                                    style: Styles.font.base
+                                                        .copyWith(
+                                                            color:
+                                                                Colors.white),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Container(
+                            color: Colors.white,
+                            padding: const EdgeInsets.all(5),
+                            child: RoundedContainer(
+                              padding: const EdgeInsets.all(10),
+                              radius: 30,
+                              color: Styles.color.primary,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '${orders.length} Pesanan',
+                                    style: Styles.font.bold.copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Total : ${convertCurrency(
+                                      orders.fold(
+                                        0,
+                                        (previousValue, element) =>
+                                            previousValue +
+                                            element.menu.price! *
+                                                element.quantity,
+                                      ),
+                                    )}',
+                                    style: Styles.font.bold.copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            builder: (_) {
-                              return BlocProvider.value(
-                                value: cubit,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Menu',
-                                            style: Styles.font.base,
-                                          ),
-                                          Text(
-                                            'Total Harga',
-                                            style: Styles.font.base,
-                                          )
-                                        ],
-                                      ),
-                                      Divider(
-                                        color: Styles.color.darkGreen,
-                                        thickness: 2,
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      BlocBuilder<OrderMenuCubit,
-                                          OrderMenuState>(
-                                        builder: (context, state) {
-                                          return state.maybeWhen(
-                                            orElse: () => const SizedBox(),
-                                            orderUpdated: (orderss) => Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: orderss
-                                                  .map((order) =>
-                                                      OrderList(order: order))
-                                                  .toList(),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      ShrinkProperty(
-                                        onTap: () {},
-                                        child: RoundedContainer(
-                                          radius: 20.r,
-                                          alignment: Alignment.center,
-                                          color: Styles.color.primary,
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10, horizontal: 20),
-                                          child: Text(
-                                            'Pesan via WhatsApp',
-                                            style: Styles.font.base
-                                                .copyWith(color: Colors.white),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: Container(
-                          color: Colors.white,
-                          padding: const EdgeInsets.all(5),
-                          child: RoundedContainer(
-                            padding: const EdgeInsets.all(10),
-                            radius: 30,
-                            color: Styles.color.primary,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '${orders.length} Pesanan',
-                                  style: Styles.font.bold.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Text(
-                                  'Total : ${convertCurrency(
-                                    orders.fold(
-                                      0,
-                                      (previousValue, element) =>
-                                          previousValue +
-                                          element.menu.price! *
-                                              element.quantity,
-                                    ),
-                                  )}',
-                                  style: Styles.font.bold.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
                           ),
-                        ),
-                      );
-              },
-              orElse: () => const SizedBox(),
-            );
-          },
-        ),
+                        );
+                },
+                orElse: () => const SizedBox(),
+              );
+            },
+          );
+        }),
         body: SingleChildScrollView(
           child: Background(
             child: SizedBox(
