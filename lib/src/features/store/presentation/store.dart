@@ -157,12 +157,9 @@ class StoreScreen extends StatelessWidget {
                                                             succes: (account) =>
                                                                 account.address,
                                                           )}");
-                                                  // if (await canLaunchUrl(url)) {
+
                                                   log('launching wa ${store.phone}');
                                                   await launchUrl(url);
-                                                  // } else {
-                                                  // log('cant launch wa');
-                                                  // }
                                                 },
                                                 child: RoundedContainer(
                                                   radius: 20.r,
