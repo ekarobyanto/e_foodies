@@ -91,13 +91,14 @@ class _StoreItemsState extends State<StoreItems> {
   static const _pageSize = 5;
 
   final PagingController<int, Store> _pagingController =
-      PagingController(firstPageKey: 2);
+      PagingController(firstPageKey: 1);
 
   @override
   void initState() {
     if (widget.stores.next == null) {
       _pagingController.appendLastPage(widget.stores.results);
     } else {
+      _pagingController.appendPage(widget.stores.results, 2);
       _pagingController.addPageRequestListener((pageKey) {
         _fetchPage(pageKey);
       });

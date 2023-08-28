@@ -30,7 +30,10 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
             emit(const _Initial());
             try {
               final stores = await storeRepository.getAllStore(
-                  await storageRepository.read(key: 'access'), 1, 1);
+                await storageRepository.read(key: 'access'),
+                e.pageKey,
+                e.pageSize,
+              );
               emit(_Loaded(stores));
             } on Failure catch (e) {
               if (e.message == 'Token Expired') {
