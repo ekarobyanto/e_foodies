@@ -16,3 +16,4 @@ class Pagination<T> with _$Pagination<T> {
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
       _$PaginationFromJson(json, fromJsonT);
 }
+

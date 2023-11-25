@@ -1,10 +1,13 @@
+import 'package:e_foodies/src/core/bloc/account/account_bloc.dart';
 import 'package:e_foodies/src/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:e_foodies/src/features/shared/circle_net_pic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../constants/styles.dart';
 import '../../../shared/rounded_container.dart';
@@ -92,9 +95,12 @@ class CustomDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: ShrinkProperty(
-                  onTap: () {
+                  onTap: () async {
                     advancedDrawerController.hideDrawer();
-                    context.go('/welcome');
+                    await SharedPreferences.getInstance().then((value) {
+                      value.clear();
+                      context.go('/welcome');
+                    });
                   },
                   child: RoundedContainer(
                     padding: const EdgeInsets.symmetric(
