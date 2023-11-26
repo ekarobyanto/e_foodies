@@ -94,9 +94,13 @@ class WarungCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          warung.address,
-                          style: Styles.font.xsm,
+                        SizedBox(
+                          width: 1.sw * 0.55,
+                          child: Text(
+                            warung.address,
+                            maxLines: 2,
+                            style: Styles.font.xsm,
+                          ),
                         ),
                         SizedBox(
                           width: 1.sw * 0.5,

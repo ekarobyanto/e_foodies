@@ -246,117 +246,119 @@ class _FormOrderState extends State<FormOrder> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Jumlah : ',
-              style: Styles.font.base,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    if (int.parse(quantityController.text) > 1) {
-                      quantityController.text =
-                          (int.parse(quantityController.text) - 1).toString();
-                    }
-                  },
-                  icon: const Icon(Icons.remove),
-                ),
-                SizedBox(
-                  width: 25.w,
-                  child: TextField(
-                    maxLength: 2,
-                    textAlign: TextAlign.center,
-                    controller: quantityController,
-                    keyboardType: TextInputType.number,
-                    cursorColor: Styles.color.darkGreen,
-                    decoration: InputDecoration(
-                      counterText: '',
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Styles.color.darkGreen,
-                          width: 2,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Jumlah : ',
+                style: Styles.font.base,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      if (int.parse(quantityController.text) > 1) {
+                        quantityController.text =
+                            (int.parse(quantityController.text) - 1).toString();
+                      }
+                    },
+                    icon: const Icon(Icons.remove),
+                  ),
+                  SizedBox(
+                    width: 25.w,
+                    child: TextField(
+                      maxLength: 2,
+                      textAlign: TextAlign.center,
+                      controller: quantityController,
+                      keyboardType: TextInputType.number,
+                      cursorColor: Styles.color.darkGreen,
+                      decoration: InputDecoration(
+                        counterText: '',
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Styles.color.darkGreen,
+                            width: 2,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    quantityController.text =
-                        (int.parse(quantityController.text) + 1).toString();
-                  },
-                  icon: const Icon(Icons.add),
-                ),
-              ],
-            )
-          ],
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Catatan',
-            style: Styles.font.base,
+                  IconButton(
+                    onPressed: () {
+                      quantityController.text =
+                          (int.parse(quantityController.text) + 1).toString();
+                    },
+                    icon: const Icon(Icons.add),
+                  ),
+                ],
+              )
+            ],
           ),
-        ),
-        TextField(
-          controller: noteController,
-          cursorColor: Styles.color.darkGreen,
-          decoration: InputDecoration(
-            counterText: '',
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: Styles.color.darkGreen,
-                width: 2,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Catatan',
+              style: Styles.font.base,
+            ),
+          ),
+          TextField(
+            controller: noteController,
+            cursorColor: Styles.color.darkGreen,
+            decoration: InputDecoration(
+              counterText: '',
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Styles.color.darkGreen,
+                  width: 2,
+                ),
+              ),
+            ),
+            keyboardType: TextInputType.multiline,
+            minLines: 1,
+            maxLines: 3,
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          ShrinkProperty(
+            onTap: () {
+              context.read<OrderMenuCubit>().updateOrder(
+                    form: OrderForm(
+                      menu: widget.menu,
+                      quantity: int.parse(quantityController.text),
+                      note: noteController.text,
+                    ),
+                  );
+              context.pop();
+            },
+            child: RoundedContainer(
+              radius: 10.r,
+              alignment: Alignment.center,
+              color: Styles.color.primary,
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    'Tambahkan ke keranjang',
+                    style: Styles.font.base.copyWith(color: Colors.white),
+                  ),
+                ],
               ),
             ),
           ),
-          keyboardType: TextInputType.multiline,
-          minLines: 1,
-          maxLines: 3,
-        ),
-        SizedBox(
-          height: 10.h,
-        ),
-        ShrinkProperty(
-          onTap: () {
-            context.read<OrderMenuCubit>().updateOrder(
-                  form: OrderForm(
-                    menu: widget.menu,
-                    quantity: int.parse(quantityController.text),
-                    note: noteController.text,
-                  ),
-                );
-            context.pop();
-          },
-          child: RoundedContainer(
-            radius: 10.r,
-            alignment: Alignment.center,
-            color: Styles.color.primary,
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.shopping_cart_outlined,
-                  size: 20,
-                  color: Colors.white,
-                ),
-                Text(
-                  'Tambahkan ke keranjang',
-                  style: Styles.font.base.copyWith(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

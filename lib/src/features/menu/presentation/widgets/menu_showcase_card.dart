@@ -141,113 +141,118 @@ class MenuShowcase extends StatelessWidget {
       ),
       builder: (context) => Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RoundedContainer(
-                  radius: 10.r,
-                  color: Styles.color.primary.withOpacity(0.6),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: Row(
-                    children: [
-                      Icon(Icons.store,
-                          size: 20, color: Styles.color.darkGreen),
-                      Text(
-                        ' Warung : ${menu.store}',
-                        overflow: TextOverflow.ellipsis,
-                        style: Styles.font.bsm
-                            .copyWith(color: Styles.color.darkGreen),
-                      ),
-                    ],
-                  ),
-                ),
-                IconButton(
-                    onPressed: () => context.pop(),
-                    icon: const Icon(Icons.close)),
-              ],
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: CachedNetworkImage(
-                alignment: Alignment.center,
-                imageUrl: menu.img,
-                errorWidget: (context, url, error) => Icon(
-                  Icons.error,
-                  color: Styles.color.danger,
-                  size: 50,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(menu.name, style: Styles.font.bxl2),
-                    Text(
-                      menu.desc == ''
-                          ? 'Deskripsi Menu ${menu.name}'
-                          : menu.desc,
-                      style: Styles.font.sm,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  RoundedContainer(
+                    radius: 10.r,
+                    color: Styles.color.primary.withOpacity(0.6),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Row(
+                      children: [
+                        Icon(Icons.store,
+                            size: 20, color: Styles.color.darkGreen),
+                        Text(
+                          ' Warung : ${menu.store}',
+                          overflow: TextOverflow.ellipsis,
+                          style: Styles.font.bsm
+                              .copyWith(color: Styles.color.darkGreen),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                Text(
-                  '${menu.price != null ? convertCurrency(menu.price!) : 0}',
-                  style: Styles.font.lg.copyWith(color: Styles.color.darkGreen),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              'Komposisi : ',
-              style: Styles.font.base,
-            ),
-            SizedBox(
-              width: 1.sw,
-              child: Text(
-                menu.ingredients.map((e) => e.name).join(', '),
-                style: Styles.font.base.copyWith(color: Styles.color.darkGreen),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+                  ),
+                  IconButton(
+                      onPressed: () => context.pop(),
+                      icon: const Icon(Icons.close)),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            if (router.routeInformationProvider.value.location == '/dashboard')
-              ShrinkProperty(
-                onTap: () {
-                  context.pop();
-                  context.push('/store/${menu.storeId}');
-                },
-                child: RoundedContainer(
-                  radius: 10.r,
+              Align(
+                alignment: Alignment.center,
+                child: CachedNetworkImage(
                   alignment: Alignment.center,
-                  color: Styles.color.primary,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  imageUrl: menu.img,
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.error,
+                    color: Styles.color.danger,
+                    size: 50,
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.store, size: 30, color: Colors.white),
+                      Text(menu.name, style: Styles.font.bxl2),
                       Text(
-                        'Lihat Warung',
-                        style: Styles.font.bold.copyWith(color: Colors.white),
+                        menu.desc == ''
+                            ? 'Deskripsi Menu ${menu.name}'
+                            : menu.desc,
+                        style: Styles.font.sm,
                       ),
                     ],
                   ),
+                  Text(
+                    '${menu.price != null ? convertCurrency(menu.price!) : 0}',
+                    style:
+                        Styles.font.lg.copyWith(color: Styles.color.darkGreen),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                'Komposisi : ',
+                style: Styles.font.base,
+              ),
+              SizedBox(
+                width: 1.sw,
+                child: Text(
+                  menu.ingredients.map((e) => e.name).join(', '),
+                  style:
+                      Styles.font.base.copyWith(color: Styles.color.darkGreen),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              )
-          ],
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              if (router.routeInformationProvider.value.location ==
+                  '/dashboard')
+                ShrinkProperty(
+                  onTap: () {
+                    context.pop();
+                    context.push('/store/${menu.storeId}');
+                  },
+                  child: RoundedContainer(
+                    radius: 10.r,
+                    alignment: Alignment.center,
+                    color: Styles.color.primary,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.store, size: 30, color: Colors.white),
+                        Text(
+                          'Lihat Warung',
+                          style: Styles.font.bold.copyWith(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+            ],
+          ),
         ),
       ),
     );

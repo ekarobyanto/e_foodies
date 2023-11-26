@@ -72,14 +72,23 @@ class UserStorePage extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+
                       children: [
                         Icon(
                           Icons.location_on_outlined,
                           color: Styles.color.darkGreen,
                         ),
-                        Text(
-                          store.address,
-                          style: Styles.font.sm,
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        SizedBox(
+                          width: 1.sw * 0.55,
+                          child: Text(
+                            store.address,
+                            maxLines: 2,
+                            style: Styles.font.sm,
+                          ),
                         ),
                       ],
                     ),

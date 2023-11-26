@@ -306,7 +306,7 @@ class _CreateStoreState extends State<CreateStore> {
                                           },
                                         ),
                                         null);
-                                  }
+                                  } else
                                   if (_formKey.currentState!.validate()) {
                                     context.read<CreateStoreBloc>().add(
                                           CreateStoreEvent.submitStore(
